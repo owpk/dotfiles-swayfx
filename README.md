@@ -2,10 +2,13 @@
 - SEE .config/sway/config.d/default TO CHANGE KEY BINDINGS CONFIG
 
 <p align="center">
-   <img src="https://github.com/owpk/dotfiles-swayfx/blob/main/sc.jpg"/>
+   <img src="https://github.com/owpk/dotfiles-swayfx/blob/main/docs/sc.gif"/>
 </p>
 <p align="center">
-   <img src="https://github.com/owpk/dotfiles-swayfx/blob/main/sc.gif"/>
+   <img src="https://github.com/owpk/dotfiles-swayfx/blob/main/docs/sc.jpg"/>
+</p>
+<p align="center">
+   <img src="https://github.com/owpk/dotfiles-swayfx/blob/main/docs/sc_wb.jpg"/>
 </p>
 
 # Install for arch linux (copy and paste to terminal)
