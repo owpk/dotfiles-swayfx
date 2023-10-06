@@ -2,13 +2,10 @@
 - SEE .config/sway/config.d/default TO CHANGE KEY BINDINGS CONFIG
 
 <p align="center">
-   <img src="https://github.com/owpk/dotfiles-sway/blob/master/sc.jpg"/>
+   <img src="https://github.com/owpk/dotfiles-swayfx/blob/master/sc.jpg"/>
 </p>
 <p align="center">
-   <img src="https://github.com/owpk/dotfiles-sway/blob/master/sc_wbg.png"/>
-</p>
-<p align="center">
-   <img src="https://github.com/owpk/dotfiles-sway/blob/master/sc.gif"/>
+   <img src="https://github.com/owpk/dotfiles-swayfx/blob/master/sc.gif"/>
 </p>
 
 # Install for arch linux (copy and paste to terminal)
@@ -24,15 +21,15 @@ sudo usermod -a -G video $USER
 ```
 2. clone dotfiles
 ```
-git clone https://github.com/owpk/dotfiles-sway
-cd dotfiles-sway
+git clone https://github.com/owpk/dotfiles-swayfx
+cd dotfiles-swayfx
 ```
 3. change shell to zsh
 ```
 chsh -s /bin/zsh $USER
 ```
 4. install zsh utils
-- type exit when ohmyzsh will be installed (first plugin)
+- TYPE 'exit' AND PRESS ENTER WHEN OHMYZSH WILL BE INSTALLED (FIRST PLUGIN)
 ```
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
@@ -86,7 +83,7 @@ reboot
 ```
 pkill swaybg
 MONITOR="$(swaymsg -t get_outputs | jq -r '.[] | {name} | (.name)')"
-nohup swaybg -o $MONITOR -i "$HOME/dotfiles-sway/wallpapers/wp.png" -m fill &
+nohup swaybg -o $MONITOR -i "$HOME/dotfiles-swayfx/wallpapers/wp.png" -m fill &
 ```
  - or use 'azote' app to do the same as above 😺  
 
