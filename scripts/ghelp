@@ -1,0 +1,7 @@
+#!/bin/bash
+BRANCH=`git branch --show current`
+git add .
+printf "commit message: ${BRANCH^^}: "
+read msg
+git commit -m "${BRANCH^^}: $msg"
+git push origin $BRANCH

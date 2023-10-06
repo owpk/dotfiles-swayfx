@@ -1,0 +1,9 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =7
+let g:netrw_dirhist_7='/home/owpk/.npm'
+let g:netrw_dirhist_6='/home/owpk'
+let g:netrw_dirhist_5='/WINDOWS_C/ARCH/.config/polybar'
+let g:netrw_dirhist_4='/home/owpk/.config/i3'
+let g:netrw_dirhist_3='/home/owpk/.config/polybar'
+let g:netrw_dirhist_2='/home/owpk/.yuhc-vim/bundle/auto-omni/autoload'
+let g:netrw_dirhist_1='/home/owpk/.yuhc-vim/bundle/auto-omni'

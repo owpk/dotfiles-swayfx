@@ -1,0 +1,11 @@
+language: python
+
+python:
+  - 2.7.10
+
+script:
+  - python ./pythonx/tests/test_main.py
+
+branches:
+  only:
+    - master

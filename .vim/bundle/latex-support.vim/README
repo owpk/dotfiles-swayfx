@@ -1,0 +1,44 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=4405
+
+LaTeX-IDE for Vim/gVim is written to considerably speed up typesetting a
+document in a consistent style.  This is done by inserting complete statements,
+idioms, code snippets, templates, and comments.  Compiling and viewing a
+document, format conversion and running make can be done with a few keystrokes.
+
+- insert complete but empty statements
+- insert various types of comments
+- insert often used code snippets
+- change existing templates, add new templates
+- read, write, maintain your own code snippets in a separate directory
+- show compilation erros in a quickfix window; navigate with hotkeys
+
+Here are some screen shots :   http://lug.fh-swf.de/vim/vim-latex/
+
+The help file online :   http://lug.fh-swf.de/vim/vim-latex/latexsupport.html
+
+The key mappings of this plugin (PDF) :  http://lug.fh-swf.de/vim/vim-latex/latex-hotkeys.pdf
+
+Documentation
+--------------------------------------------------------
+This plugin comes with a help file (latexsupport.txt). Read it with  
+
+  :h latexsupport
+
+** PLEASE READ THE DOCUMENTATION **
+
+Editing actions differ for different modes!  There are  a lot of  features
+which can be configured or customized to match your needs.
+
+
+MAILING LIST
+--------------------------------------------------------
+You can subscribe to the vim-plugins-list mailing list to post your questions or
+suggestions for improvement or to report bugs.  The list will also be used to
+announce new releases ( c.vim / bash-support / latex-support / perl-support ).
+Visit the following page for subscribing to the mailing list:
+    
+  http://lug.fh-swf.de/cgi-bin/mailman/listinfo/vim-plugins-list
+
+The vim-plugins-list list is very low on traffic.
+
+

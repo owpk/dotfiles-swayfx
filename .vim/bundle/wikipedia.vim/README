@@ -1,0 +1,5 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=1787
+
+This file is for people who use external editors to work on articles on Wikipedia and other MediaWiki sites.  Please note that I didn't write this -- it was downloaded from http://en.wikipedia.org/wiki/Wikipedia%3AText_editor_support#Vim and may well be more up-to-date there.  If the version here is out of date contact me and I'll upload the improved version.
+
+Version 1 of this script also contains a few settings to better deal with the fact that MediaWiki articles only contain newlines between paragraphs, you may prefer to remove those and put them in ~/.vim/ftplugin/Wikipedia.vim.  In version 2 these have been moved to a separate file.

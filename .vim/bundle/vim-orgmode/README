@@ -1,0 +1,49 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=3642
+
+INTRODUCTION                                 *vim-orgmode* *orgguide-introduction*
+
+Vim-orgmode: Text outlining and task management for Vim based on Emacs'
+Org-Mode.
+
+The idea for this plugin was born by listening to the Floss Weekly podcast
+introducing Emacs' Org-Mode (http://twit.tv/floss136). Org-Mode has a lot of
+strong features like folding, views (sparse tree) and scheduling of tasks.
+These are completed by hyperlinks, tags, todo states, priorities aso.
+
+Vim-orgmode aims at providing the same functionality for Vim and for command
+line tools*.
+
+* for command line tools and other programs a library liborgmode is provided.
+  It encapsulates all functionality for parsing and modifying org files.
+
+------------------------------------------------------------------------------
+Preface~
+   vim-orgmode is a file type plugin for keeping notes, maintaining TODO
+   lists, and doing project planning with a fast and effective plain-text
+   system. It is also an authoring and publishing system.
+
+   This document is a copy of the orgmode-guide for emacs
+   (http://orgmode.org/) with modifications for vim. It contains all basic
+   features and commands, along with important hints for customization.
+
+------------------------------------------------------------------------------
+Features~
+  vim-orgmode is still very young but already quite usable. Here is a short
+  list of the already supported features:
+
+  - Cycle visibility of headings
+  - Navigate between headings
+  - Edit the structure of the document: add, move, promote, denote headings
+    and more
+  - Hyperlinks within vim-orgmode and outside (files, webpages, etc.)
+  - TODO list management
+  - Tags for headings
+  - Basic date handling
+  - Export (via emacs)
+
+  More features are coming...
+
+Feedback~
+   If you find problems with vim-orgmode, or if you have questions, remarks, or
+   ideas about it, please create a ticket on
+   https://github.com/jceb/vim-orgmode

@@ -1,0 +1,211 @@
+*VimCompletesMe.txt*    Minimalistic tab completion for Vim.
+
+
+                        VIM REFERENCE MANUAL    by Akshay Hegde
+
+
+Help on using VimCompletesMe                                   *VimCompletesMe*
+
+1. Introduction                         |VimCompletesMe-intro|
+2. Configuration                        |VimCompletesMe-configuration|
+3. Frequently Asked Questions           |VimCompletesMe-faq|
+
+==============================================================================
+ 1. INTRODUCTION                                         *VimCompletesMe-intro*
+
+VimCompletesMe is a tab completion plugin for Vim with minimalism in mind.
+
+It will use Vim's |ins-completion| to provide tab completion and you can
+configure VimCompletesMe to use a specific type of completions.
+
+==============================================================================
+2. CONFIGURATION                                 *VimCompletesMe-configuration*
+
+The following aspects of VimCompletesMe's behavior are configurable using the
+following options:
+
+|'b:vcm_tab_complete'|          Use a specific type of completion.
+|'g:vcm_direction'|             Controls the direction of the completion.
+|'g:vcm_s_tab_behavior'|        Controls the indentation behavior of Shift-Tab.
+|'g:vcm_s_tab_mapping'|         Defines the custom actions of Shift-Tab.
+|'g:vcm_default_maps'|          Set up default maps (Tab + Shift Tab)
+|'b:vcm_omni_pattern|           Local pattern to trigger Omni-completion
+|'g:vcm_omni_pattern|           Global pattern to trigger Omni-completion
+
+------------------------------------------------------------------------------
+                                                         *'b:vcm_tab_complete'*
+Values: string                                                                ~
+Default: ''                                                                   ~
+
+Controls the type of completion to use. If empty, the |<Tab>| key will
+intelligently (depending on the context) use:
+
+1. Local keyword completion (|i_Ctrl-X_Ctrl-N|)
+2. File path completion     (|i_Ctrl-X_Ctrl-F|)
+3. Omni completion          (|i_Ctrl-X_Ctrl-O|)
+
+You can set |b:vcm_tab_complete| to one of the following to use a specific type
+of completion:
+
+1. "user"   - User-defined completion |i_Ctrl-X_Ctrl-U|
+2. "vim"    - Vim command line completion |i_Ctrl-X_Ctrl-V|
+3. "omni"   - Omni completion |i_Ctrl-X_Ctrl-O|
+
+The b:vcm_tab_complete makes a great |:autocmd| as follows:
+>
+    autocmd FileType ruby let b:vcm_tab_complete = "omni"
+<
+
+When none of the special completions above get any results, you can press Tab
+again to have VimCompletesMe switch the context to keyword completion. In some
+situations (like after completing something and then trying the context switch
+again without leaving insert mode), you may need a Vim version greater than
+7.3.598 to get the best context switch behavior. The context will be
+automatically switched back to the completion set in the |b:vcm_tab_complete|
+variable.
+
+NOTE: You can also modify Vim's |complete| option in order to offer completion
+items from things like a dictionary or tags file. For example, if you wanted
+dictionary completion for markdown and text files, you could add the following
+to your |vimrc| file:
+>
+    autocmd FileType markdown,txt setlocal complete+=k/usr/share/dict/words
+<
+where */usr/share/dict/words* is a standard UNIX location for dictionary words.
+You can use any value here after the 'k' flag. See :help 'complete' for the
+full documentation.
+------------------------------------------------------------------------------
+                                                            *'g:vcm_direction'*
+Values: string                                                                ~
+Default: 'n'                                                                  ~
+
+Controls the direction of tab completion. By default, if a popup menu is
+opened during completion, the |<Tab>| key will cycle forward through the list.
+
+You can change it to cycle backwards through the list by putting the following
+in your |vimrc|:
+>
+    let g:vcm_direction = 'p'
+
+------------------------------------------------------------------------------
+                                                       *'g:vcm_s_tab_behavior'*
+Values: numeric                                                               ~
+Default: 0                                                                    ~
+
+Controls the shift-tab indentation behavior used by VimCompletesMe.
+
+By default, pressing |<S-Tab>| after a space or a tab will remove one
+indentation level like <C-h> (see |i_Ctrl-h|), with the difference that
+|<S-Tab>| won't join with the line above if the cursor is at the first
+column.
+
+If you change this option to 1, |<S-Tab>| will work just like |<Tab>|.
+
+You can change this variable by putting the following in your |vimrc|:
+>
+    let g:vcm_s_tab_behavior = 1
+<
+------------------------------------------------------------------------------
+                                                       *'g:vcm_s_tab_mapping'*
+Values: string                                                               ~
+Default: unset                                                                    ~
+
+Defines the action commands for |<S-Tab>|. If not set, it will trigger the
+completion just like |<Tab>|, otherwise, the value will correspond to the
+actions performed by VimCompletesMe.
+
+You can set this variable by putting the following in your |vimrc|:
+>
+    let g:vcm_s_tab_mapping = "\<actions>"
+
+Where <actions> are the commands to be executed. Notice that VimCompletesMe
+acts in |insertmode|, therefore, to perform normal mode commands, <actions>
+should start with |<Esc>| or <C-o> (see |i_Ctrl-o|).
+
+For example, to make |<S-Tab>| jump one character (useful for jumping
+immediate closing parentheses or brackets) just do:
+>
+    let g:vcm_s_tab_mapping = "\<C-o>a"
+<
+------------------------------------------------------------------------------
+                                                         *'g:vcm_default_maps'*
+Values: numeric                                                               ~
+Default: 1                                                                    ~
+
+Set up mappings for Tab and Shift-Tab. If you would like to use your
+own mappings, unset this variable by putting the following in your |vimrc|:
+>
+    let g:vcm_default_maps = 0
+<
+------------------------------------------------------------------------------
+                                                         *'g:vcm_omni_pattern*
+Values: string                                                               ~
+Default:  '\k\+\(\.\|->\|::\)\k*$'                                           ~
+
+The global pattern after which VimCompletesMe triggers Omni-completion and
+applies if |b:vcm_omni-pattern| is unset.
+
+------------------------------------------------------------------------------
+                                                         *'b:vcm_omni_pattern*
+Values: string                                                               ~
+Default: unset                                                               ~
+
+The buffer-local pattern after which VimCompletesMe triggers Omni-completion.
+
+==============================================================================
+ 3. FREQUENTLY ASKED QUESTIONS                             *VimCompletesMe-faq*
+
+1. When the popup menu is opened, how can I make the Enter key select the     ~
+   completion entry instead of creating a new line?                           ~
+
+Solution: Just make a mapping like the following, in your |vimrc|:
+>
+    inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+<
+
+2. When pressing the Tab key, why is the last popup item selected?     ~
+
+This is because VimCompletesMe is invoking |i_Ctrl-P| by default for you.
+Pressing the Tab key will then cycle forwards the list, so some users are
+confused that it takes two Tab presses to jump to the first item in the list.
+
+However, this behavior is the default Vim behavior, and VimCompletesMe agrees
+with it. Invoking |i_Ctrl-P| instead of |i_Ctrl-N| is done because it is more
+likely that the keyword you are trying to complete is before the current
+cursor position. When the Tab key is pressed when the popup menu is open,
+VimCompletesMe simply uses Ctrl-N to advance to the next item in the popup
+menu. If you would like VimCompletesMe to invoke |i_Ctrl-N| instead, see the
+|'g:vcm_direction'| option.
+
+It is also useful to check out the "longest" attribute of the |'completeopt'|
+option. Setting the following in your |vimrc| will insert the longest matching
+string and then popup the completion item, so you will always start at the
+head of the popup menu list:
+>
+    set completeopt+=longest
+<
+
+3. How do I make VimCompletesMe work with various snippet engines?         ~
+
+A simple solution is to ensure that the Tab and Shift-Tab keys do not conflict
+with any other plugins. Thus, you can either disable VimCompletesMe's
+|vcm_default_maps| option or use a different forward and backward triggers for
+the snippet engines.
+
+For the first case, simply assign a different key to act as the Tab key for
+<Plug>vim_completes_me_forward, or the Shift-Tab key for
+<Plug>vim_completes_me_backward functions.
+
+For the second case, simply assign different keys to act as the snippet
+engines forward and backward triggers. A suggestion would be to map `<C-j>`
+and `<C-k>` in insert mode. Note that while |i_Ctrl-j| does nothing useful in
+insert mode, you might be using |i_Ctrl-k| for digraphs. These keybinds are
+merely suggestions.
+
+@sunaku from Github has a great solution to make VimCompletesMe work with
+Neosnippet. See
+https://github.com/ajh17/VimCompletesMe/issues/12#issuecomment-94115124
+------------------------------------------------------------------------------
+
+Template From: https://github.com/dahu/Area-41/
+vim:tw=78:et:ft=help:norl:

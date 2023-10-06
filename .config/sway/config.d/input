@@ -1,0 +1,12 @@
+input type:keyboard {
+   repeat_delay 250
+   repeat_rate 50
+   xkb_layout "us,ru"
+   xkb_options "grp:alt_shift_toggle,caps:escape"
+}
+
+input type:touchpad {
+      dwt disable
+      tap enabled
+      natural_scroll disable
+}

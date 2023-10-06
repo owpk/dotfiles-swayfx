@@ -1,0 +1,130 @@
+# Colors (One Darker)
+colors:
+  # Default colors
+  primary:
+
+    #Nord
+    background:   "#2E3440"
+
+    # background:   "#102020"
+
+    # DarkGreen
+    # background:   "#112121"
+
+    # DarkBlue
+    # background:   "#121d21"
+
+    # Gray
+    # background:   "#262626"
+
+     # background:   "#1e2127"
+
+    foreground:   "#c5c8c6"
+
+  # Normal colors
+  normal:
+    black:    "#1e2127"
+    red:      "#e06c75"
+    green:    "#33cca6"
+    yellow:   "#d19a66"
+    blue:     "#5C8286"
+    magenta:  "#c678dd"
+    cyan:     "#56b6c2"
+    white:    "#c5c8c6"
+
+  # Bright colors
+  bright:
+    black:    "#1B2839"
+    red:      "#e06c75"
+    green:    "#33cca6"
+    yellow:   "#d19a66"
+    blue:     "#73AAA9"
+    magenta:  "#c678dd"
+    cyan:     "#56b6c2"
+    white:    "#ffffff"
+
+# colors:
+#   # Default colors
+#   primary:
+#     background: '0x1d1f21'
+#     foreground: '0xc5c8c6'
+
+#   # Normal colors
+#   normal:
+#     black:   '#c5c8c6'
+#     red:     '#cc6666'
+#     green:   '#b5bd68'
+#     yellow:  '#f0c674'
+#     blue:    '#81a2be'
+#     magenta: '#b294bb'
+#     cyan:    '#524866'
+#     white:   '#c5c8c6'
+
+#   # Bright colors
+#   bright:
+#     black:   '#969896'
+#     red:     '#cc6666'
+#     green:   '#b5bd68'
+#     yellow:  '#f0c674'
+#     blue:    '#81a2be'
+#     magenta: '#b294bb'
+#     cyan:    '#8abeb7'
+#     white:   '#ffffff'
+
+background_opacity: 0.98
+
+font:
+  normal:
+    family: "Hack"
+    style: Regular
+
+  # bold:
+  #   family: "TerminessTTF Nerd Font Mono"
+  #   style: Bold
+  # italic:
+  #   family: "TerminessTTF Nerd Font Mono"
+  #   style: Italic
+  # bold_italic:
+  #   family: "TerminessTTF Nerd Font Mono"
+  #   style: Bold Italic
+
+  # Point size
+  size: 9
+
+  offset:
+    x: 0
+    y: 0
+
+window:
+  padding:
+    x: 10
+    y: 10
+
+scrolling:
+  # Maximum number of lines in the scrollback buffer.
+  # Specifying '0' will disable scrolling.
+  history: 10000
+
+  # Number of lines the viewport will move for every line scrolled when
+  # scrollback is enabled (history > 0).
+  multiplier: 10
+
+# If `true`, bold text is drawn using the bright color variants.
+draw_bold_text_with_bright_colors: true
+
+selection:
+  semantic_escape_chars: ',│`|:"'' ()[]{}<>'
+
+  # When set to `true`, selected text will be copied to both the primary and
+  # the selection clipboard. Otherwise, it will only be copied to the selection
+  # clipboard.
+  save_to_clipboard: true
+
+# Live config reload (changes require restart)
+live_config_reload: true
+
+key_bindings:
+  - { key: V, mods: Control|Shift, action: Paste }
+  - { key: C, mods: Control|Shift, action: Copy }
+  - { key: Return,   mods: Control|Shift, action: SpawnNewInstance }
+

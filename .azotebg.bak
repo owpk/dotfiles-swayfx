@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+pkill swaybg
+MONITOR="$(swaymsg -t get_outputs | jq -r '.[] | {name} | (.name)')"
+swaybg -o $MONITOR -i "$HOME/dotfiles-sway/wallpapers/wp.png" -m fill &

@@ -1,0 +1,57 @@
+§ =============================================================
+§  User Macros
+§ =============================================================
+
+SetMacro( 'AUTHOR',       'Dr. Fritz Mehner' )
+SetMacro( 'AUTHORREF',    'fgm' )
+SetMacro( 'EMAIL',        'mehner.fritz@fh-swf.de' )
+SetMacro( 'ORGANIZATION', 'FH Südwestfalen, Iserlohn, Germany' )
+SetMacro( 'COPYRIGHT',    'Copyright (c) |YEAR|, |AUTHOR|' )
+
+SetFormat( 'DATE', '%x' )
+SetFormat( 'TIME', '%H:%M' )
+SetFormat( 'YEAR', '%Y' )
+
+§ unit used in Beamer commands, such as \includegraphics[<width>]{<file>}
+SetMacro( 'BEAMER_UNIT', 'cm' )
+
+SetPath( 'graphics_path', './' )
+
+§ =============================================================
+§  File Includes
+§ =============================================================
+
+MenuShortcut( 'Comments', 'c' )
+MenuShortcut( 'Text',     't' )
+MenuShortcut( 'Math',     'm' )
+MenuShortcut( 'Document', 'd' )
+MenuShortcut( 'Beamer',   'e' )
+MenuShortcut( 'BibTeX',   'b' )
+MenuShortcut( 'Wizard',   'w' )
+MenuShortcut( 'Help',     'h' )
+
+IncludeFile( 'comments.templates' )
+IncludeFile( 'text.templates' )
+IncludeFile( 'math.templates' )
+IncludeFile( 'document.templates' )
+IncludeFile( 'beamer.templates' )
+IncludeFile( 'bibtex.templates' )
+IncludeFile( 'wizard.templates' )
+
+§ =============================================================
+§  Help
+§ =============================================================
+
+§ browser for help templates (UNIX)
+SetMacro( 'HELP_BROWSER', 'firefox' )
+
+§ browser for help templates (Windows)
+§SetMacro( 'HELP_BROWSER', '"C:\Program Files\Mozilla Firefox\firefox.exe"' )
+
+SetMacro( 'HelpPathEnglish',   'http://en.wiktionary.org/wiki/' )
+
+== HELP: Help.english == map:he, sc:e ==
+|Word( '' )|
+|Substitute( '\W', '', 'g' )|
+|System( '|HELP_BROWSER| |HelpPathEnglish||PICK:l|' )|
+== ENDTEMPLATE ==

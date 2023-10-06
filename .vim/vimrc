@@ -1,0 +1,93 @@
+   set incsearch
+   set nocompatible
+   set encoding=UTF-8
+   set guifont=DroidSansMono\ Nerd\ Font\ Complete\ Mono\ 11
+   let NERDTreeShowLineNumbers=1
+   filetype off
+   let NERDTreeShowHidden=1
+   set rtp+=~/.vim/bundle/Vundle.vim
+   " autocmd FileType java setlocal omnifunc=javacomplete#Complete
+   " let g:syntastic_java_checkers = []
+   " let g:EclimFileTypeValidate = 0
+   let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
+   let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
+   let g:colorizer_auto_filetype='css,html'
+   highlight Pmenu guibg=brown gui=bold
+
+" map {
+   map , GA<enter>
+   nnoremap <silent> <expr> <C-n> g:NERDTree.IsOpen() ? "\:NERDTreeClose<CR>" : bufexists(expand('%')) ? "\:NERDTreeFind<CR>" : "\:NERDTree<CR>"
+   nnoremap <c-s> :w<CR>
+   inoremap <c-s> <Esc>:w<CR>l
+   vnoremap <c-s> <Esc>:w<CR>
+   vnoremap <c-c> :w !xclip -selection clipboard<CR>
+   nnoremap <leader>d "_d
+   xnoremap <leader>d "_d
+   xnoremap <leader>p "_dP
+   nmap <S-Enter> O<Esc>
+   nmap <CR> o<Esc>
+   map <C-j> 5j
+   map <C-k> 5k
+   imap <F8> <Esc>g~iwea
+" }
+
+" UI {
+   set background=dark
+
+	" packadd! dracula
+	syntax enable
+  	" Statusline
+   colorscheme hybrid
+   set laststatus=2
+  	set statusline=%F%m%r%h%w
+
+  	" Line numbers
+  	set number
+  	"highlight LineNr ctermfg=grey
+  	syntax on
+  	" Set visual bell
+  	set vb
+  	" Disable mouse in a terminal
+  	set mouse=
+" }
+
+" Formatting {
+   set textwidth=110
+   set colorcolumn=120
+   " Tabs settings
+   set expandtab
+   set tabstop=3
+   set shiftwidth=3
+
+   " Automatic Indentation
+   set autoindent
+   let g:autoformat_autoindent = 0
+   let g:autoformat_retab = 0
+   let g:autoformat_remove_trailing_spaces = 1
+   autocmd BufWrite * :set fileformat=unix
+" }
+
+" Plugins {
+" vim-plug
+   call plug#begin('~/.vim/bundle')
+      Plug 'BrandonRoehl/auto-omni'
+      " Plug 'artur-shaik/vim-javacomplete2'
+   call plug#end()
+
+  " vundle
+   call vundle#begin()
+  "   Plugin 'ycm-core/YouCompleteMe'
+      Plugin 'preservim/nerdtree'
+      Plugin 'iamcco/markdown-preview.nvim'
+      Plugin 'chrisbra/Colorizer'
+      Plugin 'jiangmiao/auto-pairs'
+      Plugin 'ryanoasis/vim-devicons'
+      " Plugin 'uiiaoo/java-syntax.vim'
+      Bundle 'https://github.com/etdev/vim-hexcolor.git'
+      call vundle#end()
+" }
+
+" required for transparent bg
+autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
+" " For Vim<8, replace EndOfBuffer by NonText
+autocmd vimenter * hi EndOfBuffer guibg=NONE ctermbg=NONE"

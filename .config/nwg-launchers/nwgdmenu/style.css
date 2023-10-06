@@ -1,0 +1,16 @@
+
+box {
+    /* Uncomment to set vertical margin
+    margin-top: 30px;
+    margin-bottom: 30px;
+    */
+}
+
+#searchbox {
+    /* Adjust to your taste */
+}
+
+/* Menu items */
+#commands {
+    padding-left: 5px
+}
