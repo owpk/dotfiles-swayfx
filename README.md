@@ -15,11 +15,8 @@
 
 1. install all needed apps
 ```
-sudo pacman -S --needed swaybg jq cmake cmocka sway ranger wofi waybar \
-reflector mtools vim neovim zsh vifm \
-papirus-icon-theme noto-fonts-emoji ttf-hack wl-clipboard \
-translate-shell slurp grim light pamixer wmname dmenu xdg-desktop-portal \
-kanshi gnome-keyring alacritty kitty pavucontrol playerctl imv mpv wayvnc pkcs11-helper 
+sudo pacman -S --needed swaybg jq cmake cmocka sway ranger wofi waybar reflector mtools vim neovim zsh vifm papirus-icon-theme noto-fonts-emoji ttf-hack wl-clipboard translate-shell slurp grim light pamixer wmname dmenu xdg-desktop-portal kanshi gnome-keyring alacritty kitty pavucontrol playerctl imv mpv wayvnc pkcs11-helper 
+
 sudo usermod -a -G video $USER
 ```
 2. clone dotfiles
