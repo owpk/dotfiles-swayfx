@@ -32,11 +32,9 @@ cd dotfiles-swayfx
 chsh -s /bin/zsh $USER
 ```
 4. install zsh utils
-- TYPE 'exit' AND PRESS ENTER WHEN OHMYZSH WILL BE INSTALLED (FIRST PLUGIN)
+- TYPE 'exit' AND PRESS ENTER WHEN OHMYZSH WILL BE INSTALLED 
 ```
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 ```
 5. create all needed links and copy fonts
 ```
@@ -44,7 +42,6 @@ sudo mkdir /usr/share/fonts/TTF 2> /dev/null
 sudo cp ./fonts/* /usr/share/fonts/TTF/
 fc-cache
 mv ~/.zshrc ~/.zshrc.bak 2> /dev/null
-ln -s `pwd`/.zshrc ~/.zshrc
 mv ~/.p10k.zsh ~/.p10k.zsh.bak 2> /dev/null
 ln -s `pwd`/.p10k.zsh ~/.p10k.zsh
 mv ~/.config ~/.config.bak 2> /dev/null

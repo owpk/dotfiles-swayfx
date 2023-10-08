@@ -13,6 +13,7 @@
 !/.config/sway
 !/.config/swaylock
 !/.config/waybar
+!/.config/zsh
 !/.config/wofi
 !/.config/kitty
 !/scripts
