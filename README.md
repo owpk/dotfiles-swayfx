@@ -15,7 +15,10 @@
 
 1. install all needed apps
 ```
-sudo pacman -S --needed swaybg jq cmake cmocka ranger wofi waybar mtools vim neovim zsh vifm papirus-icon-theme noto-fonts-emoji ttf-hack wl-clipboard translate-shell slurp grim light pamixer wmname dmenu xdg-desktop-portal kanshi gnome-keyring alacritty kitty pavucontrol playerctl imv mpv wayvnc pkcs11-helper 
+sudo pacman -S --needed swaybg jq cmake cmocka ranger wofi waybar mtools vim neovim zsh \
+vifm papirus-icon-theme noto-fonts-emoji ttf-hack wl-clipboard translate-shell slurp \
+grim light pamixer wmname dmenu xdg-desktop-portal kanshi gnome-keyring alacritty \
+kitty pavucontrol playerctl imv mpv wayvnc pkcs11-helper nodejs sworkstyle
 
 sudo usermod -a -G video $USER
 ```
@@ -58,6 +61,7 @@ sudo pacman -U *.tar.zst
 
 7. install menus/toolbars/utils etc for sway
  - install last app if you have networkmanager installed
+ - use ```gpg --receive-keys``` if any errors occures
 ```
 sudo aura -A wob
 sudo aura -A nwg-launchers

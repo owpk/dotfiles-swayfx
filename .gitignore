@@ -4,6 +4,7 @@
 !/.config/colors.css
 !/.config/epy/config.json
 !/.config/fish
+!/.config/sworkstyle
 !/.config/gtk*
 !/.config/mako
 !/.config/nvim
