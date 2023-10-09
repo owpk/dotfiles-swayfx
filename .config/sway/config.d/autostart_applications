@@ -19,6 +19,9 @@ exec swayidle -w \
 		    resume 'swaymsg "output * dpms on"' \
         timeout 700 'systemctl suspend'
 
+# notifier daemon
+exec "avizo-service"
+
 # exec swayidle -w \
 #   timeout 500 'swaymsg "output * dpms off"' \
 #   resume 'swaymsg "output * dpms on"'
@@ -30,8 +33,8 @@ for_window [app_id=".*"] inhibit_idle fullscreen
 #exec python3 ~/.config/sway/scripts/swayfader.py
 
 # Wob
-exec mkfifo $SWAYSOCK.wob
-exec tail -f $SWAYSOCK.wob | wob --border-color '#ffdcbb8c' --background-color '#cc3a3a3a' --bar-color '#ffdcbb8c'
+# exec mkfifo $SWAYSOCK.wob
+# exec tail -f $SWAYSOCK.wob | wob --border-color '#ffdcbb8c' --background-color '#cc3a3a3a' --bar-color '#ffdcbb8c'
 
 # Autotiling
 # exec autotiling
@@ -40,7 +43,7 @@ exec tail -f $SWAYSOCK.wob | wob --border-color '#ffdcbb8c' --background-color '
 exec ~/.config/sway/scripts/light.sh
 
 # Gnome Keyring
-exec gnome-keyring-daemon --daemonize --start --components=gpg,pkcs11,secrets,ssh
+#exec gnome-keyring-daemon --daemonize --start --components=gpg,pkcs11,secrets,ssh
 
 # for Touchpad gestures
 # exec libinput-gestures-setup start
@@ -53,3 +56,13 @@ exec /usr/libexec/xdg-desktop-portal
 
 # Tracker daemon for gnome apps
 # exec tracker daemon -s
+
+# poweralert 
+exec '[ -x "$(command -v poweralertd)" ] && pkill poweralertd; poweralertd -s -i "line power" &'
+# mounting daemon
+exec '[ -x "$(command -v pcmanfm)" ] && pcmanfm -d'
+# xdg user dirs
+exec '[ -x "$(command -v xdg-user-dirs-update)" ] && exec xdg-user-dirs-update'
+
+#set $watch_playerctl '[ -x "$(command -v playerctl)" ] && pkill playerctl; playerctl -a metadata --format \'{{status}} {{title}}\' --follow | while read line; do pkill -RTMIN+5 waybar; done'
+#set $watch_playerctl '[ -x "$(command -v playerctl)" ] && pkill playerctl; playerctl -a metadata --format \'{{status}} {{title}}\' --follow | while read line; do pkill -RTMIN+5 waybar; done'

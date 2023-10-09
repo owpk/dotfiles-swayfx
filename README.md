@@ -63,7 +63,7 @@ sudo pacman -U *.tar.zst
  - install last app if you have networkmanager installed
  - use ```gpg --receive-keys``` if any errors occures
 ```
-sudo aura -A wob
+sudo aura -A avizo
 sudo aura -A nwg-launchers
 sudo aura -A wlsunset
 sudo aura -A azote

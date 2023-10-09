@@ -1,4 +1,4 @@
-#files: 980	version: 5.9
+#files: 985	version: 5.9
 
 _comps=(
 '-' '_precommand'
@@ -96,6 +96,7 @@ _comps=(
 'bindkey' '_bindkey'
 'bison' '_bison'
 'bitcoin-cli' '_bitcoin-cli'
+'bluetooth' '_tlp-radio-device'
 'bluetoothctl' '_bluetoothctl'
 'bmake' '_make'
 'bogofilter' '_bogofilter'
@@ -936,6 +937,7 @@ _comps=(
 'new' '_mh'
 'newgrp' '_groups'
 'next' '_mh'
+'nfc' '_tlp-radio-device'
 'nft' '_nftables'
 'nginx' '_nginx'
 'ngrep' '_ngrep'
@@ -1217,8 +1219,11 @@ _comps=(
 'ruby' '_ruby'
 'ruby-mri' '_ruby'
 'run-help' '_run-help'
+'run-on-ac' '_tlp-run-on'
+'run-on-bat' '_tlp-run-on'
 'rup' '_hosts'
 'rusage' '_precommand'
+'rustup' '_rustup'
 'rview' '_vim'
 'rvim' '_vim'
 'rwho' '_hosts'
@@ -1415,6 +1420,8 @@ _comps=(
 'tkinfo' '_texinfo'
 'tla' '_tla'
 'tload' '_tload'
+'tlp' '_tlp'
+'tlp-stat' '_tlp-stat'
 'tmux' '_tmux'
 'tmuxinator' '_tmuxinator'
 'todo' '_devtodo'
@@ -1599,6 +1606,7 @@ _comps=(
 'whoami' '_nothing'
 'whois' '_whois'
 'whom' '_mh'
+'wifi' '_tlp-radio-device'
 'wiggle' '_wiggle'
 'wipefs' '_wipefs'
 'wl-copy' '_wl-copy'
@@ -1606,6 +1614,7 @@ _comps=(
 'wodim' '_cdrecord'
 'wpa_cli' '_wpa_cli'
 'write' '_users_on'
+'wwan' '_tlp-radio-device'
 'www' '_webbrowser'
 'xargs' '_xargs'
 'xattr' '_attr'
@@ -1878,14 +1887,15 @@ autoload -Uz _afew _alacritty _android _archlinux-java _artisan \
             _port _protoc _pulseaudio _pygmentize _qmk \
             _rails _ralio _rankmirrors _redis-cli _resolvectl \
             _rfkill _rkt _rmlint _rslsync _rspec \
-            _rsvm _rubocop _sbt _scala _screencapture \
-            _scrub _sdd _sd_hosts_or_user_at_host _sdkmanager _sd_machines \
-            _sd_outputmodes _sd_unit_files _setcap _setup.py _sfdx \
-            _shellcheck _showoff _srm _stack _subliminal \
-            _supervisorctl _svm _sway _swayidle _swaylock \
-            _swaymsg _systemctl _systemd _systemd-analyze _systemd-delta \
-            _systemd-inhibit _systemd-nspawn _systemd-path _systemd-run _systemd-tmpfiles \
-            _teamocil _thor _timedatectl _tmuxinator _tox \
+            _rsvm _rubocop _rustup _sbt _scala \
+            _screencapture _scrub _sdd _sd_hosts_or_user_at_host _sdkmanager \
+            _sd_machines _sd_outputmodes _sd_unit_files _setcap _setup.py \
+            _sfdx _shellcheck _showoff _srm _stack \
+            _subliminal _supervisorctl _svm _sway _swayidle \
+            _swaylock _swaymsg _systemctl _systemd _systemd-analyze \
+            _systemd-delta _systemd-inhibit _systemd-nspawn _systemd-path _systemd-run \
+            _systemd-tmpfiles _teamocil _thor _timedatectl _tlp \
+            _tlp-radio-device _tlp-run-on _tlp-stat _tmuxinator _tox \
             _tsc _ts-node _udevadm _udisks2 _udisksctl \
             _ufw _updpkgsums _vifm _virtualbox _vnstat \
             _wemux _wg-quick _wl-copy _wl-paste _xsel \

@@ -55,3 +55,25 @@ client.background       #ffffff
 bar {
    swaybar_command waybar
 }
+
+# some global theme specific variables
+set $gtk-theme Matcha-dark-sea
+set $icon-theme Papirus-Dark-Maia
+set $cursor-theme xcursor-breeze
+set $gui-font Roboto 11
+set $term-font JetBrainsMono Nerd Font 14
+set $gtk-color-scheme prefer-dark
+set $kvantum-theme Matcha-Dark
+
+
+exec_always {
+  gsettings set org.gnome.desktop.interface gtk-theme "$gtk-theme"
+  gsettings set org.gnome.desktop.interface icon-theme "$icon-theme"
+  gsettings set org.gnome.desktop.interface cursor-theme "$cursor-theme"
+  gsettings set org.gnome.desktop.interface font-name "$gui-font"
+  gsettings set org.gnome.desktop.interface color-scheme "$gtk-color-scheme"
+  gsettings set org.gnome.desktop.input-sources show-all-sources true
+  gsettings set org.gnome.desktop.interface monospace-font-name "$term-font"
+
+  kvantummanager --set "$kvantum-theme"
+}
