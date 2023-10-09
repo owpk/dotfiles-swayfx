@@ -2,7 +2,7 @@
 exec wmname LG3D
 
 # Auth with polkit-gnome:
-exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+# exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 # Desktop notifications
 exec mako
@@ -21,10 +21,6 @@ exec swayidle -w \
 
 # notifier daemon
 exec "avizo-service"
-
-# exec swayidle -w \
-#   timeout 500 'swaymsg "output * dpms off"' \
-#   resume 'swaymsg "output * dpms on"'
 
 for_window [class=".*"] inhibit_idle fullscreen
 for_window [app_id=".*"] inhibit_idle fullscreen
