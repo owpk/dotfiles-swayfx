@@ -62,7 +62,8 @@ require "user.lab"
 require "user.keymaps"
 
 local registers = require("registers")
-        registers.setup({
+
+registers.setup({
   hide_only_whitespace = true,
   show_empty = true,
   trim_whitespace = true,

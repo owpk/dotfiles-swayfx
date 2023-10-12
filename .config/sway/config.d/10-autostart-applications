@@ -54,7 +54,7 @@ exec /usr/libexec/xdg-desktop-portal
 # exec tracker daemon -s
 
 # poweralert 
-exec '[ -x "$(command -v poweralertd)" ] && pkill poweralertd; poweralertd -s -i "line power" &'
+exec_always '[ -x "$(command -v poweralertd)" ] && pkill poweralertd; poweralertd -s -i "line power" &'
 # mounting daemon
 exec '[ -x "$(command -v pcmanfm)" ] && pcmanfm -d'
 # xdg user dirs

@@ -41,7 +41,10 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 sudo mkdir /usr/share/fonts/TTF 2> /dev/null
 sudo cp ./fonts/* /usr/share/fonts/TTF/
 fc-cache
+mv ~/.zshenv ~/.zshenv.bak 2> /dev/null
+ln -s `pwd`/.zshenv ~/.zshenv
 mv ~/.zshrc ~/.zshrc.bak 2> /dev/null
+ln -s `pwd`/.config/zsh/.zshrc ~/.zshrc
 mv ~/.p10k.zsh ~/.p10k.zsh.bak 2> /dev/null
 ln -s `pwd`/.p10k.zsh ~/.p10k.zsh
 mv ~/.config ~/.config.bak 2> /dev/null
