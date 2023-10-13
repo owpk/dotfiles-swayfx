@@ -50,6 +50,7 @@
     },
 
     "tray": {
+        "show-passive-items": true,
         "icon-size": 14,
         "spacing": 5
     },

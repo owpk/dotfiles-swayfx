@@ -32,17 +32,14 @@ for_window [title="Save File"] floating enable
 for_window [app_id="firedragon" title="firedragon — Sharing Indicator"] kill
 
 # Inhibit idle
-for_window [app_id="firedragon"] inhibit_idle fullscreen
-for_window [app_id="Chromium"] inhibit_idle fullscreen
-
 for_window [class=".*"] inhibit_idle fullscreen
 for_window [app_id=".*"] inhibit_idle fullscreen
 
 
-assign [class="idea"]            1
-assign [class="Google-chrome-stable"]   2
-assign [class="Spotify"]         3
-assign [app_id="org.telegram.desktop"] 3
-assign [class="Steam"]           4
-assign [class="discord"]         4
+assign [class="idea"]                   1
+assign [class="google-chrome-stable"]   2
+assign [class="Spotify"]                3
+assign [app_id="org.telegram.desktop"]  3
+assign [class="Steam"]                  4
+assign [class="discord"]                4
 

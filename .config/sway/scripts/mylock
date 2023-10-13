@@ -1,0 +1,513 @@
+#!/usr/bin/env bash
+# https://gitlab.com/wef/dotfiles/-/blob/master/bin/mylock
+# shellcheck disable=SC2034
+TIME_STAMP="20230901.200223"
+
+# Copyright 2021-2023 Bob Hepple < bob dot hepple at gmail dot com>
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or (at
+# your option) any later version.
+#
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+PROG=$( basename "$0" )
+
+# config file:
+CFG_FILE=${XDG_CONFIG_DIR:-$HOME/.config}/$PROG/config
+
+# shellcheck disable=SC2016
+DEFAULT_CONFIG='
+# time between events (secs)
+TIMEOUT=600
+# Countdown to locking/suspend (requires sway-count+nwg-wrapper)
+COUNTDOWN=0
+# customise this to wherever you have a nice collection of background images:
+IMAGE_COLLECTION="${XDG_PICTURES_DIR:-$HOME/Pictures}"
+# if set, download a random image every time:
+DOWNLOAD_RANDOM_IMAGE=""
+# if set, delete the downloaded image (does not affect images in the $IMAGE_COLLECTION)
+DELETE_DOWNLOADED_IMAGE=""
+# URL for random screensaver images, if $DOWNLOAD_RANDOM_IMAGE is set:
+IMAGE_URL="https://unsplash.it/1920/1080/?random"
+# where the sway keybindings are kept (default is ~/.config/sway/config):
+BINDINGS_FILE=${XDG_CONFIG_DIR:-$HOME/.config}/sway/config
+# default is to use swaylock; gtklock is also supported
+LOCK_PROGRAM="swaylock"
+# or LOCK_PROGRAM="gtklock"
+#    GTKLOCK_CONFIG_DIR=${XDG_CONFIG_DIR:-$HOME/.config}/gtklock
+VERBOSE=""
+'
+
+eval "$DEFAULT_CONFIG"
+
+MODES="\
+blank:       until <Enter> key; no change to auto-blanking/lock/suspend
+lock-now:    lock the screen but no change to auto-blanking/lock/suspend
+safe:        auto-blanking, auto-lock & auto-suspend (default mode after boot or suspend)
+at-home:     auto-blanking but no auto-lock; auto-suspend after 1 hour
+download:    auto-blanking and auto-lock but no auto-suspend
+desktop:     same as download-mode
+movie:       no auto-blanking, auto-lock or auto-suspend
+"
+
+usage() {
+    cat << EOF
+Usage: $PROG [OPTIONS] [seconds] [mode [mode ...]]
+
+Set up swayidle with automatic screen blanking, lock and/or suspend
+after an idle period according to your desired 'mode':
+
+safe          should be the default at startup in the sway config.
+at-home       if you're in a safe environment and don't need auto-locking eg. at home
+download      while downloading - locks the screen but no suspend
+desktop       is a synonym for download-mode
+movie-mode    eg at home watching a movie - no suspend nor locking nor blanking
+
+Includes locking of keepassxc if running.
+
+NB this version no longer uses before/after-sleep as void does not
+have systemd. Instead, change your suspend function (zzz on voidlinux)
+to call safe mode before the sleep.
+
+You can put default settings in the config file $CFG_FILE
+
+OPTIONS:
+
+-c|--config <file>   config file
+
+-d|--delete-downloaded-image
+                     delete the downloaded image after use
+                     Or put DELETE_DOWNLOADED_IMAGE=true in the config file.
+
+-i|--image <image>   use a specific screensaver image
+                     Or put IMAGE=<filename> in the config file.
+
+-q|--quiet           don't popup confirmation dialog
+                     Or put QUIET=true in the config file.
+
+-n|--no-notify       don't send notification
+                     Or put NOTIFY="" in the config file.
+
+-r|--download-random-image
+                     download a random screensaver image from unsplash.it
+                     Images are stored in \$IMAGE_COLLECTION (usually ~/Pictures).
+                     Or put DOWNLOAD_RANDOM_IMAGE=true in the config file.
+
+-C|--countdown <secs>
+
+                     Countdown to locking/suspend (requires sway-count +
+                     nwg-wrapper). Or put COUNTDOWN=<secs> in the config file.
+                     NB Countdown in the lockscreen is only supported with
+                     gtklock with the use of the gtklock-countdown-module
+                     https://gitlab.com/wef/gtklock-countdown-module
+
+-v|--verbose         Be verbose
+
+If neither -i|--image or -r|--download-random-image is given then a random image
+from \$IMAGE_COLLECTION is used.
+
+'seconds' is the time before an idle event is triggered (default 600 = 10m)
+Or put TIMEOUT=<seconds> in the config file.
+
+'mode' is one of:
+$MODES
+
+If no argument is given then a wofi dialog pops up to select one of
+the above modes.
+
+In all modes (except movie-mode), the screen is blanked after the
+first timeout. Locking, if enabled, happens on the next timeout and
+then suspend, if enabled. For all modes, after a suspend, safe-mode is
+enabled and the screen is locked.
+
+Dependencies: wofi, swayidle, swaylock or gtklock, wget for
+downloading images.
+
+Optional dependencies are sway-count at
+https://gitlab.com/wef/dotfiles/-/blob/master/bin/sway-count
+
+I suggest the following key bindings and startup for sway's config file:
+
+# this first one pops up the dialog to select the mode:
+bindsym  \$mod+l                exec $PROG
+bindsym  Shift+\$mod+l          exec $PROG at-home-mode
+bindsym  Control+\$mod+l        exec $PROG safe-mode
+bindsym  Control+Shift+\$mod+l  exec $PROG lock-now
+...
+
+It is recommended to have the following in your sway config to start
+swayidle with safe defaults:
+
+exec $PROG safe-mode
+or
+exec $PROG desktop
+
+Interesting fact - 'ps' output doesn't help much with understanding a
+complex, running swayidle commandline. Use this instead:
+
+tr '\0' '\n' < /proc/\$( pidof swayidle )/cmdline
+
+Sample config file:
+$DEFAULT_CONFIG
+EOF
+}
+
+# defaults:
+DOWNLOAD_RANDOM_IMAGE=""
+DELETE_DOWNLOADED_IMAGE=""
+IMAGE=""
+SELF=$0
+QUIET=
+NOTIFY="set"
+COUNTDOWN=0
+WAIT='-w'
+WOFI_MSG=""
+VERBOSE=""
+
+# shellcheck disable=SC1090
+[[ -r "$CFG_FILE" ]] && source "$CFG_FILE"
+
+# process options:
+TEMP=$( getopt --options c:dhi:pqnrC:v --longoptions config:,delete-downloaded-image,help,image:,print,quiet,no-notify,random,countdown:,verbose -- "$@" ) || exit 1
+eval set -- "$TEMP"
+
+CFG_OPT=
+C_OPT=
+R_OPT=
+D_OPT=
+I_OPT=
+Q_OPT=
+N_OPT=
+V_OPT=
+for i in "$@"; do
+    case $i in
+        -c|--config)
+            # load settings from config file:
+            CFG_FILE="$2"
+            CFG_OPT="-c $CFG_FILE"
+            shift 2
+            ;;
+
+        -r|--random)
+            DOWNLOAD_RANDOM_IMAGE="true"
+            R_OPT="-r"
+            shift
+            ;;
+        -d|--delete-downloaded-image)
+            DELETE_DOWNLOADED_IMAGE="true"
+            D_OPT=-d
+            shift
+            ;;
+        -i|--image)
+            IMAGE="$2"
+            shift 2
+            [[ -r $IMAGE ]] || {
+                echo "$PROG: no such image $IMAGE" >&2
+                exit 1
+            }
+            I_OPT="-i $IMAGE"
+            ;;
+        -C|--countdown)
+            COUNTDOWN="$2"
+            C_OPT="-C $COUNTDOWN"
+            shift 2
+            ;;
+        -q|--quiet)
+            QUIET="set"
+            Q_OPT="-q"
+            shift
+            ;;
+        -n|--no-notify)
+            NOTIFY=""
+            N_OPT="-n"
+            shift
+            ;;
+        -p|--print-status)
+            pid="$( pidof swayidle )"
+            [[ "$pid" ]] && tr '\0' '\n' < "/proc/$pid/cmdline"
+            exit 0
+            ;;
+        -h|--help) usage; exit 0;;
+        -v|--verbose)
+            VERBOSE="set"
+            V_OPT="-v"
+            shift
+            ;;
+        --) shift; break;;
+    esac
+done
+
+type "$PROG" &>/dev/null || PATH+=":$( dirname "$0" )"
+
+get_current_idle() {
+    # shellcheck disable=SC2009
+    IDLE="$( tr '\0' '\n' < /proc/"$( pgrep -u "$USER" -n swayidle )"/cmdline )"
+
+    MASK=0
+    if echo "$IDLE" | grep -q 'mylock .* lock-now'; then
+        LOCKING="on"
+        MASK=$(( MASK + 100 ))
+    else
+        LOCKING="off"
+    fi
+    if echo "$IDLE" | grep -Eq 'zzz|suspend'; then
+        SUSPEND="on"
+        MASK=$(( MASK + 10 ))
+    else
+        SUSPEND="off"
+    fi
+    if echo "$IDLE" | grep -q 'output.*off'; then
+        BLANKING="on"
+        MASK=$(( MASK + 1 ))
+    else
+        BLANKING="off"
+    fi
+    case $MASK in
+        0)   MODE="movie-mode" ;;
+        11)  MODE="at-home-mode" ;;
+        111) MODE="safe-mode" ;;
+        101) MODE="download-mode" ;;
+        *)   MODE="unknown mode!" ;;
+    esac
+
+    echo "$MODE: blanking=$BLANKING auto-lock=$LOCKING auto-suspend=$SUSPEND"
+}
+
+[[ "$VERBOSE" ]] && set -x
+
+# set timeout value:
+[[ "$1" && $1 =~ [0-9]+ ]] && {
+    TIMEOUT=$1
+    shift
+}
+
+TIMEOUT2=$(( TIMEOUT * 2 ))
+TIMEOUT3=$(( TIMEOUT * 3 ))
+TIMEOUT4=$(( TIMEOUT * 4 ))
+(( COUNTDOWN > TIMEOUT )) && COUNTDOWN=""
+(( COUNTDOWN < 1 )) && COUNTDOWN=""
+LONG_TIME=$(( 60 * 60 * 2 ))
+
+# do we need a dialog?
+[[ -z "$1" ]] && {
+    # add key bindings to MODES
+
+    # query key bindings from sway config file:
+    get_binding_for() {
+        TARGET=$1
+
+        awk "/^bindsym.* $PROG.* $TARGET/ "'{ print " ["$2"]"; exit 0 }' "$BINDINGS_FILE"
+    }
+
+    BLANK_BINDING=$( get_binding_for "blank" )
+    LOCK_NOW_BINDING=$( get_binding_for "lock-now" )
+    AT_HOME_MODE_BINDING=$( get_binding_for "at-home-mode" )
+    MOVIE_MODE_BINDING=$( get_binding_for "movie-mode" )
+    SAFE_MODE_BINDING=$( get_binding_for "safe-mode" )
+    DOWNLOAD_MODE_BINDING=$( get_binding_for "download-mode" )
+    DESKTOP_MODE_BINDING=$( get_binding_for "desktop-mode" )
+
+    VAL=$(
+        echo "$MODES" |
+        sed \
+            -e "/blank:/s/\$/$BLANK_BINDING/" \
+            -e "/lock-now:/s/\$/$LOCK_NOW_BINDING/" \
+            -e "/safe:/s/\$/$SAFE_MODE_BINDING/" \
+            -e "/at-home:/s/\$/$AT_HOME_MODE_BINDING/" \
+            -e "/download:/s/\$/$DOWNLOAD_MODE_BINDING/" \
+            -e "/desktop:/s/\$/$DESKTOP_MODE_BINDING/" \
+            -e "/movie:/s/\$/$MOVIE_MODE_BINDING/" |
+        wofi --cache-file=/dev/null --dmenu --lines 8 -p "$PROG: presently $( get_current_idle | head -n 1 )" |
+        cut -f 1 -d ' ' ) || exit 0
+
+    # shellcheck disable=SC2086
+    set -- $VAL
+}
+
+swaymsg -q "output * dpms on"
+
+C_OPT=""
+[[ "$COUNTDOWN" ]] && C_OPT="-C $COUNTDOWN"
+START_COUNTDOWN=""
+COUNTDOWN_KILL="true"
+type sway-count &>/dev/null && [[ "$COUNTDOWN" ]] && {
+    START_COUNTDOWN="; sway-count $COUNTDOWN &"
+    COUNTDOWN_KILL="sway-count -k"
+}
+
+ALL_OPTS="$CFG_OPT $D_OPT $I_OPT $Q_OPT $N_OPT $R_OPT $C_OPT $V_OPT"
+
+if type systemctl &> /dev/null; then
+    do_suspend="$SELF $ALL_OPTS $TIMEOUT safe lock-now; systemctl suspend"
+else
+    # do locking etc in /etc/zzz.d/suspend/50-mylock:
+    do_suspend="zzz"
+fi
+
+while [[ "$1" ]]; do
+    MODE="$1"
+    shift
+    case "$MODE" in
+        "blank"*)
+            swaymsg -q "output * dpms off"
+            # this doesn't display, but at least it absorbs the keystroke:
+            echo "Hit Enter or ESC to unblank" | wofi --dmenu
+            swaymsg -q "output * dpms on"
+            ;;
+
+        "lock"*) # includes lock-now!!
+
+            pkill -0 keepassxc && keepassxc --lock
+            pkill -0 "$LOCK_PROGRAM" && exit 0
+
+            if [[ -z "$IMAGE" ]] && [[ "$DOWNLOAD_RANDOM_IMAGE" ]]; then
+                # fetch a download random image from unsplash.it:
+                IMAGE="$IMAGE_COLLECTION/unsplash.it-$( date +"%Y%m%dT%H%M%S" ).jpg"
+
+                #FIXME: allow user to cancel it
+                echo "Downloading image from $IMAGE_URL ..." |
+                wofi --cache-file=/dev/null --dmenu --lines 1 -p "$PROG" >/dev/null & WOFI_PID=$!
+
+                wget -q -O "$IMAGE" "$IMAGE_URL" || {
+                    echo "$PROG: download from '$IMAGE_URL' failed" >&2
+                    # exit 1 # probably better to lock with a blank screen or an image from $XDG_PICTURES_DIR
+                    IMAGE=""
+                }
+
+                kill $WOFI_PID
+            fi
+
+            [[ "$IMAGE" ]] || {
+                # get a random image from our collection:
+                IMAGE="$( find "$IMAGE_COLLECTION" -type f | shuf -n 1 )"
+            }
+
+
+            echo "$PROG: $IMAGE" >> "$HOME/.cache/$PROG.log"
+            case "$LOCK_PROGRAM" in
+                swaylock)
+                    logit swaylock --image "$IMAGE"
+                    ;;
+                gtklock)
+                    GTKLOCK_OPT=""
+                    [[ -d "$GTKLOCK_CONFIG_DIR" ]] || mkdir -p "$GTKLOCK_CONFIG_DIR"
+                    GTKLOCK_CSS_FILE=$GTKLOCK_CONFIG_DIR/$PROG.css
+                    [[ -e "$GTKLOCK_CSS_FILE" ]] || {
+                        cat > "$GTKLOCK_CSS_FILE" << EOF
+window {
+   background-image: url("foo.jpg");
+   background-size: cover;
+   background-repeat: no-repeat;
+   background-position: center;
+   background-color: black;
+}
+EOF
+                    }
+
+                    [[ -w $GTKLOCK_CSS_FILE ]] && {
+                        sed -i '/background-image/d' "$GTKLOCK_CSS_FILE"
+                        # shellcheck disable=SC1004
+                        sed -i '/window {/a \
+   background-image: url("'"$IMAGE"'");' "$GTKLOCK_CSS_FILE"
+                        GTKLOCK_OPT="-s $GTKLOCK_CSS_FILE"
+                    }
+                    [[ "$COUNTDOWN" ]] && GTKLOCK_OPT+=" --countdown-after $(( TIMEOUT - COUNTDOWN )) --countdown $COUNTDOWN"
+                    # NB put any runshell= parameters in ~/.config/gtklock/config.ini
+                    # shellcheck disable=SC2086
+                    logit gtklock -d $GTKLOCK_OPT
+                    ;;
+            esac
+
+            # make sure lock program goes into effect before returning:
+            sleep 1
+
+            # clean up if necessary:
+            [[ "$DOWNLOAD_RANDOM_IMAGE" ]] && [[ "$DELETE_DOWNLOADED_IMAGE" ]] && { sleep 10; rm "$IMAGE" & }
+
+            exit 0
+            ;;
+
+        "safe"*)
+            # NB I have not been able to get nwg-wrapper to display
+            # anything on top of swaylock unless it starts at least 1s
+            # earlier. Weird. Bug in wlroots? This works:
+            # nwg-wrapper -p right -a start --layer 3 -s /bin/date -r 1000 & sleep 2; swaylock &
+            # It does not work without the sleep. Nor does starting swaylock first:
+            # swaylock & nwg-wrapper -p right -a start --layer 3 -s /bin/date -r 1000
+            #
+
+            pkill -9 swayidle
+            logit swayidle $WAIT \
+                  timeout "$TIMEOUT"                  "swaymsg -q 'output * dpms off'" \
+                  resume                              "swaymsg -q 'output * dpms on'" \
+                  timeout $(( TIMEOUT2 - COUNTDOWN )) "swaymsg -q 'output * dpms on'$START_COUNTDOWN" \
+                  resume                              "$COUNTDOWN_KILL" \
+                  timeout "$TIMEOUT2"                 "$SELF $ALL_OPTS lock-now" \
+                  timeout "$TIMEOUT3"                 "sudo $do_suspend"
+
+            WOFI_MSG="safe-mode: auto-lock and auto-suspend are enabled (timeout=$TIMEOUT secs)"
+            ;;
+
+        "at-home"*)
+            pkill -9 swayidle
+            logit swayidle $WAIT \
+                  timeout "$TIMEOUT"                  "swaymsg -q 'output * dpms off'" \
+                  resume                              "swaymsg -q 'output * dpms on'" \
+                  timeout $(( LONG_TIME - COUNTDOWN )) "swaymsg -q 'output * dpms on'$START_COUNTDOWN" \
+                  resume                              "$COUNTDOWN_KILL" \
+                  timeout "$LONG_TIME"                "sudo $do_suspend"
+
+            WOFI_MSG="at-home-mode: auto-lock is disabled;  auto-suspend after $LONG_TIME"
+            ;;
+
+        "download"*|"desktop"*)
+            pkill -9 swayidle
+            logit swayidle $WAIT \
+                  timeout "$TIMEOUT"                  "swaymsg -q 'output * dpms off'" \
+                  resume                              "swaymsg -q 'output * dpms on'" \
+                  timeout $(( TIMEOUT2 - COUNTDOWN )) "swaymsg -q 'output * dpms on'$START_COUNTDOWN" \
+                  resume                              "$COUNTDOWN_KILL" \
+                  timeout "$TIMEOUT2"                 "$SELF $ALL_OPTS lock-now" \
+                  timeout "$TIMEOUT3"                 "swaymsg -q 'output * dpms off'" \
+                  resume                              "swaymsg -q 'output * dpms on'"
+
+            WOFI_MSG="download/desktop-mode: auto-lock is enabled (timeout=$TIMEOUT secs); auto-suspend is disabled"
+            ;;
+
+        "movie"*)
+            pkill -9 swayidle
+
+            WOFI_MSG="movie-mode: blanking, auto-lock and auto-suspend are disabled (until manual suspend)"
+            ;;
+
+    esac
+
+    [[ "$NOTIFY" && "$WOFI_MSG" ]] && {
+        notify-send --expire-time=5000 "${WOFI_MSG%:*}"
+    }
+
+    # ignore WOFI_MSG except as a flag:
+    [[ "$WOFI_MSG" && -z "$QUIET" ]] && {
+        get_current_idle | if type zenity &> /dev/null; then
+            zenity --width=600 --height=300 --text-info --title="$PROG" &
+        else
+            wofi --cache-file=/dev/null --dmenu -p "$PROG" >/dev/null
+        fi
+    }
+done
+
+exit 0
+
+# Local Variables:
+# mode: shell-script
+# time-stamp-pattern: "4/TIME_STAMP=\"%:y%02m%02d.%02H%02M%02S\""
+# eval: (add-hook 'before-save-hook 'time-stamp)
+# End:
