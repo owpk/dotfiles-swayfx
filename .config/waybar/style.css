@@ -72,7 +72,7 @@ tooltip {
    color: @font;
 }
 
-#clock, #custom-power, #battery, #cpu, #memory, #idle_inhibitor, #temperature, #custom-keyboard-layout, #backlight, #network, #pulseaudio, #mode, #custom-pacman {
+#language, #clock, #custom-power, #battery, #cpu, #memory, #idle_inhibitor, #temperature, #custom-keyboard-layout, #backlight, #network, #pulseaudio, #mode, #custom-pacman {
     margin-right: 2px;
     margin-left: 2px;
 
@@ -232,6 +232,7 @@ window#waybar {
     margin-right: 5px;
     margin-left: 5px;
 }
+
 
 /* -----------------------------------------------------------------------------
  * Module styles
