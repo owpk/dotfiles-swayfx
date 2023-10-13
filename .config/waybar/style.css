@@ -17,7 +17,8 @@
 }
 
 window#waybar {
-    background: alpha(@bg, 0.9);
+    /* background: alpha(@bg, 0.9); */
+    background: rgba(30, 30, 46, 0.4);
 	border-radius: 10px;
     /* background-color: rgba(100, 100, 100, 0); */
     transition-property: background-color;
@@ -165,8 +166,6 @@ tooltip {
  *
  * --------------------------------------------------------- */
 
-
-
 * {
     color: @font;
     border: none;
@@ -182,7 +181,7 @@ window#waybar {
 }
 
 .modules-left,.modules-right,.modules-center {
-    background: alpha(@bg, 0.8);
+    background: rgba(30, 30, 46, 0.4);
     margin-top: 25;
     margin-left: 25;
     margin-right: 25;
@@ -294,3 +293,4 @@ window#waybar {
 #network.disabled {
     color: @aur1;
 }
+
