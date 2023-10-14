@@ -1,0 +1,18 @@
+window {
+    background-color: rgba (0, 0, 0, 0.0);
+}
+
+#box-outer {
+        /* Define attributes of the box surrounding icons here */
+    background-color: rgba (255, 255, 255, 0.0)
+}
+
+#box-inner {
+    padding: 0 20px 0 20px;
+    background-color: rgba (61,76,95, 0.80);
+    border-radius: 16px;
+    padding: 2em 4em;
+    margin: 0px 9px 9px 0px;
+    /*box-shadow: 0px 3px 5px black;*/
+    font-family: "Hack";
+}

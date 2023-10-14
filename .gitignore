@@ -9,6 +9,7 @@
 !/.config/mako
 !/.config/nvim
 !/.config/nwg-launchers
+!/.config/nwg-wrapper
 !/.config/pipewire
 !/.config/ranger
 !/.config/sway
