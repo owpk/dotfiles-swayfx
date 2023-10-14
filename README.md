@@ -1,3 +1,7 @@
+## My dotfiles for [SwayFx](https://github.com/WillPower3309/swayfx) sway fork  
+
+- press ```Win + p``` to show keybindigs help
+- press ```Win + Shift + p``` to toggle keybindigs help 
 - SEE .config/sway/config.d/input TO CHANGE KEYBOARD LAYOUT AND OTHER KB SETTINGS
 - SEE .config/sway/config.d/default TO CHANGE KEY BINDINGS CONFIG
 
@@ -5,10 +9,7 @@
    <img src="https://github.com/owpk/dotfiles-swayfx/blob/main/docs/sc.gif"/>
 </p>
 <p align="center">
-   <img src="https://github.com/owpk/dotfiles-swayfx/blob/main/docs/sc.jpg"/>
-</p>
-<p align="center">
-   <img src="https://github.com/owpk/dotfiles-swayfx/blob/main/docs/sc_wb.jpg"/>
+   <img src="https://github.com/owpk/dotfiles-swayfx/blob/main/docs/composed.jpg"/>
 </p>
 
 # Install for arch linux (copy and paste to terminal)
@@ -92,6 +93,7 @@ nohup swaybg -o $MONITOR -i "$HOME/dotfiles-swayfx/wallpapers/wp.png" -m fill &
  - or use 'azote' app to do the same as above 😺  
 
 # useful links
+- [sway fx](https://github.com/WillPower3309/swayfx)
 - [sway wm](https://github.com/swaywm/sway)
 - [waybar (status bar)](https://github.com/Alexays/Waybar)
 - [wofi (menus/launchers)](https://hg.sr.ht/~scoopta/wofi)

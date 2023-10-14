@@ -16,12 +16,7 @@ set $cheat gedit ~/.config/sway/cheatsheet
 set $filemanager kitty -e ranger
 
 # MENU
-# set $menu rofi -show combi -combi-modi "drun,run" -terminal $term -ssh-command "{terminal} {ssh-client} {host} [-p {port}]" -run-shell-command "{terminal} {cmd}" -show-icons -lines 10 -width 35
 set $menu wofi -c ~/.config/wofi/config -I
-
-# wob
-set $WOBSOCK $XDG_RUNTIME_DIR/wob.sock
-exec mkfifo $WOBSOCK && tail -f $WOBSOCK | wob
 
 ### Key bindings
 ## reload
@@ -35,7 +30,7 @@ bindsym --to-code  {
 
    $mod+Shift+Tab     			workspace next
    $mod+backslash     			workspace back_and_forth
-   alt+Tab           			exec rofi -show window
+   alt+Tab           			exec ~/.config/wofi/windows.py
 
    # Start a floating terminal
    $mod+Return        			exec $term
@@ -71,7 +66,8 @@ bindsym --to-code  {
    $mod+n               exec $filemanager
 
    # p
-   $mod+p               exec ~/.config/wofi/windows.py
+   $mod+p               exec ~/.config/sway/scripts/help.sh
+   $mod+Shift+p         exec ~/.config/sway/scripts/help.sh --toggle
 
    # q
    $mod+q               kill
@@ -150,12 +146,12 @@ bindsym --to-code {
 }
 
 # Scratchpad:
-    # Move the currently focused window to the scratchpad
-    bindsym --to-code  $mod+Shift+minus move scratchpad
+# Move the currently focused window to the scratchpad
+bindsym --to-code  $mod+Shift+minus move scratchpad
 
-    # Show the next scratchpad window or hide the focused scratchpad window.
-    # If there are multiple scratchpad windows, this command cycles through them.
-    bindsym --to-code  $mod+minus scratchpad show
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+bindsym --to-code  $mod+minus scratchpad show
 
 # Resizing containers:
 mode "resize" {
