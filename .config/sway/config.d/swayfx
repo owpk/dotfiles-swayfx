@@ -1,0 +1,10 @@
+# waybar blur
+layer_effects "waybar" blur enable; shadows enable; corner_radius 10
+
+smart_corner_radius disable
+corner_radius 10
+shadows enable
+shadows_on_csd enable
+shadow_blur_radius 20
+blur enable
+

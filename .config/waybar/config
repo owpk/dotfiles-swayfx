@@ -4,7 +4,7 @@
 
     "modules-left": ["tray", "custom/launcher", "sway/workspaces", "sway/mode", "sway/window"],
     "modules-center": ["custom/stub", "custom/spotify", "custom/weather", "clock", "custom/vnc", "custom/playerctl", "custom/stub"],
-    "modules-right": ["sway/language", "backlight", "memory", "battery", "network", "pulseaudio",  "custom/power"],
+    "modules-right": ["sway/language", "backlight", "memory", "battery", "network", "pulseaudio", "custom/power"],
 
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
@@ -14,7 +14,18 @@
     "sway/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
-        "format": "{icon}"
+        "format": "{icon}",
+        /*"format-icons": {
+            "1": "",
+            "2": "",
+            "3:term": "",
+            "4:work": "",
+            "5:music": "",
+            "6:docs": "",
+            "urgent": "",
+            "focused": "‒",
+            "default": "•"        
+        } */
     },
 
     "sway/window": {

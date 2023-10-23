@@ -6,7 +6,6 @@ exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 # Desktop notifications
 exec mako
-# exec '[ -x "$(command -v sworkstyle)" ] && sworkstyle -d -l info &> /tmp/sworkstyle.log'
 
 # GTK3 applications take a long time to start
 exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
@@ -27,14 +26,14 @@ exec "avizo-service"
 # exec tail -f $SWAYSOCK.wob | wob --border-color '#ffdcbb8c' --background-color '#cc3a3a3a' --bar-color '#ffdcbb8c'
 
 # Sway Fader
-#exec python3 ~/.config/sway/scripts/swayfader.py
+# exec python3 ~/.config/sway/scripts/swayfader.py
 
 # Autotiling
 # exec autotiling
 
 
 # Gnome Keyring
-exec gnome-keyring-daemon --daemonize --start --components=gpg,pkcs11,secrets,ssh
+# exec gnome-keyring-daemon --daemonize --start --components=gpg,pkcs11,secrets,ssh
 
 # for Touchpad gestures
 # exec libinput-gestures-setup start
@@ -65,4 +64,13 @@ exec {
 
     # xdg user dirs
     '[ -x "$(command -v xdg-user-dirs-update)" ] && exec xdg-user-dirs-update'
+
+    #'[ -x "$(command -v sworkstyle)" ] && sworkstyle -d -l info &> /tmp/sworkstyle.log'
+}
+
+#
+# Status Bar:
+# Read `man 5 sway-bar` for more information about this section.
+bar {
+   swaybar_command waybar
 }
