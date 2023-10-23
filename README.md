@@ -18,12 +18,12 @@
 ```
 sudo pacman -S --needed swaybg jq cmake cmocka ranger wofi waybar mtools vim neovim zsh \
 vifm papirus-icon-theme noto-fonts-emoji ttf-hack wl-clipboard translate-shell slurp \
-grim light pamixer wmname dmenu xdg-desktop-portal kanshi gnome-keyring alacritty \
-kitty pavucontrol playerctl imv mpv wayvnc pkcs11-helper nodejs sworkstyle
+grim light pamixer wmname dmenu xdg-desktop-portal kanshi alacritty \
+kitty pavucontrol playerctl imv mpv wayvnc pkcs11-helper nodejs 
 
 sudo usermod -a -G video $USER
 ```
-2. clone dotfiles
+2. clone dotfiles and change directory
 ```
 git clone https://github.com/owpk/dotfiles-swayfx
 cd dotfiles-swayfx
@@ -32,12 +32,7 @@ cd dotfiles-swayfx
 ```
 chsh -s /bin/zsh $USER
 ```
-4. install zsh utils
-- TYPE 'exit' AND PRESS ENTER WHEN OHMYZSH WILL BE INSTALLED 
-```
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-```
-5. create all needed links and copy fonts
+4. create all needed links and copy fonts
 ```
 sudo mkdir /usr/share/fonts/TTF 2> /dev/null
 sudo cp ./fonts/* /usr/share/fonts/TTF/
@@ -54,7 +49,7 @@ mv ~/.vim ~/.vim.bak 2> /dev/null
 ln -s `pwd`/.vim ~/.vim
 ```
 
-6. install 'aura'
+5. install 'aura'
 
 ```
 git clone https://aur.archlinux.org/aura-bin.git
@@ -63,34 +58,21 @@ makepkg
 sudo pacman -U *.tar.zst
 ```
 
-7. install menus/toolbars/utils etc for sway
- - install last app if you have networkmanager installed
+6. install menus/toolbars/utils etc for sway
  - use ```gpg --receive-keys``` if any errors occures
 ```
 sudo aura -A avizo
 sudo aura -A nwg-launchers
+sudo aura -A nwg-wrapper
 sudo aura -A wlsunset
+sudo aura -A sworkstyle
 sudo aura -A azote
-sudo aura -A networkmanager-dmenu-git
 ```
 
-7.1. (Optional) install ranger devicons
+6.1. (Optional) install ranger devicons
 ```
 git clone https://github.com/alexanderjeurissen/ranger_devicons ~/.config/ranger/plugins/ranger_devicons
 ```
-8. run sway (from terminal) to ensure if everything is ok and reboot system
-```
-sway
-reboot
-```
-
-9. change background image 
-```
-pkill swaybg
-MONITOR="$(swaymsg -t get_outputs | jq -r '.[] | {name} | (.name)')"
-nohup swaybg -o $MONITOR -i "$HOME/dotfiles-swayfx/wallpapers/wp.png" -m fill &
-```
- - or use 'azote' app to do the same as above 😺  
 
 # useful links
 - [sway fx](https://github.com/WillPower3309/swayfx)

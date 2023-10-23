@@ -5,7 +5,7 @@
 * {
     color: @font;
     border: none;
-    border-radius: 0;
+    border-radius: 0px;
     padding: 0 0;
     font-family: Hack;
     font-size: 13px;
@@ -181,7 +181,6 @@ tooltip {
     color: @bg-light;
     font-size: 13px;
     border-radius: 0 0 0 0;
-    /* border-radius:  0 4 4 0; */
 }
 
 #custom-launcher, #custom-power {
