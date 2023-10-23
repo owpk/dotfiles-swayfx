@@ -22,7 +22,7 @@
 window#waybar {
     background: alpha(@bg, 0.4); 
     /*background: rgba(@bg, 0.4);*/
-	border-radius: 10px;
+	/*border-radius: 10px;*/
     transition-property: background-color;
     transition-duration: .5s;
 	margin-top: 8;
@@ -36,7 +36,7 @@ window#waybar {
     margin-top: 0;
     margin-left: 0;
     margin-right: 0;
-    border-radius: 10;
+    border-radius: 10px;
     padding: 7;
 }
 
@@ -65,6 +65,7 @@ window#waybar {
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-direction: alternate;
+    border-radius: 4px;
 }
 
 #workspaces button:hover {
@@ -93,6 +94,11 @@ tooltip {
 #clock, #battery, #cpu, #memory, #idle_inhibitor, #temperature, #custom-keyboard-layout, #backlight, #network, #pulseaudio, #mode, #window, #custom-pacman {
     margin-right: 5px;
     margin-left: 5px;
+}
+
+#network button.focused {
+   background: rgba(255, 255, 255, 0.3);
+   border-radius: 4px;
 }
 
 #custom-power {
