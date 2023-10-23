@@ -155,7 +155,7 @@
      },
 
      "custom/launcher": {
-    	   "format":"| {} |",
+    	   "format":"| {} ",
     	   "on-click": "exec nwggrid",
     	   "tooltip": false,
          "exec" : "echo $USER"

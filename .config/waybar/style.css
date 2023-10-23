@@ -48,14 +48,13 @@ window#waybar {
 #workspaces button {
     color: @font;
     min-height: 0;
-    border-color: shade(alpha(@borders, 0.9), 2.25);
     padding: 0 7px;
     margin: 0;
     border-bottom: 2px solid transparent;
 }
 
 #workspaces button.focused {
-    border-color: #8db0AE;
+    border-color: @accent;
 }
 
 #workspaces button.urgent {
@@ -129,13 +128,6 @@ tooltip {
     animation-direction: alternate;
 }
 
-#custom-launcher{
-    background-color: @accent;
-    border-style: hidden;
-    color: @bg-light;
-    font-size: 13px;
-    /* border-radius:  0 4 4 0; */
-}
 
 #tray {
    background-color: @accent;
@@ -177,16 +169,21 @@ tooltip {
     animation-direction: alternate;
 }
 
+#custom-launcher {
+    background-color: @accent;
+    border-style: hidden;
+    color: @bg-light;
+    font-size: 13px;
+    border-radius: 0 0 0 0;
+    /* border-radius:  0 4 4 0; */
+}
+
 #custom-launcher, #custom-power {
     font-size: 13px;
     border-style: hidden;
     background-color: @accent;
     font-size: 13px;
     color: @bg;
-}
-
-#custom-launcher {
-    border-radius: 0 5 5 0;
 }
 
 #tray {
