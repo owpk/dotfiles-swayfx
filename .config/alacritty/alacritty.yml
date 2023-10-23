@@ -1,6 +1,6 @@
 # current theme
 import:
-  - ~/.config/alacritty/themes/github_dimmed.yml
+  - ~/.config/alacritty/themes/owpk.yml
 
 font:
   normal:
