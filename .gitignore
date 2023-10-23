@@ -22,3 +22,4 @@
 __pycache__/
 /.config/ranger/plugins/*
 .azotebg
+.config/zsh/.zcompdump*

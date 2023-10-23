@@ -57,15 +57,6 @@ alias supd="sudo pacman -Syyu"
 alias du=diskUsage
 
 
-# must be here
-alias lls="ls -la --group-directories-first -h -S"
-alias ll="ls -la --group-directories-first -h"
-alias vim="nvim"
-alias jhelp="java -jar ~/gh/spar/jenkins-cli.jar -s http://jenkins.ctmol.ru/ -auth owpk:116a1bd02b33b7436257c0701c99beb08c build JOB $@"
-alias idea="$HOME/.local/share/JetBrains/Toolbox/scripts/idea $@"
-alias fleet="$HOME/.local/share/JetBrains/Toolbox/scripts/fleet $@"
-alias pycharm="$HOME/.local/share/JetBrains/Toolbox/scripts/pycharm $@"
-
 source $ZSH/oh-my-zsh.sh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
@@ -77,3 +68,13 @@ export SDKMAN_DIR="$HOME/.sdkman"
 
 # BINDINGS
 bindkey '^ ' autosuggest-accept
+
+# must be here
+alias lls="ls -la --group-directories-first -h -S"
+alias ll="ls -la --group-directories-first -h"
+alias vim="nvim"
+alias jhelp="java -jar ~/gh/spar/jenkins-cli.jar -s http://jenkins.ctmol.ru/ -auth owpk:116a1bd02b33b7436257c0701c99beb08c build JOB $@"
+alias idea="$HOME/.local/share/JetBrains/Toolbox/scripts/idea $@"
+alias fleet="$HOME/.local/share/JetBrains/Toolbox/scripts/fleet $@"
+alias pycharm="$HOME/.local/share/JetBrains/Toolbox/scripts/pycharm $@"
+
