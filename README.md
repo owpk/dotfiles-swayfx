@@ -19,7 +19,7 @@
 sudo pacman -S --needed swaybg jq cmake cmocka ranger wofi waybar mtools vim neovim zsh \
 vifm papirus-icon-theme noto-fonts-emoji ttf-hack wl-clipboard translate-shell slurp \
 grim light pamixer wmname dmenu xdg-desktop-portal kanshi alacritty \
-kitty pavucontrol playerctl imv mpv wayvnc pkcs11-helper nodejs 
+kitty pavucontrol playerctl imv mpv wayvnc pkcs11-helper nodejs swayidle
 
 sudo usermod -a -G video $USER
 ```
