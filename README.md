@@ -94,20 +94,29 @@ sudo aura -A sworkstyle
 sudo aura -A azote
 ```
 
-6.1 (Optional) install ranger devicons
-```
-git clone https://github.com/alexanderjeurissen/ranger_devicons ~/.config/ranger/plugins/ranger_devicons
-```
-6.2 (Optional) change output properties ([check man page for more info](https://manpages.debian.org/experimental/sway/sway-output.5.en.html))
-- create config file in '/etc/sway/outputs/example'
 
 example:
 ```
 # Default wallpaper
 output * scale 1.3
 ```
+7. 🐥 Set background image
+```
+pkill swaybg
+swaybg -o $(swaymsg -t get_outputs | jq -r '.[] | {name} | (.name)') -i "$(pwd)/wallpapers/wp.png" -m fill &
+```
+- use [azote](https://github.com/nwg-piotr/azote) application to do the same
 
-#### 🐥 Use [azote](https://github.com/nwg-piotr/azote) application to change background image
+---
+(Optional) install ranger devicons
+```
+git clone https://github.com/alexanderjeurissen/ranger_devicons ~/.config/ranger/plugins/ranger_devicons
+```
+(Optional) change output properties ([check man page for more info](https://manpages.debian.org/experimental/sway/sway-output.5.en.html))
+- create config file in '/etc/sway/outputs/example'
+---
+
+Reboot your system
 
 # Issues
 - vmware: black screen after sway launch   
