@@ -61,7 +61,7 @@ mv ~/.p10k.zsh ~/sway_backups.old/.p10k.zsh.bak 2> /dev/null
 mv ~/.config ~/sway_backups.old/.config.bak 2> /dev/null
 mv ~/.vim ~/sway_backups.old/.vim.bak 2> /dev/null
 ```
-4. create all needed links and copy fonts
+4.1 create all needed links and copy fonts
 ```
 sudo mkdir /usr/share/fonts/TTF 2> /dev/null
 sudo cp ./fonts/* /usr/share/fonts/TTF/
@@ -93,7 +93,7 @@ sudo aura -A sworkstyle
 sudo aura -A azote
 ```
 
-6.1. (Optional) install ranger devicons
+6.1 (Optional) install ranger devicons
 ```
 git clone https://github.com/alexanderjeurissen/ranger_devicons ~/.config/ranger/plugins/ranger_devicons
 ```
