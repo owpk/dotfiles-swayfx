@@ -18,7 +18,7 @@
    <img src="./docs/composed.jpg"/>
 </p>
 
-# info
+# 🗿 Info
 - [sway fx](windows manager)(https://github.com/WillPower3309/swayfx)
 - [waybar (status bar)](https://github.com/Alexays/Waybar)
 - [wofi (menus/launchers)](https://hg.sr.ht/~scoopta/wofi)
@@ -31,7 +31,7 @@
 - [wl-clipboard (clipboard)](https://github.com/bugaevc/wl-clipboard)
 - [ranger (file manager)](https://github.com/ranger/ranger)
 
-# Install for arch based distros (copy and paste to terminal)
+# 🚀 Install for arch based distros (copy and paste to terminal)
 
 1. install all needed apps
 ```
@@ -90,7 +90,7 @@ sudo aura -A nwg-launchers
 sudo aura -A nwg-wrapper
 sudo aura -A wlsunset
 sudo aura -A sworkstyle
-<a name="azote">sudo aura -A azote</a>
+sudo aura -A azote
 ```
 
 6.1. (Optional) install ranger devicons
@@ -106,8 +106,9 @@ example:
 output * scale 1.3
 ```
 
-# 🐥 use [azote](#azote) application to change background image 
-# issues
+#### 🐥 Use [azote](https://github.com/nwg-piotr/azote) application to change background image 
+
+# Issues
 - vmware: black screen after sway launch   
 	adding WLR_NO_HARDWARE_CURSORS=1 to /etc/environment may fix the problem
 
