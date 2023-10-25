@@ -19,7 +19,7 @@
 </p>
 
 # 🗿 Info
-- [sway fx](windows manager)(https://github.com/WillPower3309/swayfx)
+- [sway fx (windows manager)](https://github.com/WillPower3309/swayfx)
 - [waybar (status bar)](https://github.com/Alexays/Waybar)
 - [wofi (menus/launchers)](https://hg.sr.ht/~scoopta/wofi)
 - [mako (wayland notification daemon)](https://github.com/emersion/mako)
