@@ -1,0 +1,5 @@
+gradle_subprojects=( ${(Q)"${(z)$(<<\EO:gradle_subprojects
+
+EO:gradle_subprojects
+)}"} )
+gradle_tasks=':'
