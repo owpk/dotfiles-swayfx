@@ -1,4 +1,4 @@
-## My configs for [swayfx](https://github.com/WillPower3309/swayfx) (sway fork)
+## <img src="./docs/sway-logo.png" width="36px" style="vertical-align:middle;"> My configs for [swayfx](https://github.com/WillPower3309/swayfx) (sway fork)
 ### Also check my '[sway keybindings helper](https://github.com/owpk/sway-keyhints)' project  
 
 - press ```Win + p``` to show keybindigs help
@@ -13,10 +13,10 @@
 </p>
 
 <p align="center">
-   <img src="https://github.com/owpk/dotfiles-swayfx/blob/main/docs/sc.gif"/>
+   <img src="./docs/sc.gif"/>
 </p>
 <p align="center">
-   <img src="https://github.com/owpk/dotfiles-swayfx/blob/main/docs/composed.jpg"/>
+   <img src="./docs/composed.jpg"/>
 </p>
 
 # info
