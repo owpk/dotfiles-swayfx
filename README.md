@@ -1,4 +1,5 @@
 ## My dotfiles for [SwayFx](https://github.com/WillPower3309/swayfx) sway fork  
+## Also check my '[sway-keybindings](https://github.com/owpk/sway-keyhints)' help project  
 
 - press ```Win + p``` to show keybindigs help
 - press ```Win + Shift + p``` to toggle keybindigs help 
