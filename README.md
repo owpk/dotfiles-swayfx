@@ -107,7 +107,7 @@ example:
 output * scale 1.3
 ```
 
-#### 🐥 Use [azote](https://github.com/nwg-piotr/azote) application to change background image 
+#### 🐥 Use [azote](https://github.com/nwg-piotr/azote) application to change background image
 
 # Issues
 - vmware: black screen after sway launch   

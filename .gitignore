@@ -19,10 +19,6 @@
 !/.config/wofi
 !/.config/kitty
 !/scripts
-/.config/ranger/plugins/*
-.azotebg
-.config/zsh/.zcompdump*
-__pycache__/
 
 !/.config/appimagelauncher.cfg
 !/.config/chrome-beta-flags.conf 
@@ -39,3 +35,9 @@ __pycache__/
 !/.config/QtProject.conf
 !/.config/user-dirs.dirs
 !/.config/user-dirs.locale
+
+.azotebg
+__pycache__/
+/.config/zsh/ohmyzsh/cache/
+/.config/ranger/plugins/*
+/.config/zsh/.zcompdump*
