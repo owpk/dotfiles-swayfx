@@ -9,7 +9,6 @@
 <p align=center style="margin-top:36px">	  
   <img src="https://img.shields.io/github/issues/owpk/dotfiles-swayfx?color=bf616a&labelColor=202328&style=for-the-badge">
   <img src="https://img.shields.io/github/issues-pr/owpk/dotfiles-swayfx?color=c792ea&labelColor=202328&style=for-the-badge">
-  <img src="https://img.shields.io/github/license/owpk/dotfiles-swayfx?color=15121C&labelColor=202328&style=for-the-badge">  
 </p>
 
 <p align="center">
