@@ -1,5 +1,5 @@
 ## <img src="./docs/sway-logo.png" width="36px" style="vertical-align:middle;"> My configs for [swayfx](https://github.com/WillPower3309/swayfx) (sway fork)
-## This dotfiles compatible with vanilla sway, just remove ```./config/sway/config.d/swayfx``` config file
+## ❤️ This dotfiles compatible with vanilla sway, just remove ```./config/sway/config.d/swayfx``` config file
 ### Also check my '[sway keybindings helper](https://github.com/owpk/sway-keyhints)' project  
 
 - press ```Win + p``` to show keybindigs help
