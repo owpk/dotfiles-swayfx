@@ -93,13 +93,6 @@ sudo aura -A wlsunset
 sudo aura -A sworkstyle
 sudo aura -A azote
 ```
-
-
-example:
-```
-# Default wallpaper
-output * scale 1.3
-```
 7. 🐥 Set background image
 ```
 pkill swaybg
@@ -114,6 +107,12 @@ git clone https://github.com/alexanderjeurissen/ranger_devicons ~/.config/ranger
 ```
 (Optional) change output properties ([check man page for more info](https://manpages.debian.org/experimental/sway/sway-output.5.en.html))
 - create config file in '/etc/sway/outputs/example'
+
+example:
+```
+# Default wallpaper
+output * scale 1.3
+```
 ---
 
 Reboot your system
