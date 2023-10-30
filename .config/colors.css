@@ -28,17 +28,16 @@
 @define-color pink #ad7497;
 @define-color sand-light #dea36f;
 
-/* DARK */
+/* DARK
 @define-color bg            @polar0;
 @define-color bg-light      @polar3;
 @define-color accent        @frost1;
 @define-color font          @snow2;
 @define-color font-light    @snow3;
+*/
 
-
-/* LIGHT 
+/* LIGHT */
 @define-color bg       @snow0;
 @define-color bg-light @show1;
 @define-color accent   @sand-light;
 @define-color font     @polar0;
-*/
