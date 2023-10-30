@@ -1,0 +1,29 @@
+# Colors (Nord light)
+colors:
+  # Default colors
+  primary:
+    background: '0xeceff4'
+    foreground: '0x5e81ac'
+
+  # Normal colors
+  normal:
+    black:   '0xd8dee9'
+    red:     '0xbf616a'
+    green:   '0xa3be8c'
+    yellow:  '0xebcb8b'
+    blue:    '0x81a1c1'
+    magenta: '0xB48EAD'
+    cyan:    '0x88C0D0'
+    white:   '0xE5E9F0'
+
+  # Bright colors
+  bright:
+    black:   '0x4C566A'
+    red:     '0xbf616a'
+    green:   '0xa3be8c'
+    yellow:  '0xebcb8b'
+    blue:    '0x81a1c1'
+    magenta: '0xB48EAD'
+    cyan:    '0x8FBCBB'
+    white:   '0xECEFF4'
+

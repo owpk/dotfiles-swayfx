@@ -1,0 +1,56 @@
+font:
+  normal:
+    family: "Hack"
+    style: Regular
+
+  # bold:
+  #   family: "TerminessTTF Nerd Font Mono"
+  #   style: Bold
+  # italic:
+  #   family: "TerminessTTF Nerd Font Mono"
+  #   style: Italic
+  # bold_italic:
+  #   family: "TerminessTTF Nerd Font Mono"
+  #   style: Bold Italic
+
+  # Point size
+  size: 10
+
+  offset:
+    x: 0
+    y: 0
+
+window:
+  padding:
+    x: 10
+    y: 10
+  opacity: 0.9
+
+scrolling:
+  # Maximum number of lines in the scrollback buffer.
+  # Specifying '0' will disable scrolling.
+  history: 10000
+
+  # Number of lines the viewport will move for every line scrolled when
+  # scrollback is enabled (history > 0).
+  multiplier: 10
+
+# If `true`, bold text is drawn using the bright color variants.
+draw_bold_text_with_bright_colors: true
+
+selection:
+  semantic_escape_chars: ',│`|:"'' ()[]{}<>'
+
+  # When set to `true`, selected text will be copied to both the primary and
+  # the selection clipboard. Otherwise, it will only be copied to the selection
+  # clipboard.
+  save_to_clipboard: true
+
+# Live config reload (changes require restart)
+live_config_reload: true
+
+key_bindings:
+  - { key: V, mods: Control|Shift, action: Paste }
+  - { key: C, mods: Control|Shift, action: Copy }
+  - { key: Return,   mods: Control|Shift, action: SpawnNewInstance }
+
