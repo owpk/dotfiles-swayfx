@@ -152,7 +152,7 @@
     },
 
     "custom/stub" : {
-        "format": "┃"
+        "format": ":"
     },
 
     "custom/spotify": {
