@@ -15,8 +15,7 @@ exec hash dbus-update-activation-environment 2>/dev/null && \
 # Idle settings
 exec swayidle -w \
 		timeout 500 'swaymsg "output * dpms off"' \
-		    resume 'swaymsg "output * dpms on"' \
-        timeout 700 'systemctl suspend'
+		    resume 'swaymsg "output * dpms on"'
 
 # sound / bright change notifier daemon
 exec "avizo-service"
