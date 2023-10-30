@@ -36,7 +36,7 @@ client.placeholder      #000000 #0c0c0c #ffffff #000000   #333845
 client.background       #ffffff
 
 # some global theme specific variables
-set $gtk-theme Matcha-dark-sea
+set $gtk-theme Nordic
 set $icon-theme Papirus-Dark-Maia
 set $cursor-theme xcursor-breeze
 set $gui-font Hack 11
