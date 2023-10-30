@@ -1,7 +1,5 @@
 @import '../colors.css';
 
-
-/* Reset all styles */
 * {
     color: @font;
     border: none;
@@ -12,32 +10,19 @@
 }
 
 #window {
-   padding-left: 5px;
-   margin-right: 20px;
-   border-style: hidden;
    color: @font;
-   border-style: hidden;
 }
 
 window#waybar {
     background: alpha(@bg, 0.4); 
-    /*background: rgba(@bg, 0.4);*/
-	/*border-radius: 10px;*/
     transition-property: background-color;
     transition-duration: .5s;
-	margin-top: 8;
-    padding: 2 2;
 }
 
-.modules-left, .modules-right, .modules-center {
-    /*background: @bg;*/
-    /*background: rgba(43, 48, 59, 0.6);*/
-    background: alpha(@bg, 0.6); 
-    margin-top: 0;
-    margin-left: 0;
-    margin-right: 0;
+.modules-right, .modules-center {
+    background: alpha(@bg, 0.6);
     border-radius: 10px;
-    padding: 7;
+    padding: 5;
 }
 
 #workspaces {
@@ -76,35 +61,35 @@ window#waybar {
 tooltip {
     background: rgba(43, 48, 59, 0.95);
     border: 1px solid rgba(100, 114, 125, 0.8);
-    /*border-radius: 10px;*/
-    /*border-color: shade(alpha(@borders, 0.9), 2.25);*/
 }
 
-#language, #clock, #custom-power, #battery, #cpu, #memory, #idle_inhibitor, #temperature, #custom-keyboard-layout, #backlight, #network, #pulseaudio, #mode, #custom-pacman {
-    margin-right: 2px;
-    margin-left: 2px;
+#custom-stub {
+    color: @bg-light;
+}
 
-    background-color: @bg-light;
-    border-radius: 7px;
+#language, 
+#clock, 
+#custom-weather,
+#custom-vnc,
+#battery,
+#cpu, 
+#memory, 
+#idle_inhibitor, 
+#temperature,
+#backlight,
+#network, 
+#pulseaudio,
+#mode {
+    /*background-color: @bg-light;*/
+    border-radius: 5px;
 
-    padding-left: 10px;
     padding-right: 10px;
-}
-
-#clock, #battery, #cpu, #memory, #idle_inhibitor, #temperature, #custom-keyboard-layout, #backlight, #network, #pulseaudio, #mode, #window, #custom-pacman {
-    margin-right: 5px;
-    margin-left: 5px;
+    padding-left: 10px;
 }
 
 #network button.focused {
    background: rgba(255, 255, 255, 0.3);
    border-radius: 4px;
-}
-
-#custom-power {
-    border-radius: 7 0 0 7;
-    margin-right: 0px;
-    border-radius: 7px;
 }
 
 @keyframes blink {
@@ -180,7 +165,6 @@ tooltip {
     border-style: hidden;
     color: @bg-light;
     font-size: 13px;
-    border-radius: 0 0 0 0;
 }
 
 #custom-launcher, #custom-power {
@@ -189,6 +173,13 @@ tooltip {
     background-color: @accent;
     font-size: 13px;
     color: @bg;
+}
+
+#custom-power {
+    border-radius: 7px;
+    
+    padding-right: 10px;
+    padding-left: 10px;
 }
 
 #tray {

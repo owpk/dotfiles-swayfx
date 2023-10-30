@@ -3,8 +3,8 @@
     "position": "top",
 
     "modules-left": ["tray", "custom/launcher", "sway/workspaces", "sway/mode", "sway/window"],
-    "modules-center": ["custom/stub", "custom/spotify", "custom/weather", "clock", "custom/vnc", "custom/playerctl", "custom/stub"],
-    "modules-right": ["sway/language", "backlight", "memory", "battery", "network", "pulseaudio", "custom/power"],
+    "modules-center": ["custom/weather", "custom/stub", "clock", "custom/stub", "custom/vnc", "custom/playerctl"],
+    "modules-right": ["sway/language", "custom/stub","backlight", "custom/stub","memory", "custom/stub","battery", "custom/stub","network", "custom/stub","pulseaudio", "custom/power"],
 
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
@@ -141,8 +141,7 @@
     },
 
     "custom/stub" : {
-        "format": " {} ",
-        "exec": "echo  \":\""
+        "format": "┃"
     },
 
     "custom/spotify": {
