@@ -1,8 +1,12 @@
 {
     "layer": "top",
     "position": "top",
+    "margin-top": 10,
+    "margin-left": 25,
+    "margin-right": 25,
 
-    "modules-left": ["tray", "custom/launcher", "sway/workspaces", "sway/mode", "sway/window"],
+
+    "modules-left": ["tray", "sway/scratchpad", "custom/launcher", "sway/workspaces", "sway/mode", "sway/window"],
     "modules-center": ["custom/weather", "custom/stub", "clock", "custom/stub", "custom/vnc", "custom/playerctl"],
     "modules-right": ["sway/language", "custom/stub","backlight", "custom/stub","memory", "custom/stub","battery", "custom/stub","network", "custom/stub","pulseaudio", "custom/power"],
 
@@ -10,6 +14,13 @@
         "format": "<span style=\"italic\">{}</span>"
     },
 
+    "sway/scratchpad": {
+        "format": "{icon} {count}",
+        "show-empty": false,
+        "format-icons": ["", ""],
+        "tooltip": true,
+        "tooltip-format": "{app}: {title}"
+    },
 
     "sway/workspaces": {
         "disable-scroll": true,
