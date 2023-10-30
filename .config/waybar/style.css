@@ -1,43 +1,30 @@
 @import '../colors.css';
 
-
-/* Reset all styles */
 * {
     color: @font;
     border: none;
     border-radius: 0px;
     padding: 0 0;
     font-family: Hack;
-    font-size: 13px;
+    font-size: 14px;
 }
 
 #window {
-   padding-left: 5px;
-   margin-right: 20px;
-   border-style: hidden;
    color: @font;
-   border-style: hidden;
 }
 
 window#waybar {
-    background: alpha(@bg, 0.4); 
-    /*background: rgba(@bg, 0.4);*/
-	/*border-radius: 10px;*/
+    /*background: alpha(@bg, 0.4); */
+
+    background-color: transparent;
     transition-property: background-color;
     transition-duration: .5s;
-	margin-top: 8;
-    padding: 2 2;
 }
 
-.modules-left, .modules-right, .modules-center {
-    /*background: @bg;*/
-    /*background: rgba(43, 48, 59, 0.6);*/
-    background: alpha(@bg, 0.6); 
-    margin-top: 0;
-    margin-left: 0;
-    margin-right: 0;
+.modules-right, .modules-center {
+    background: alpha(@bg, 0.6);
     border-radius: 10px;
-    padding: 7;
+    padding: 5;
 }
 
 #workspaces {
@@ -76,41 +63,36 @@ window#waybar {
 tooltip {
     background: rgba(43, 48, 59, 0.95);
     border: 1px solid rgba(100, 114, 125, 0.8);
-    /*border-radius: 10px;*/
-    /*border-color: shade(alpha(@borders, 0.9), 2.25);*/
 }
 
-#language, #clock, #custom-power, #battery, #cpu, #memory, #idle_inhibitor, #temperature, #custom-keyboard-layout, #backlight, #network, #pulseaudio, #mode, #custom-pacman {
-    margin-right: 2px;
-    margin-left: 2px;
+#custom-stub {
+    color: @bg-light;
+}
 
-    background-color: @bg-light;
-    border-radius: 7px;
+#language, 
+#clock, 
+#custom-weather,
+#custom-vnc,
+#battery,
+#cpu, 
+#memory, 
+#idle_inhibitor, 
+#temperature,
+#backlight,
+#network, 
+#pulseaudio,
+#mode {
+    /*background-color: @bg-light;*/
+    border-radius: 5px;
 
-    padding-left: 10px;
     padding-right: 10px;
-}
-
-#clock, #battery, #cpu, #memory, #idle_inhibitor, #temperature, #custom-keyboard-layout, #backlight, #network, #pulseaudio, #mode, #window, #custom-pacman {
-    margin-right: 5px;
-    margin-left: 5px;
-}
-
-#network button.focused {
-   background: rgba(255, 255, 255, 0.3);
-   border-radius: 4px;
-}
-
-#custom-power {
-    border-radius: 7 0 0 7;
-    margin-right: 0px;
-    border-radius: 7px;
+    padding-left: 10px;
 }
 
 @keyframes blink {
     to {
-        color: @aur1;
-        background-color: @font;
+        color: @font;
+        background-color: @bg;
     }
 }
 
@@ -134,11 +116,21 @@ tooltip {
     animation-direction: alternate;
 }
 
+#battery.charging {
+    background: green;
+    color: white;
+    animation-name: blink;
+    animation-duration: 0.6s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
 
 #tray {
-   background-color: @accent;
-   color: @bg;
-   padding: 0 5px;
+    background: alpha(@accent, 0.6);
+    color: @bg;
+    padding: 0 5px;
 }
 
 #custom-arrowL0,#custom-arrowR0 {
@@ -175,28 +167,26 @@ tooltip {
     animation-direction: alternate;
 }
 
-#custom-launcher {
+#custom-launcher, #scratchpad, #tray {
     background-color: @accent;
     border-style: hidden;
     color: @bg-light;
     font-size: 13px;
-    border-radius: 0 0 0 0;
 }
 
-#custom-launcher, #custom-power {
+#custom-power {
     font-size: 13px;
     border-style: hidden;
     background-color: @accent;
     font-size: 13px;
     color: @bg;
+
+    border-radius: 7px;
+    
+    padding-right: 10px;
+    padding-left: 10px;
 }
 
-#tray {
-    background-color: @accent;
-    color: #2e3440;
-    padding: 0 5px;
-    border-radius: 5 0 0 5;
-}
 
 #custom-arrowL0, #custom-arrowR0 {
    background-color: @bg;

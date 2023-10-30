@@ -61,6 +61,7 @@ mv ~/.zshrc ~/sway_backups.old/.zshrc.bak 2> /dev/null
 mv ~/.p10k.zsh ~/sway_backups.old/.p10k.zsh.bak 2> /dev/null
 mv ~/.config ~/sway_backups.old/.config.bak 2> /dev/null
 mv ~/.vim ~/sway_backups.old/.vim.bak 2> /dev/null
+mv ~/.themes/ ~/sway_backups.old/.themes.bak 2> /dev/null
 ```
 4.1 create all needed links and copy fonts
 ```
@@ -72,6 +73,7 @@ ln -s `pwd`/.config/zsh/.zshrc ~/.zshrc
 ln -s `pwd`/.p10k.zsh ~/.p10k.zsh
 ln -s `pwd`/.config ~/.config
 ln -s `pwd`/.vim ~/.vim
+ln -s `pwd`/.themes ~/.themes
 ```
 
 5. install 'aura'
