@@ -37,9 +37,9 @@
 1. install all needed apps
 ```
 sudo pacman -S --needed swaybg jq cmake cmocka ranger wofi waybar mtools vim neovim zsh \
-vifm papirus-icon-theme noto-fonts-emoji ttf-hack wl-clipboard translate-shell slurp \
-grim light pamixer wmname dmenu xdg-desktop-portal kanshi alacritty \
-kitty pavucontrol playerctl imv mpv wayvnc pkcs11-helper nodejs swayidle
+papirus-icon-theme noto-fonts-emoji ttf-hack wl-clipboard translate-shell slurp \
+grim light pamixer wmname xdg-desktop-portal-wlr xdg-desktop-portal-gtk kanshi alacritty \
+kitty pavucontrol playerctl imv mpv wayvnc swayidle mako
 
 sudo usermod -a -G video $USER
 ```
@@ -62,6 +62,8 @@ mv ~/.p10k.zsh ~/sway_backups.old/.p10k.zsh.bak 2> /dev/null
 mv ~/.config ~/sway_backups.old/.config.bak 2> /dev/null
 mv ~/.vim ~/sway_backups.old/.vim.bak 2> /dev/null
 mv ~/.themes/ ~/sway_backups.old/.themes.bak 2> /dev/null
+
+sudo pacman -R --no-confirm xterm
 ```
 4.1 create all needed links and copy fonts
 ```
@@ -74,6 +76,7 @@ ln -s `pwd`/.p10k.zsh ~/.p10k.zsh
 ln -s `pwd`/.config ~/.config
 ln -s `pwd`/.vim ~/.vim
 ln -s `pwd`/.themes ~/.themes
+ln -s /bin/alacritty /bin/xterm
 ```
 
 5. install 'aura'

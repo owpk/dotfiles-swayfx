@@ -5,7 +5,6 @@
 !/.config/epy/config.json
 !/.config/fish
 !/.config/sworkstyle
-!/.config/gtk*
 !/.config/mako
 !/.config/nvim
 !/.config/nwg-launchers
