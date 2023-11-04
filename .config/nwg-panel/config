@@ -188,12 +188,12 @@
     "start-hidden": false,
     "button-sample": {
       "command": "nwggrid",
-      "icon": "view-grid-symbolic",
+      "icon": "start-here-archlinux",
       "label": "",
       "label-position": "right",
       "css-name": "button-custom",
       "tooltip": "",
-      "icon-size": 14
+      "icon-size": 25
     }
   }
 ]
