@@ -1,0 +1,199 @@
+[
+  {
+    "name": "panel-top",
+    "output": "",
+    "layer": "bottom",
+    "position": "top",
+    "controls": "right",
+    "width": "auto",
+    "height": 25,
+    "homogeneous": false,
+    "margin-top": 0,
+    "margin-bottom": 0,
+    "padding-horizontal": 0,
+    "padding-vertical": 0,
+    "spacing": 0,
+    "items-padding": 0,
+    "icons": "",
+    "css-name": "panel-top",
+    "modules-left": [
+      "button-sample",
+      "sway-taskbar"
+    ],
+    "modules-center": [
+      "clock",
+      "playerctl"
+    ],
+    "modules-right": [
+      "scratchpad",
+      "tray"
+    ],
+    "controls-settings": {
+      "components": [
+        "brightness",
+        "volume",
+        "battery",
+        "processes"
+      ],
+      "commands": {
+        "battery": ""
+      },
+      "show-values": true,
+      "interval": 1,
+      "icon-size": 16,
+      "hover-opens": false,
+      "leave-closes": true,
+      "click-closes": false,
+      "css-name": "controls-window",
+      "custom-items": [
+        {
+          "name": "Pavucontrol",
+          "icon": "audio-volume-high-symbolic",
+          "cmd": "pavucontrol"
+        },
+        {
+          "name": "Panel settings",
+          "icon": "nwg-panel",
+          "cmd": "floating nwg-panel-config"
+        }
+      ],
+      "menu": {
+        "name": "Exit",
+        "icon": "system-shutdown-symbolic",
+        "items": [
+          {
+            "name": "Lock",
+            "cmd": "swaylock -f -c 000000"
+          },
+          {
+            "name": "Logout",
+            "cmd": "swaymsg exit"
+          },
+          {
+            "name": "Reboot",
+            "cmd": "systemctl reboot"
+          },
+          {
+            "name": "Shutdown",
+            "cmd": "systemctl -i poweroff"
+          }
+        ]
+      },
+      "output-switcher": false,
+      "backlight-controller": "light",
+      "backlight-device": "",
+      "window-width": 0,
+      "window-margin-horizontal": 0,
+      "window-margin-vertical": 0,
+      "root-css-name": "controls-overview",
+      "battery-low-level": 20,
+      "battery-low-interval": 3,
+      "processes-label": "Processes",
+      "angle": 0.0
+    },
+    "tray": {
+      "root-css-name": "tray",
+      "inner-css-name": "inner-tray"
+    },
+    "sway-taskbar": {
+      "workspace-menu": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      "name-max-len": 20,
+      "image-size": 14,
+      "workspaces-spacing": 0,
+      "task-padding": 0,
+      "show-app-icon": true,
+      "show-app-name": false,
+      "show-layout": false,
+      "workspace-buttons": false,
+      "all-workspaces": true,
+      "mark-autotiling": true,
+      "mark-xwayland": true,
+      "all-outputs": true,
+      "angle": 0.0
+    },
+    "sway-workspaces": {
+      "numbers": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      "custom-labels": [],
+      "focused-labels": [],
+      "show-icon": true,
+      "image-size": 16,
+      "show-name": true,
+      "name-length": 40,
+      "mark-autotiling": true,
+      "mark-content": true,
+      "hide-empty": true,
+      "show-layout": true,
+      "angle": 0.0
+    },
+    "clock": {
+      "format": "%a %d %b  %H:%M",
+      "tooltip-text": "",
+      "on-left-click": "",
+      "on-middle-click": "",
+      "on-right-click": "",
+      "on-scroll-up": "",
+      "on-scroll-down": "",
+      "css-name": "clock",
+      "interval": 1
+    },
+    "playerctl": {
+      "buttons-position": "left",
+      "icon-size": 14,
+      "chars": 25,
+      "scroll": true,
+      "button-css-name": "",
+      "label-css-name": "",
+      "interval": 1,
+      "show-cover": true,
+      "cover-size": 24,
+      "angle": 0.0
+    },
+    "menu-start": "off",
+    "exclusive-zone": true,
+    "sigrt": 64,
+    "use-sigrt": false,
+    "scratchpad": {},
+    "sway-mode": {
+      "show-default": true,
+      "show-icon": true,
+      "css-name": "",
+      "icon-size": 16,
+      "angle": 0.0
+    },
+    "openweather": {
+      "command": "notify-send 'sample button'"
+    },
+    "brightness-slider": {},
+    "dwl-tags": {},
+    "hyprland-taskbar": {},
+    "hyprland-workspaces": {},
+    "start-hidden": false,
+    "button-sample": {
+      "command": "nwggrid",
+      "icon": "view-grid-symbolic",
+      "label": "",
+      "label-position": "right",
+      "css-name": "button-custom",
+      "tooltip": "",
+      "icon-size": 14
+    }
+  }
+]

@@ -39,7 +39,7 @@
 sudo pacman -S --needed swaybg jq cmake cmocka ranger wofi waybar mtools vim neovim zsh \
 papirus-icon-theme noto-fonts-emoji ttf-hack wl-clipboard translate-shell slurp \
 grim light pamixer wmname xdg-desktop-portal-wlr xdg-desktop-portal-gtk kanshi alacritty \
-kitty pavucontrol playerctl imv mpv wayvnc swayidle mako
+kitty pavucontrol playerctl imv mpv wayvnc swayidle mako imagemagic
 
 sudo usermod -a -G video $USER
 ```
@@ -69,6 +69,8 @@ sudo pacman -R --no-confirm xterm
 ```
 sudo mkdir /usr/share/fonts/TTF 2> /dev/null
 sudo cp ./fonts/* /usr/share/fonts/TTF/
+sudo cp ./config/sway/scripts/floating /usr/local/bin
+
 fc-cache
 ln -s `pwd`/.zshenv ~/.zshenv
 ln -s `pwd`/.config/zsh/.zshrc ~/.zshrc
@@ -94,6 +96,7 @@ sudo pacman -U *.tar.zst
 sudo aura -A avizo
 sudo aura -A nwg-launchers
 sudo aura -A nwg-wrapper
+sudo aura -A nwg-panel
 sudo aura -A wlsunset
 sudo aura -A sworkstyle
 sudo aura -A azote

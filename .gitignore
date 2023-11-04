@@ -9,6 +9,7 @@
 !/.config/nvim
 !/.config/nwg-launchers
 !/.config/nwg-wrapper
+!/.config/nwg-panel
 !/.config/pipewire
 !/.config/ranger
 !/.config/sway
