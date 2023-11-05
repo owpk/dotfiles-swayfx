@@ -19,6 +19,7 @@ exec swayidle -w \
 
 # sound / bright change notifier daemon
 exec "avizo-service"
+exec "avizo-clien --time=1"
 
 # Wob (replaced by avizo)
 # exec mkfifo $SWAYSOCK.wob
