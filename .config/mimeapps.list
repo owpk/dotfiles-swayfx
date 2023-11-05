@@ -1,4 +1,3 @@
-
 [Default Applications]
 text/html=google-chrome.desktop
 x-scheme-handler/http=google-chrome.desktop
@@ -8,3 +7,8 @@ x-scheme-handler/unknown=google-chrome.desktop
 x-scheme-handler/jetbrains=jetbrains-toolbox.desktop
 x-scheme-handler/eclipse+command=_usr_lib_dbeaver_.desktop
 x-scheme-handler/notion=notion-app.desktop
+x-scheme-handler/gitkraken=GitKraken.desktop
+text/plain=code.desktop
+
+[Added Associations]
+text/plain=nvim.desktop;vim.desktop;code.desktop;

@@ -1,4 +1,4 @@
-local colorscheme = "tokyonight"
+local colorscheme = "everforest"
 --local colorscheme = "github"
 
 vim.g.onedarker_italic_keywords = false

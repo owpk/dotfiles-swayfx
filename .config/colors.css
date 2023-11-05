@@ -28,13 +28,25 @@
 @define-color pink #ad7497;
 @define-color sand-light #dea36f;
 
-/* DARK */
+/* Shimmer */
+@define-color sh0 #fcdac4;
+@define-color sh1 #fda098;
+@define-color sh2 #6b6977;
+@define-color sh3 #fe8e80;
+
+@define-color sh4 #3e3343;
+@define-color sh5 #584c50;
+@define-color sh6 #242238;
+@define-color sh7 #7c6873;
+
+
+/* DARK 
 @define-color bg            @polar0;
 @define-color bg-light      @polar3;
 @define-color accent        @frost1;
 @define-color font          @snow2;
 @define-color font-light    @snow3;
-
+*/
 
 /* LIGHT 
 @define-color bg       @snow0;
@@ -42,3 +54,18 @@
 @define-color accent   @sand-light;
 @define-color font     @polar0;
 */
+
+/* SHIME 
+@define-color bg            @sh6;
+@define-color bg-light      @sh5;
+@define-color accent        @sh0;
+@define-color font          @sh0;
+@define-color font-light    white;
+*/
+
+/* EVERFOREST_DARK */
+@define-color bg            #2d353b;
+@define-color accent        #475258;
+@define-color bg-light      @font;
+@define-color font          #d3c6aa;
+@define-color font-light    white;

@@ -1,0 +1,28 @@
+# Colors (One Darker)
+colors:
+  # Default colors
+  primary:
+    background:   "#2b373d"
+    foreground:   "#fcdac4"
+
+  # Normal colors
+  normal:
+    black:    "#1e2127"
+    red:      "#e06c75"
+    green:    "#33cca6"
+    yellow:   "#d19a66"
+    blue:     "#5C8286"
+    magenta:  "#c678dd"
+    cyan:     "#56b6c2"
+    white:    "#c5c8c6"
+
+  # Bright colors
+  bright:
+    black:    "#1B2839"
+    red:      "#e06c75"
+    green:    "#33cca6"
+    yellow:   "#d19a66"
+    blue:     "#73AAA9"
+    magenta:  "#c678dd"
+    cyan:     "#56b6c2"
+    white:    "#ffffff"

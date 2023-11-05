@@ -8,12 +8,13 @@ set $up k
 set $right l
 
 set $term alacritty
-set $term-float $term
+set $term-float floating $term
 set $term-working-dir $term --working-directory=$( swaymsg -r -t get_tree | jq '.. | (.nodes? // empty)[] | select(.focused == true).pid? // empty' | xargs pstree -p | grep "\<tmux\>\|\<fish\>\|\<bash\>\|\<zsh\>\|\<sh\>" | grep -o '[1-9]*' | xargs pwdx 2> /dev/null | cut -f2- -d' ' | sort | tail -n 1 | tr -d '\n')
 set $launcher nwggrid
 set $powermenu nwgbar
 set $cheat gedit ~/.config/sway/cheatsheet
 set $filemanager kitty -e ranger
+set $colorpiker grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | wl-copy 
 
 # MENU
 set $menu wofi -c ~/.config/wofi/config -I
@@ -34,7 +35,7 @@ bindsym --to-code  {
 
    # Start a floating terminal
    $mod+Return        			exec $term
-   $mod+Shift+Return  			exec $term-working-dir
+   $mod+Shift+Return  			exec $term-float
 
    # space
    $mod+space         			exec --no-startup-id makoctl restore
@@ -85,8 +86,9 @@ bindsym --to-code  {
    $mod+w               exec ~/.config/sway/scripts/chrom.sh
 
    # y
-   $mod+y			      		exec  ~/.config/sway/scripts/screenshot.sh
-   $mod+Shift+y					exec  ~/.config/sway/scripts/screenshot.sh -g
+   $mod+y			    exec  ~/.config/sway/scripts/screenshot.sh
+   $mod+Shift+y			exec  ~/.config/sway/scripts/screenshot.sh -g
+   $mod+u               exec $colorpiker
 }
 
 floating_modifier $mod     normal
