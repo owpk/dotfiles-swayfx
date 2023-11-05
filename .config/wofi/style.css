@@ -1,7 +1,4 @@
-/*
-scheme: "Nord"
-author: "arcticicestudio"
-*/
+@import '../colors.css';
 
 @define-color base10 #2E3440;
 @define-color base00 #3B4252;
@@ -19,9 +16,12 @@ author: "arcticicestudio"
 @define-color base0D #EBCB8B;
 @define-color base0E #A3BE8C;
 @define-color base0F #B48EAD;
+@define-color base0G #2D353B;
+@define-color base0H #1E2327;
+@define-color base0I #8B8576;
 
 #entry {
-   border-radius: 0px;
+   border-radius: 5px;
    padding: 5px 2px 5px 2px;
    margin: 0px 4px 0px 4px;
 }
@@ -33,43 +33,41 @@ author: "arcticicestudio"
 
 #entry:selected {
    color: @base0D;
-   background-color: @base02;
+   background-color: base0H;
    padding: 7px;
 }
 
 #text:selected {
-   color: @base04;
+   color: white;
 }
 
 #window {
    animation-name: fadeIn;
    animation-duration: 0.4s;
-   background-color: transparent;
+   background-color: alpha(@base0G, 0.8);
    font-family: Hack;
 /* font-size:14; */
 }
 
 #input {
    border: none;
-   background-color: @base10;
-   border-radius: 0px;
+   background-color: alpha(@base0H, 0.6);
+   border-radius: 10px;
    margin: 4px 4px 8px 4px;
    padding: 8px;
 }
 
 #inner-box {
-   color: @base04;
-   border-radius: 0px;
+   border-radius: 10px;
+   border: 2px solid #474747;
+   margin: 5px;
 /* margin-right: 180px; */
 }
 
 #outer-box {
-   background-color: @base00;
    border-radius: 10px;
-   border: 1px solid #474747;
-   padding: 10px;
-   box-shadow: 0px 0px 3px 1px  #0F0F0F;
-   margin: 25px;
+   border: 5px solid @base0H;
+   padding: 5px;
 }
 
 #scroll {
@@ -77,9 +75,7 @@ author: "arcticicestudio"
 
 #text {
    color: @base04;
-   background-color: transparent;
 }
 
 #img {
-   background-color: transparent;
 }

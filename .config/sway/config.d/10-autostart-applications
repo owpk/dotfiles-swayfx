@@ -5,7 +5,7 @@ exec wmname LG3D
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 # Desktop notifications
-exec mako
+exec mako -c ~/.config/mako/everforest
 
 # GTK3 applications take a long time to start
 exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
@@ -48,7 +48,7 @@ exec /usr/libexec/xdg-desktop-portal
 exec tracker daemon -s
 
 # Wlsunset
-exec_always ~/.config/sway/scripts/light.sh
+exec ~/.config/sway/scripts/light.sh
 
 exec_always {
     # poweralert 
@@ -68,9 +68,14 @@ exec {
     #'[ -x "$(command -v sworkstyle)" ] && sworkstyle -d -l info &> /tmp/sworkstyle.log'
 }
 
-#
-# Status Bar:
+
+# Status Bars:
+
+# current status bar
+exec_always nwg-panel
+
 # Read `man 5 sway-bar` for more information about this section.
+# comment nwg-panel 
 bar {
-   swaybar_command waybar
+   #swaybar_command waybar
 }

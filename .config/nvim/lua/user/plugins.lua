@@ -234,7 +234,14 @@ return packer.startup(function(use)
   }
   use 'ryanoasis/vim-devicons'
   use 'cormacrelf/vim-colors-github'
-    
+
+    use({
+      "neanias/everforest-nvim",
+      -- Optional; default configuration will be used if setup isn't called.
+      config = function()
+        require("everforest").setup()
+      end,
+    }) 
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

@@ -1,0 +1,17 @@
+anchor=top-right
+layer=overlay
+font=monospace 10
+background-color=#1E2327
+height=800
+text-color=#d3c6aa
+margin=4,4,20
+padding=15
+border-size=5
+border-radius=10
+border-color=#2D353B
+default-timeout=10000
+group-by=summary
+on-notify=exec mpv ~/.config/mako/sounds/Tink.aiff
+
+[grouped]
+format=<b>%s</b>\n%b
