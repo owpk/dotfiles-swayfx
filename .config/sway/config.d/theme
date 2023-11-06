@@ -10,8 +10,8 @@ default_border pixel 5
 
 # Default Font
 # font pango:Noto Sans Regular 10
-# font pango:SourceCodePro Medium 11
-font pango:Hack Medium 11
+font pango:SourceCodePro Medium 11
+# font pango:Hack Medium 11
 
 # Thin borders:
 smart_borders on
@@ -40,7 +40,7 @@ set $gtk-theme Everforest-Dark
 # set $gtk-theme everforest-gtk
 set $icon-theme Papirus-Dark-Maia
 set $cursor-theme xcursor-breeze
-set $gui-font Hack 11
+set $gui-font SourceCodePro Medium 11
 set $term-font JetBrainsMono Nerd Font 14
 set $gtk-color-scheme prefer-dark
 set $kvantum-theme Matcha-Dark

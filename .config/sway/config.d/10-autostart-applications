@@ -73,6 +73,7 @@ exec {
 
 # current status bar
 exec_always nwg-panel
+exec nm-applet --indicator
 
 # Read `man 5 sway-bar` for more information about this section.
 # comment nwg-panel 

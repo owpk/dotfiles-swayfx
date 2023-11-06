@@ -22,7 +22,7 @@
 
 #entry {
    border-radius: 5px;
-   padding: 5px 2px 5px 2px;
+   padding: 5px 5px 5px 5px;
    margin: 0px 4px 0px 4px;
 }
 
@@ -33,7 +33,7 @@
 
 #entry:selected {
    color: @base0D;
-   background-color: base0H;
+   background-color: @base0H;
    padding: 7px;
 }
 
@@ -44,7 +44,7 @@
 #window {
    animation-name: fadeIn;
    animation-duration: 0.4s;
-   background-color: alpha(@base0G, 0.8);
+   background-color: alpha(@base0H, 0.8);
    font-family: Hack;
 /* font-size:14; */
 }
@@ -53,20 +53,20 @@
    border: none;
    background-color: alpha(@base0H, 0.6);
    border-radius: 10px;
-   margin: 4px 4px 8px 4px;
+   margin: 5px 5px 5px 5px;
    padding: 8px;
 }
 
 #inner-box {
    border-radius: 10px;
-   border: 2px solid #474747;
    margin: 5px;
+   padding-top: 5px;
 /* margin-right: 180px; */
 }
 
 #outer-box {
    border-radius: 10px;
-   border: 5px solid @base0H;
+   border: 5px solid @base0G;
    padding: 5px;
 }
 
