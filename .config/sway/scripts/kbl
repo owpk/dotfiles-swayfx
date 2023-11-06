@@ -1,0 +1,81 @@
+#!/usr/bin/env python3
+
+"""
+Sway keyboard layout label & switcher, as an executor for nwg-panel
+Author: Piotr Miller
+e-mail: nwg.piotr@gmail.com
+GitHub: https://github.com/nwg-piotr/nwg-panel
+Project: https://github.com/nwg-piotr/nwg-shell
+License: MIT
+
+Usage:
+0. Save this script as 'keyboard-layout' on your $PATH (e.g. '~/bin/keyboard-layout` or '~/.local/bin/keyboard-layout`).
+1. Edit, to enter your `keyboard_id`, preferred `icon` and `sig_num`.
+2. In nwg-shell-config create a new executor called "executor-keyboard".
+3. Set "Script" to "keyboard-layout".
+4. Set "On left click" to "keyboard-layout -s".
+5. Set "Interval" to 0.
+6. Set "Refresh on signal" to 37 (or whatever else you choose as the `sig_num` below); check the "use signal" box.
+7. Add the executor to the panel.
+
+Setting multiple keyboard layouts:
+Nwg-shell users: in the config utility set comma-separated keyboard layouts, like e.g. "pl,us".
+Others: do the same in your sway config file.
+
+Dependency: `python-i3ipc`
+"""
+
+import argparse
+import subprocess
+import sys
+
+from i3ipc import Connection
+
+# Place your preferred icon name (or path) here. Leave empty ("") for no icon.
+icon = "input-keyboard"
+
+# The number of the signal to refresh the executor label, in range SIGTRMIN - SIGRTMAX (probably 34 - 64).
+# You may check available range with `kill -l`.
+sig_num = 37
+
+i3 = Connection()
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-s",
+                        "--switch",
+                        action="store_true",
+                        help="switches keyboard layout")
+
+    parser.add_argument("kb")
+    args = parser.parse_args()
+
+    keyboard_id = args.kb.replace("\"", "")
+
+    if args.switch:
+        i3.command('input "{}" xkb_switch_layout next'.format(keyboard_id))
+
+        # Send refresh signal to nwg-panel
+        subprocess.Popen('pkill -{} nwg-panel'.format(sig_num), shell=True,
+                         stdout=subprocess.DEVNULL,
+                         stderr=subprocess.STDOUT)
+        sys.exit(0)
+
+    # Get keyboard layout name
+    layout_name = ""
+    inputs = i3.get_inputs()
+    for i in inputs:
+        if i.identifier == keyboard_id:
+            layout_name = i.xkb_active_layout_name.lower()[0:2]
+            break
+
+    if icon:
+        # Print 2 lines: 1. icon name/path; 2. keyboard layout name.
+        print("{}\n{}".format(icon, layout_name))
+    else:
+        # Print the keyboard layout name.
+        print("{}".format(layout_name))
+
+
+if __name__ == '__main__':
+    main()

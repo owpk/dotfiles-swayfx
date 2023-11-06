@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+KB=`swaymsg -r -t get_inputs | grep -i identifier | grep -i keyboard | tail -1| sed 's/"identifier": //; s/ //g; s/,//'`
+
+if [ -z "$1" ]
+then
+    ~/.config/sway/scripts/kbl $KB
+else 
+    ~/.config/sway/scripts/kbl $KB "-s"
+fi
