@@ -1,11 +1,9 @@
 ## <img src="./docs/sway-logo.png" width="36px" style="vertical-align:middle;"> My configs for [swayfx](https://github.com/WillPower3309/swayfx) (sway fork)
-## ❤️ This dotfiles compatible with vanilla sway, just remove ```./config/sway/config.d/swayfx``` config file
+## ❤️ This dotfiles fully compatible with vanilla sway, just remove ```./config/sway/config.d/swayfx``` config file
 ### Also check my '[sway keybindings helper](https://github.com/owpk/sway-keyhints)' project  
 
 - press ```Win + p``` to show keybindigs help
 - press ```Win + Shift + p``` to toggle keybindigs help 
-- SEE .config/sway/config.d/input TO CHANGE KEYBOARD LAYOUT AND OTHER KB SETTINGS
-- SEE .config/sway/config.d/default TO CHANGE KEY BINDINGS CONFIG
 
 <p align=center style="margin-top:36px">	  
   <img src="https://img.shields.io/github/issues/owpk/dotfiles-swayfx?color=bf616a&labelColor=202328&style=for-the-badge">
@@ -13,15 +11,13 @@
 </p>
 
 <p align="center">
-   <img src="./docs/sc.gif"/>
-</p>
-<p align="center">
-   <img src="./docs/composed.jpg"/>
+   <img src="./docs/composed2.jpg"/>
 </p>
 
 # 🗿 Info
 - [sway fx (windows manager)](https://github.com/WillPower3309/swayfx)
-- [waybar (status bar)](https://github.com/Alexays/Waybar)
+- [nwg-panel (status bar)](https://github.com/nwg-piotr/nwg-panel)
+- [waybar (status bar)](https://github.com/Alexays/Waybar) Optional
 - [wofi (menus/launchers)](https://hg.sr.ht/~scoopta/wofi)
 - [mako (wayland notification daemon)](https://github.com/emersion/mako)
 - [nwg-launchers (menus/launchers)](https://github.com/nwg-piotr/nwg-launchers)
@@ -62,6 +58,7 @@ mv ~/.p10k.zsh ~/sway_backups.old/.p10k.zsh.bak 2> /dev/null
 mv ~/.config ~/sway_backups.old/.config.bak 2> /dev/null
 mv ~/.vim ~/sway_backups.old/.vim.bak 2> /dev/null
 mv ~/.themes/ ~/sway_backups.old/.themes.bak 2> /dev/null
+mv ~/.azotebg ~/sway_backups.old/.azote.bak 2> /dev/null
 
 sudo pacman -R --no-confirm xterm
 ```
@@ -79,6 +76,7 @@ ln -s `pwd`/.config ~/.config
 ln -s `pwd`/.vim ~/.vim
 ln -s `pwd`/.themes ~/.themes
 ln -s /bin/alacritty /bin/xterm
+cp .azotebg ~/.azotebg
 ```
 
 5. install 'aura'
@@ -101,31 +99,65 @@ sudo aura -A wlsunset
 sudo aura -A sworkstyle
 sudo aura -A azote
 ```
-7. 🐥 Set background image
-```
-pkill swaybg
-swaybg -o $(swaymsg -t get_outputs | jq -r '.[] | {name} | (.name)') -i "$(pwd)/wallpapers/wp.png" -m fill &
-```
-- use [azote](https://github.com/nwg-piotr/azote) application to do the same
-
 ---
 (Optional) install ranger devicons
 ```
 git clone https://github.com/alexanderjeurissen/ranger_devicons ~/.config/ranger/plugins/ranger_devicons
 ```
-(Optional) change output properties ([check man page for more info](https://manpages.debian.org/experimental/sway/sway-output.5.en.html))
-- create config file in '/etc/sway/outputs/example'
+---
 
+Reboot your system
+
+# Configuration
+ - default sway config: ```~/.config/sway/config```
+
+```
+include $HOME/.config/sway/config.d/*
+include /etc/sway/outputs/*
+```
+### status bar
+- edit ```~/.config/sway/config.d/10-autostart-applications``` config file:
+
+```waybar``` 
+<p align="center">
+   <img src="./docs/waybar.jpg"/>
+</p>
+
+>comment ```nwg-panel``` to enable ```waybar```
+```
+#exec_always nwg-panel
+```
+```nwg-panel```
+
+<p align="center">
+   <img src="./docs/nwg-panel.jpg"/>
+</p>  
+
+>comment ```waybar``` to enable ```nwg-panel ```  
+
+```
+bar {
+   #swaybar_command waybar
+}
+```
+### keyboard
+
+- edit ```.config/sway/config.d/input``` to change keyboard layout and other kb settings
+- edit ```.config/sway/config.d/default``` to change key bindings config
+
+### change output properties ([check man page for more info](https://manpages.debian.org/experimental/sway/sway-output.5.en.html))
+- create config file in ```/etc/sway/outputs/example```  
 example:
 ```
 # Default wallpaper
 output * scale 1.3
 ```
----
-
-Reboot your system
 
 # Issues
 - vmware: black screen after sway launch   
 	adding WLR_NO_HARDWARE_CURSORS=1 to /etc/environment may fix the problem
 
+---
+<p align="center">
+   <img src="./docs/sc.gif"/>
+</p>

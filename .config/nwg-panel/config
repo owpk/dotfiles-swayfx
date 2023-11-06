@@ -5,20 +5,20 @@
     "layer": "bottom",
     "position": "top",
     "controls": "right",
-    "width": "auto",
-    "height": 25,
+    "width": 1610,
+    "height": 35,
     "homogeneous": false,
-    "margin-top": 0,
+    "margin-top": 20,
     "margin-bottom": 0,
     "padding-horizontal": 0,
     "padding-vertical": 0,
-    "spacing": 0,
+    "spacing": 5,
     "items-padding": 0,
     "icons": "",
     "css-name": "panel-top",
     "modules-left": [
       "button-sample",
-      "sway-taskbar"
+      "sway-workspaces"
     ],
     "modules-center": [
       "clock",
@@ -26,7 +26,9 @@
     ],
     "modules-right": [
       "scratchpad",
-      "tray"
+      "tray",
+      "executor-mem",
+      "executor-kb"
     ],
     "controls-settings": {
       "components": [
@@ -107,9 +109,9 @@
         "8"
       ],
       "name-max-len": 20,
-      "image-size": 14,
-      "workspaces-spacing": 0,
-      "task-padding": 0,
+      "image-size": 16,
+      "workspaces-spacing": 5,
+      "task-padding": 5,
       "show-app-icon": true,
       "show-app-name": false,
       "show-layout": false,
@@ -138,7 +140,7 @@
       "show-name": true,
       "name-length": 40,
       "mark-autotiling": true,
-      "mark-content": true,
+      "mark-content": false,
       "hide-empty": true,
       "show-layout": true,
       "angle": 0.0
@@ -159,7 +161,7 @@
       "icon-size": 14,
       "chars": 25,
       "scroll": true,
-      "button-css-name": "",
+      "button-css-name": "pl-button",
       "label-css-name": "",
       "interval": 1,
       "show-cover": true,
@@ -194,6 +196,40 @@
       "css-name": "button-custom",
       "tooltip": "",
       "icon-size": 25
+    },
+    "executor-mem": {
+      "script": "/home/owpk/.config/nwg-panel/executors/mem.sh",
+      "tooltip-text": "",
+      "on-left-click": "",
+      "on-middle-click": "",
+      "on-right-click": "",
+      "on-scroll-up": "",
+      "on-scroll-down": "",
+      "root-css-name": "",
+      "css-name": "",
+      "icon-placement": "left",
+      "icon-size": 16,
+      "interval": 2,
+      "angle": 0.0,
+      "sigrt": 34,
+      "use-sigrt": false
+    },
+    "executor-kb": {
+      "script": "/home/owpk/.config/sway/scripts/keyboard-layout",
+      "tooltip-text": "",
+      "on-left-click": "",
+      "on-middle-click": "",
+      "on-right-click": "",
+      "on-scroll-up": "",
+      "on-scroll-down": "",
+      "root-css-name": "",
+      "css-name": "",
+      "icon-placement": "left",
+      "icon-size": 16,
+      "interval": 1,
+      "angle": 0.0,
+      "sigrt": 37,
+      "use-sigrt": false
     }
   }
 ]
