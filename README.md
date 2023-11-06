@@ -35,7 +35,8 @@
 sudo pacman -S --needed swaybg jq cmake cmocka ranger wofi waybar mtools vim neovim zsh \
 papirus-icon-theme noto-fonts-emoji ttf-hack wl-clipboard translate-shell slurp \
 grim light pamixer wmname xdg-desktop-portal-wlr xdg-desktop-portal-gtk kanshi alacritty \
-kitty pavucontrol playerctl imv mpv wayvnc swayidle mako imagemagic
+kitty pavucontrol playerctl imv mpv wayvnc swayidle mako imagemagic gnome-themes-extra \
+gtk-engine-murrine
 
 sudo usermod -a -G video $USER
 ```

@@ -38,7 +38,7 @@ client.background       #ffffff
 # some global theme specific variables
 set $gtk-theme Everforest-Dark
 # set $gtk-theme everforest-gtk
-set $icon-theme Papirus-Dark-Maia
+set $icon-theme Papirus-Dark
 set $cursor-theme xcursor-breeze
 set $gui-font SourceCodePro Medium 11
 set $term-font JetBrainsMono Nerd Font 14
