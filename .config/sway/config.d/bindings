@@ -6,7 +6,7 @@ set $left h
 set $down j
 set $up k
 set $right l
-
+set $help ~/.config/sway/scripts/swaykeyhints -h 100 -w 200 | wofi -d
 set $term alacritty
 set $term-float floating $term
 set $term-working-dir $term --working-directory=$( swaymsg -r -t get_tree | jq '.. | (.nodes? // empty)[] | select(.focused == true).pid? // empty' | xargs pstree -p | grep "\<tmux\>\|\<fish\>\|\<bash\>\|\<zsh\>\|\<sh\>" | grep -o '[1-9]*' | xargs pwdx 2> /dev/null | cut -f2- -d' ' | sort | tail -n 1 | tr -d '\n')
@@ -67,8 +67,7 @@ bindsym --to-code  {
    $mod+n               exec $filemanager
 
    # p
-   $mod+p               exec ~/.config/sway/scripts/help.sh
-   $mod+Shift+p         exec ~/.config/sway/scripts/help.sh --toggle
+   $mod+p               exec $help
 
    # q
    $mod+q               kill

@@ -1,5 +1,3 @@
-@import '../colors.css';
-
 @define-color base10 #2E3440;
 @define-color base00 #3B4252;
 @define-color base02 #434C5E;
@@ -19,6 +17,8 @@
 @define-color base0G #2D353B;
 @define-color base0H #1E2327;
 @define-color base0I #8B8576;
+
+@define-color bg-light #334044;
 
 #entry {
    border-radius: 5px;
@@ -44,7 +44,7 @@
 #window {
    animation-name: fadeIn;
    animation-duration: 0.4s;
-   background-color: alpha(@base0H, 0.8);
+   background-color: alpha(@theme_bg_color, 0.8);
    font-family: Hack;
 /* font-size:14; */
 }

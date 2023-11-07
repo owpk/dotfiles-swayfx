@@ -1,7 +1,7 @@
 @import '../colors.css';
 
 * {
-    color: @font;
+    color: @theme_selected_bg_color;
     border: none;
     border-radius: 0px;
     padding: 0 0;
@@ -14,34 +14,29 @@
 }
 
 window#waybar {
-    /*background: alpha(@bg, 0.4); */
-
-    background-color: transparent;
+    background: alpha(@theme_bg_color, 0.8);
     transition-property: background-color;
     transition-duration: .5s;
 }
 
 .modules-right, .modules-center {
-    background: alpha(@bg, 0.6);
+    background: @theme_bg_color;
     border-radius: 10px;
-    padding: 5;
 }
 
-#workspaces {
-   padding: 0;
-   margin: 0;
+.modules-center {
+    padding: 7px;
 }
 
 #workspaces button {
-    color: @font;
-    min-height: 0;
-    /*padding: 0 7px;*/
-    margin: 0;
+    color: @theme_selected_bg_color;
+    min-width: 5px;
+    padding: 0 10px;
     border-bottom: 2px solid transparent;
 }
 
 #workspaces button.focused {
-    border-color: @accent;
+    border-color: @theme_selected_bg_color;
 }
 
 #workspaces button.urgent {
@@ -60,13 +55,10 @@ window#waybar {
    border-radius: 4px;
 }
 
-tooltip {
-    background: rgba(43, 48, 59, 0.95);
-    border: 1px solid rgba(100, 114, 125, 0.8);
-}
 
 #custom-stub {
-    color: @bg-light;
+    color: @bg;
+    font-size: 15px;
 }
 
 #language, 
@@ -93,7 +85,7 @@ tooltip {
 @keyframes blink {
     to {
         color: @font;
-        background-color: @bg;
+        background-color: @theme_bg_color;
     }
 }
 
@@ -129,9 +121,7 @@ tooltip {
 
 
 #tray {
-    background: alpha(@accent, 0.6);
-    color: @bg;
-    padding: 0 5px;
+    padding: 0 10px;
 }
 
 #custom-arrowL0,#custom-arrowR0 {
@@ -169,22 +159,22 @@ tooltip {
 }
 
 #custom-launcher, #scratchpad, #tray {
-    background-color: @accent;
+    background-color: @theme_selected_bg_color;
     border-style: hidden;
-    color: @bg-light;
+    color: @bg;
     font-size: 13px;
 }
 
 #custom-power {
     font-size: 13px;
     border-style: hidden;
-    background-color: @accent;
-    font-size: 13px;
+    background-color: @theme_selected_bg_color;
+    font-size: 17px;
     color: @bg;
 
-    border-radius: 7px;
+    border-radius: 0 7 7 0px;
     
-    padding-right: 10px;
+    padding-right: 15px;
     padding-left: 10px;
 }
 
@@ -206,3 +196,8 @@ tooltip {
     color: @aur1; 
 }
 
+tooltip {
+    background: @bg-light;
+    margin-left: 15px;
+    border: 1px solid rgba(100, 114, 125, 0.8);
+}

@@ -38,6 +38,8 @@
 @define-color sh5 #584c50;
 @define-color sh6 #242238;
 @define-color sh7 #7c6873;
+@define-color sh8 #E69875;
+
 
 
 /* DARK 
@@ -65,7 +67,7 @@
 
 /* EVERFOREST_DARK */
 @define-color bg            #2d353b;
-@define-color accent        #475258;
-@define-color bg-light      @font;
+@define-color accent        @sh8;
+@define-color bg-light      #334044;
 @define-color font          #d3c6aa;
 @define-color font-light    white;
