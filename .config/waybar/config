@@ -1,7 +1,7 @@
 {
     "layer": "top",
     "position": "top",
-    "margin-top": 10,
+    "margin-top": 20,
     "margin-left": 25,
     "margin-right": 25,
 
@@ -73,7 +73,7 @@
 
     "tray": {
         "show-passive-items": true,
-        "icon-size": 14,
+        "icon-size": 20,
         "spacing": 5
     },
 
