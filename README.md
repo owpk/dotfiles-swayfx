@@ -3,7 +3,6 @@
 ### Also check my '[sway keybindings helper](https://github.com/owpk/sway-keyhints)' project  
 
 - press ```Win + p``` to show keybindigs help
-- press ```Win + Shift + p``` to toggle keybindigs help 
 
 <p align=center style="margin-top:36px">	  
   <img src="https://img.shields.io/github/issues/owpk/dotfiles-swayfx?color=bf616a&labelColor=202328&style=for-the-badge">
@@ -16,11 +15,11 @@
 
 # 🗿 Info
 - [sway fx (windows manager)](https://github.com/WillPower3309/swayfx)
-- [nwg-panel (status bar)](https://github.com/nwg-piotr/nwg-panel)
-- [waybar (status bar)](https://github.com/Alexays/Waybar) Optional
+- [waybar (status bar)](https://github.com/Alexays/Waybar) 
+- [nwg-panel (status bar)](https://github.com/nwg-piotr/nwg-panel) Optional
+- [nwg-launchers (menus/launchers)](https://github.com/nwg-piotr/nwg-launchers)
 - [wofi (menus/launchers)](https://hg.sr.ht/~scoopta/wofi)
 - [mako (wayland notification daemon)](https://github.com/emersion/mako)
-- [nwg-launchers (menus/launchers)](https://github.com/nwg-piotr/nwg-launchers)
 - [avizo (wayland overlay bar)](https://github.com/misterdanb/avizo)
 - [aura (AUR helper)](https://github.com/fosskers/aura)
 - [alacritty (shell)](https://github.com/alacritty/alacritty)
@@ -35,7 +34,8 @@
 sudo pacman -S --needed swaybg jq cmake cmocka ranger wofi waybar mtools vim neovim zsh \
 papirus-icon-theme noto-fonts-emoji ttf-hack wl-clipboard translate-shell slurp \
 grim light pamixer wmname xdg-desktop-portal-wlr xdg-desktop-portal-gtk kanshi alacritty \
-kitty pavucontrol playerctl imv mpv wayvnc swayidle mako imagemagic
+kitty pavucontrol playerctl imv mpv wayvnc swayidle mako imagemagic gnome-themes-extra \
+gtk-engine-murrine
 
 sudo usermod -a -G video $USER
 ```
@@ -93,7 +93,6 @@ sudo pacman -U *.tar.zst
 ```
 sudo aura -A avizo
 sudo aura -A nwg-launchers
-sudo aura -A nwg-wrapper
 sudo aura -A nwg-panel
 sudo aura -A wlsunset
 sudo aura -A sworkstyle
