@@ -48,7 +48,7 @@ exec /usr/libexec/xdg-desktop-portal
 exec tracker daemon -s
 
 # Wlsunset
-exec ~/.config/sway/scripts/light.sh
+exec ~/.config/sway/scripts/light.sh 1
 
 exec_always {
     # poweralert 
