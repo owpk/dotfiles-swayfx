@@ -37,14 +37,12 @@ client.background       #ffffff
 
 # some global theme specific variables
 set $gtk-theme Everforest-Dark
-#set $gtk-theme Matcha-dark-aliz
 set $icon-theme Papirus-Dark
 set $cursor-theme xcursor-breeze
 set $gui-font SourceCodePro Medium 11
 set $term-font JetBrainsMono Nerd Font 14
 set $gtk-color-scheme prefer-dark
 set $kvantum-theme Matcha-Dark
-
 
 exec_always {
     gsettings set org.gnome.desktop.interface gtk-theme "$gtk-theme"
