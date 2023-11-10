@@ -51,7 +51,7 @@ window#waybar {
 }
 
 #workspaces button:hover {
-   background: rgba(255, 255, 255, 0.3);
+   background: alpha(@theme_selected_bg_color, 0.5);
    border-radius: 4px;
 }
 
@@ -197,7 +197,12 @@ window#waybar {
 }
 
 tooltip {
-    background: @bg-light;
-    margin-left: 15px;
+    background: @theme_bg_color;
     border: 1px solid rgba(100, 114, 125, 0.8);
+    border-radius: 10px;
+}
+
+tooltip label {
+    margin: 10px;
+    color: @theme_selected_bg_color;
 }
