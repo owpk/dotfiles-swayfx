@@ -12,6 +12,8 @@ exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
 exec hash dbus-update-activation-environment 2>/dev/null && \
      dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
 
+exec ~/.config/eww/scripts/start.sh
+
 # Idle settings
 exec swayidle -w \
 		timeout 500 'swaymsg "output * dpms off"' \
@@ -19,7 +21,7 @@ exec swayidle -w \
 
 # sound / bright change notifier daemon
 exec "avizo-service"
-exec "avizo-clien --time=1"
+exec "avizo-client --time=1"
 
 # Wob (replaced by avizo)
 # exec mkfifo $SWAYSOCK.wob
@@ -78,5 +80,5 @@ exec nm-applet --indicator
 # Read `man 5 sway-bar` for more information about this section.
 # comment nwg-panel 
 bar {
-   swaybar_command waybar
+   # swaybar_command waybar
 }

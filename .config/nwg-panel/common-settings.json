@@ -2,5 +2,7 @@
   "restart-on-display": true,
   "restart-delay": 500,
   "processes-backgroud-only": true,
-  "processes-own-only": true
+  "processes-own-only": true,
+  "processes-background-only": false,
+  "processes-interval-ms": 2000
 }

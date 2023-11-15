@@ -46,6 +46,7 @@
    animation-duration: 0.4s;
    background-color: alpha(@theme_bg_color, 0.8);
    font-family: Hack;
+   border-radius: 20px;
 /* font-size:14; */
 }
 
