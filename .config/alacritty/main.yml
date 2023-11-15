@@ -9,7 +9,7 @@ env:
 
 font:
   normal:
-    family: "Hack"
+    family: "JetBrainsMono"
     style: Regular
 
   # bold:

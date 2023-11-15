@@ -79,3 +79,12 @@ alias idea="$HOME/.local/share/JetBrains/Toolbox/scripts/idea $@"
 alias fleet="$HOME/.local/share/JetBrains/Toolbox/scripts/fleet $@"
 alias pycharm="$HOME/.local/share/JetBrains/Toolbox/scripts/pycharm $@"
 
+
+# The next line updates PATH for Yandex Cloud CLI.
+if [ -f '/home/owpk/yandex-cloud/path.bash.inc' ]; then source '/home/owpk/yandex-cloud/path.bash.inc'; fi
+
+# The next line enables shell command completion for yc.
+if [ -f '/home/owpk/yandex-cloud/completion.zsh.inc' ]; then source '/home/owpk/yandex-cloud/completion.zsh.inc'; fi
+
+
+export PATH="/home/owpk/.assemblyai-cli:$PATH"

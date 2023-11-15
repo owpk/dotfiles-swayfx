@@ -4,6 +4,7 @@
 
 # user config directory
 include $HOME/.config/sway/config.d/*
+include $HOME/.config/sway/user/*
 include /etc/sway/outputs/*
 
 # only enable this if every app you use is compatible with wayland
