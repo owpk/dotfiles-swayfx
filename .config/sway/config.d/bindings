@@ -66,6 +66,10 @@ bindsym --to-code  {
    # n
    $mod+n               exec $filemanager
 
+   #o
+   $mod+o               exec ~/.config/sway/scripts/speech-to-text.sh
+   $mod+Shift+o         exec audio-recorder -c stop
+
    # p
    $mod+p               exec $help
 
@@ -111,6 +115,7 @@ bindsym --to-code {
     $mod+Shift+$down move down
     $mod+Shift+$up move up
     $mod+Shift+$right move right
+
     # Ditto, with arrow keys
     $mod+Shift+Left    resize shrink width 5 px or 5 ppt
     $mod+Shift+Down    resize shrink height 5 px or 5 ppt
