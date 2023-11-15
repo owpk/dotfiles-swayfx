@@ -32,10 +32,10 @@
 1. install all needed apps
 ```
 sudo pacman -S --needed swaybg jq cmake cmocka ranger wofi waybar mtools vim neovim zsh \
-papirus-icon-theme noto-fonts-emoji ttf-hack wl-clipboard translate-shell slurp \
+papirus-icon-theme noto-fonts-emoji wl-clipboard translate-shell slurp \
 grim light pamixer wmname xdg-desktop-portal-wlr xdg-desktop-portal-gtk kanshi alacritty \
 kitty pavucontrol playerctl imv mpv wayvnc swayidle mako imagemagic gnome-themes-extra \
-gtk-engine-murrine
+gtk-engine-murrine ttf-jetbrains-mono ttf-nerd-fonts-symbols
 
 sudo usermod -a -G video $USER
 ```
@@ -97,6 +97,7 @@ sudo aura -A nwg-panel
 sudo aura -A wlsunset
 sudo aura -A sworkstyle
 sudo aura -A azote
+sudo aura -A audio-recorder
 ```
 ---
 (Optional) install ranger devicons

@@ -5,7 +5,7 @@
     border: none;
     border-radius: 0px;
     padding: 0 0;
-    font-family: Hack;
+    font-family: JetBrainsMono;
     font-size: 14px;
 }
 
@@ -21,7 +21,7 @@ window#waybar {
 
 .modules-right, .modules-center {
     background: @theme_bg_color;
-    border-radius: 10px;
+    border-radius: 15px;
 }
 
 .modules-center {
