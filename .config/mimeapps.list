@@ -12,3 +12,5 @@ text/plain=code.desktop
 
 [Added Associations]
 text/plain=nvim.desktop;vim.desktop;code.desktop;
+audio/vnd.wave=mpv.desktop;
+audio/mpeg=org.gnome.Rhythmbox3.desktop;mpv.desktop;

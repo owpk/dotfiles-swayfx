@@ -49,8 +49,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/home/owpk/.cache/nvim/packer_hererocks/2.1.1694285958/share/lua/5.1/?.lua;/home/owpk/.cache/nvim/packer_hererocks/2.1.1694285958/share/lua/5.1/?/init.lua;/home/owpk/.cache/nvim/packer_hererocks/2.1.1694285958/lib/luarocks/rocks-5.1/?.lua;/home/owpk/.cache/nvim/packer_hererocks/2.1.1694285958/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/home/owpk/.cache/nvim/packer_hererocks/2.1.1694285958/lib/lua/5.1/?.so"
+local package_path_str = "/home/owpk/.cache/nvim/packer_hererocks/2.1.1699392533/share/lua/5.1/?.lua;/home/owpk/.cache/nvim/packer_hererocks/2.1.1699392533/share/lua/5.1/?/init.lua;/home/owpk/.cache/nvim/packer_hererocks/2.1.1699392533/lib/luarocks/rocks-5.1/?.lua;/home/owpk/.cache/nvim/packer_hererocks/2.1.1699392533/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/home/owpk/.cache/nvim/packer_hererocks/2.1.1699392533/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -74,11 +74,6 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
-  ["Comment.nvim"] = {
-    loaded = true,
-    path = "/home/owpk/.local/share/nvim/site/pack/packer/start/Comment.nvim",
-    url = "https://github.com/numToStr/Comment.nvim"
-  },
   LuaSnip = {
     loaded = true,
     path = "/home/owpk/.local/share/nvim/site/pack/packer/start/LuaSnip",
@@ -140,7 +135,7 @@ _G.packer_plugins = {
     url = "https://github.com/stevearc/dressing.nvim"
   },
   ["everforest-nvim"] = {
-    config = { "\27LJ\2\n8\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\15everforest\frequire\0" },
+    config = { "\27LJ\2\n^\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1!transparent_background_level\3\n\nsetup\15everforest\frequire\0" },
     loaded = true,
     path = "/home/owpk/.local/share/nvim/site/pack/packer/start/everforest-nvim",
     url = "https://github.com/neanias/everforest-nvim"
@@ -170,11 +165,6 @@ _G.packer_plugins = {
     path = "/home/owpk/.local/share/nvim/site/pack/packer/start/git-blame.nvim",
     url = "https://github.com/f-person/git-blame.nvim"
   },
-  ["gitlinker.nvim"] = {
-    loaded = true,
-    path = "/home/owpk/.local/share/nvim/site/pack/packer/start/gitlinker.nvim",
-    url = "https://github.com/ruifm/gitlinker.nvim"
-  },
   ["gitsigns.nvim"] = {
     loaded = true,
     path = "/home/owpk/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
@@ -189,16 +179,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/owpk/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
     url = "https://github.com/lukas-reineke/indent-blankline.nvim"
-  },
-  ["jaq-nvim"] = {
-    loaded = true,
-    path = "/home/owpk/.local/share/nvim/site/pack/packer/start/jaq-nvim",
-    url = "https://github.com/is0n/jaq-nvim"
-  },
-  ["lab.nvim"] = {
-    loaded = true,
-    path = "/home/owpk/.local/share/nvim/site/pack/packer/start/lab.nvim",
-    url = "https://github.com/0x100101/lab.nvim"
   },
   ["lsp-inlayhints.nvim"] = {
     loaded = true,
@@ -219,6 +199,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/owpk/.local/share/nvim/site/pack/packer/start/lua-dev.nvim",
     url = "https://github.com/christianchiarulli/lua-dev.nvim"
+  },
+  ["lualine.nvim"] = {
+    loaded = true,
+    path = "/home/owpk/.local/share/nvim/site/pack/packer/start/lualine.nvim",
+    url = "https://github.com/nvim-lualine/lualine.nvim"
   },
   ["markdown-preview.nvim"] = {
     loaded = false,
@@ -307,11 +292,6 @@ _G.packer_plugins = {
     path = "/home/owpk/.local/share/nvim/site/pack/packer/start/nvim-ts-autotag",
     url = "https://github.com/windwp/nvim-ts-autotag"
   },
-  ["nvim-ts-context-commentstring"] = {
-    loaded = true,
-    path = "/home/owpk/.local/share/nvim/site/pack/packer/start/nvim-ts-context-commentstring",
-    url = "https://github.com/JoosepAlviste/nvim-ts-context-commentstring"
-  },
   ["nvim-ts-rainbow"] = {
     loaded = true,
     path = "/home/owpk/.local/share/nvim/site/pack/packer/start/nvim-ts-rainbow",
@@ -321,11 +301,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/owpk/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
     url = "https://github.com/kyazdani42/nvim-web-devicons"
-  },
-  ["octo.nvim"] = {
-    loaded = true,
-    path = "/home/owpk/.local/share/nvim/site/pack/packer/start/octo.nvim",
-    url = "https://github.com/pwntester/octo.nvim"
   },
   ["onedarker.nvim"] = {
     loaded = true,
@@ -351,11 +326,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/owpk/.local/share/nvim/site/pack/packer/start/popup.nvim",
     url = "https://github.com/nvim-lua/popup.nvim"
-  },
-  ["project.nvim"] = {
-    loaded = true,
-    path = "/home/owpk/.local/share/nvim/site/pack/packer/start/project.nvim",
-    url = "https://github.com/ahmedkhalf/project.nvim"
   },
   ["registers.nvim"] = {
     loaded = true,
@@ -418,27 +388,17 @@ _G.packer_plugins = {
     path = "/home/owpk/.local/share/nvim/site/pack/packer/start/vim-devicons",
     url = "https://github.com/ryanoasis/vim-devicons"
   },
-  ["vim-gist"] = {
-    loaded = true,
-    path = "/home/owpk/.local/share/nvim/site/pack/packer/start/vim-gist",
-    url = "https://github.com/mattn/vim-gist"
-  },
   ["vim-illuminate"] = {
     loaded = true,
     path = "/home/owpk/.local/share/nvim/site/pack/packer/start/vim-illuminate",
     url = "https://github.com/RRethy/vim-illuminate"
-  },
-  ["webapi-vim"] = {
-    loaded = true,
-    path = "/home/owpk/.local/share/nvim/site/pack/packer/start/webapi-vim",
-    url = "https://github.com/mattn/webapi-vim"
   }
 }
 
 time([[Defining packer_plugins]], false)
 -- Config for: everforest-nvim
 time([[Config for everforest-nvim]], true)
-try_loadstring("\27LJ\2\n8\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\15everforest\frequire\0", "config", "everforest-nvim")
+try_loadstring("\27LJ\2\n^\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1!transparent_background_level\3\n\nsetup\15everforest\frequire\0", "config", "everforest-nvim")
 time([[Config for everforest-nvim]], false)
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]

@@ -41,5 +41,6 @@ __pycache__/
 /.config/zsh/ohmyzsh/cache/
 /.config/ranger/plugins/*
 /.config/sway/user/*
-/.config/zsh/.zcompdump*
 /.config/sway/users/
+/.config/zsh/.zcompdump*
+/.config/zsh/.zsh_history

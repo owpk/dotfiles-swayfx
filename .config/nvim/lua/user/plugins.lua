@@ -61,16 +61,6 @@ return packer.startup(function(use)
   use "SmiteshP/nvim-navic"
   use "simrat39/symbols-outline.nvim"
   use "b0o/SchemaStore.nvim"
-  -- use "github/copilot.vim"
-  --use {
-  --  "zbirenbaum/copilot.lua",
-  --  event = { "VimEnter" },
-  --  config = function()
-  --    vim.defer_fn(function()
-  --      require "user.copilot"
-  --    end, 100)
-  --  end,
-  --}
   use "RRethy/vim-illuminate"
   use "j-hui/fidget.nvim"
   use "lvimuser/lsp-inlayhints.nvim"
@@ -84,11 +74,7 @@ return packer.startup(function(use)
   use "hrsh7th/cmp-cmdline" -- cmdline completions
   use "saadparwaiz1/cmp_luasnip" -- snippet completions
   use "hrsh7th/cmp-nvim-lsp"
-  --use "hrsh7th/cmp-emoji"
   use "hrsh7th/cmp-nvim-lua"
-  --use "zbirenbaum/copilot-cmp"
-  --use { "tzachar/cmp-tabnine", commit = "1a8fd2795e4317fd564da269cc64a2fa17ee854e", 
---run = "./install.sh" }
 
   -- Snippet
   use "L3MON4D3/LuaSnip" --snippet engine
@@ -96,7 +82,7 @@ return packer.startup(function(use)
 
   -- Syntax/Treesitter
   use "nvim-treesitter/nvim-treesitter"
-  use "JoosepAlviste/nvim-ts-context-commentstring"
+  --use "JoosepAlviste/nvim-ts-context-commentstring"
   use "p00f/nvim-ts-rainbow"
   use "nvim-treesitter/playground"
   use "windwp/nvim-ts-autotag"
@@ -118,9 +104,6 @@ return packer.startup(function(use)
   use "nvim-telescope/telescope-media-files.nvim"
   use "tom-anders/telescope-vim-bookmarks.nvim"
 
-  -- Note Taking
-  --use "mickael-menu/zk-nvim"
-
   -- Color
   use "NvChad/nvim-colorizer.lua"
   -- use "ziontee113/color-picker.nvim"
@@ -130,15 +113,10 @@ return packer.startup(function(use)
   use "lunarvim/onedarker.nvim"
   use "lunarvim/darkplus.nvim"
   use "folke/tokyonight.nvim"
-  -- use "lunarvim/colorschemes"
 
   -- Utility
-  --use "rcarriga/nvim-notify"
   use "stevearc/dressing.nvim"
-  --use "ghillb/cybu.nvim"
-  --use "moll/vim-bbye"
   use "lewis6991/impatient.nvim"
-  --use "lalitmee/browse.nvim"
 
   -- Registers
   use "tversteeg/registers.nvim"
@@ -149,36 +127,13 @@ return packer.startup(function(use)
   -- Debugging
   use "mfussenegger/nvim-dap"
   use "rcarriga/nvim-dap-ui"
-  -- use "theHamsta/nvim-dap-virtual-text"
-  -- use "Pocco81/DAPInstall.nvim"
 
-  -- Tabline
-  -- use "akinsho/bufferline.nvim"
-  -- use "tiagovla/scope.nvim"
-
-  -- Statusline
-  --use "christianchiarulli/lualine.nvim"
-
-  -- Startup
-  --use "goolord/alpha-nvim"
 
   -- Indent
   use "lukas-reineke/indent-blankline.nvim"
 
-  -- File Explorer
-  --use "kyazdani42/nvim-tree.lua"
-  --use "christianchiarulli/lir.nvim"
-
-  -- Comment
-  use "numToStr/Comment.nvim"
-  --use "folke/todo-comments.nvim"
-
   -- Terminal
   use "akinsho/toggleterm.nvim"
-
-  -- Project
-  use "ahmedkhalf/project.nvim"
-  --use "windwp/nvim-spectre"
 
   -- Session
   use "rmagatti/auto-session"
@@ -187,32 +142,15 @@ return packer.startup(function(use)
   -- Quickfix
   use "kevinhwang91/nvim-bqf"
 
-  -- Code Runner
-  use "is0n/jaq-nvim"
-  use {
-    "0x100101/lab.nvim",
-    run = "cd js && npm ci",
-  }
-
   -- Git
   use "lewis6991/gitsigns.nvim"
   use "f-person/git-blame.nvim"
-  use "ruifm/gitlinker.nvim"
-  use "mattn/vim-gist"
-  use "mattn/webapi-vim"
 
   -- Github
-  use "pwntester/octo.nvim"
+  --use "pwntester/octo.nvim"
 
   -- Editing Support
   use "windwp/nvim-autopairs"
-  --use "monaqa/dial.nvim"
-  --use "nacro90/numb.nvim"
-  --use "andymass/vim-matchup"
-  --use "folke/zen-mode.nvim"
-  -- use "Pocco81/true-zen.nvim"
-  --use "karb94/neoscroll.nvim"
-  --use "junegunn/vim-slash"
 
   -- Java
   use "mfussenegger/nvim-jdtls"
@@ -227,6 +165,11 @@ return packer.startup(function(use)
     ft = "markdown",
   }
 
+  use {
+      'nvim-lualine/lualine.nvim',
+      requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+  }
+
   use 'preservim/nerdtree'
   use {
     'junegunn/fzf',
@@ -235,13 +178,15 @@ return packer.startup(function(use)
   use 'ryanoasis/vim-devicons'
   use 'cormacrelf/vim-colors-github'
 
-    use({
-      "neanias/everforest-nvim",
-      -- Optional; default configuration will be used if setup isn't called.
-      config = function()
-        require("everforest").setup()
-      end,
-    }) 
+  use({
+    "neanias/everforest-nvim",
+    -- Optional; default configuration will be used if setup isn't called.
+    config = function()
+      require("everforest").setup({
+        transparent_background_level = 10
+	})
+    end,
+  }) 
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

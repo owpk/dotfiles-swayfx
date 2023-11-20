@@ -2,6 +2,7 @@
 set $mod Mod4
 
 # Home row direction keys, like vim
+set $browser yandex-browser-stable
 set $left h
 set $down j
 set $up k
@@ -15,6 +16,7 @@ set $powermenu nwgbar
 set $cheat gedit ~/.config/sway/cheatsheet
 set $filemanager kitty -e ranger
 set $colorpiker grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | wl-copy 
+set $pop-yagpt $browser https://ya.ru/alisa_davay_pridumaem?win=620
 
 # MENU
 set $menu wofi -c ~/.config/wofi/config -I
@@ -86,12 +88,15 @@ bindsym --to-code  {
    $mod+v               layout tabbed
 
    # w
-   $mod+w               exec ~/.config/sway/scripts/chrom.sh
+   $mod+w               exec ~/.config/sway/scripts/browser-search.sh $browser
 
    # y
    $mod+y			    exec  ~/.config/sway/scripts/screenshot.sh
    $mod+Shift+y			exec  ~/.config/sway/scripts/screenshot.sh -g
    $mod+u               exec $colorpiker
+
+    #m
+    $mod+m              exec $pop-yagpt
 }
 
 floating_modifier $mod     normal
