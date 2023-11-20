@@ -18,7 +18,7 @@ dressing.setup {
     insert_only = true,
 
     -- These are passed to nvim_open_win
-    anchor = "SW",
+    --anchor = "SW",
     border = "rounded",
     -- 'editor' and 'win' will default to being centered
     relative = "cursor",
@@ -88,7 +88,7 @@ dressing.setup {
     -- Options for built-in selector
     builtin = {
       -- These are passed to nvim_open_win
-      anchor = "NW",
+      --anchor = "NW",
       border = "rounded",
       -- 'editor' and 'win' will default to being centered
       relative = "editor",

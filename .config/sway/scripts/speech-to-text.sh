@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# REQUIRED audio-recorder PACKAGE (aur)
 # TO GENERATE FREE API KEY VISIT: https://www.assemblyai.com/app/account
 # SET YOUR 'audio-recorder' OUTPUT FILENAME AND FORMAT TO 'rec.mp3'
 
