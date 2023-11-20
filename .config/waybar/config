@@ -4,6 +4,7 @@
     "margin-top": 20,
     "margin-left": 25,
     "margin-right": 25,
+    "height": 38,
 
 
     "modules-left": ["tray", "sway/scratchpad", "custom/launcher", "sway/workspaces", "sway/mode", "sway/window"],

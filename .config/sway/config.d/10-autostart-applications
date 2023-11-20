@@ -12,7 +12,6 @@ exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
 exec hash dbus-update-activation-environment 2>/dev/null && \
      dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
 
-exec ~/.config/eww/scripts/start.sh
 
 # Idle settings
 exec swayidle -w \
@@ -72,13 +71,16 @@ exec {
 
 
 # Status Bars:
+# eww
+#exec ~/.config/eww/scripts/start.sh
 
-# current status bar
+# nwg-pannel
 # exec_always nwg-panel
 exec nm-applet --indicator
 
 # Read `man 5 sway-bar` for more information about this section.
 # comment nwg-panel 
+# waybar
 bar {
-   # swaybar_command waybar
+   swaybar_command waybar
 }
