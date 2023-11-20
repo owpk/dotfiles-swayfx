@@ -1,9 +1,9 @@
 [Default Applications]
-text/html=google-chrome.desktop
-x-scheme-handler/http=google-chrome.desktop
-x-scheme-handler/https=google-chrome.desktop
-x-scheme-handler/about=google-chrome.desktop
-x-scheme-handler/unknown=google-chrome.desktop
+text/html=yandex-browser.desktop
+x-scheme-handler/http=yandex-browser.desktop
+x-scheme-handler/https=yandex-browser.desktop
+x-scheme-handler/about=yandex-browser.desktop
+x-scheme-handler/unknown=yandex-browser.desktop
 x-scheme-handler/jetbrains=jetbrains-toolbox.desktop
 x-scheme-handler/eclipse+command=_usr_lib_dbeaver_.desktop
 x-scheme-handler/notion=notion-app.desktop
@@ -12,3 +12,5 @@ text/plain=code.desktop
 
 [Added Associations]
 text/plain=nvim.desktop;vim.desktop;code.desktop;
+audio/vnd.wave=mpv.desktop;
+audio/mpeg=org.gnome.Rhythmbox3.desktop;mpv.desktop;

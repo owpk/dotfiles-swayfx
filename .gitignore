@@ -42,3 +42,4 @@ __pycache__/
 /.config/ranger/plugins/*
 /.config/sway/user/*
 /.config/zsh/.zcompdump*
+/.config/zsh/.zsh_history
