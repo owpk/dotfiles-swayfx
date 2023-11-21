@@ -7,7 +7,7 @@
 
 
     "modules-left": ["tray", "sway/scratchpad", "custom/launcher", "sway/workspaces", "sway/mode", "sway/window"],
-    "modules-center": ["custom/weather", "custom/stub", "clock", "custom/stub", "custom/vnc", "custom/playerctl"],
+    "modules-center": ["custom/weather", "custom/stub", "clock", "custom/stub", "custom/vnc", "custom/waybar-mpris"],
     "modules-right": ["sway/language", "custom/stub","backlight", "custom/stub","memory", "custom/stub","battery", "custom/stub","network", "custom/stub","pulseaudio", "custom/power"],
 
     "sway/mode": {
@@ -49,17 +49,38 @@
     },
 
     "mpris": {
-	    "format": ": {player_icon} {dynamic}",
-	    "format-paused": ": {status_icon} <i>{dynamic}</i>",
+	    "format": ": {player_icon}  {status_icon} {dynamic}",
+	    "format-paused": ": {player_icon}  {status_icon} <i>{dynamic}</i>",
 	    "player-icons": {
 	    	"default": "▶",
-	    	"mpv": "🎵"
+	    	"mpv": "🎵",
+            "chromium": "爵",
+            "default": "",
+            "firefox": "",
+            "kdeconnect": "",
+            "mopidy": "",
+            "mpv": "",
+            "spotify": "阮"
 	    },
-        "dynamic-len": 10,
+
+        "dynamic-len": 30,
 	    "status-icons": {
-	    	"paused": "⏸"
+            "paused": "⏸",
+            "playing": "▶",
+            "stopped": "栗"
 	    },
 	    // "ignored-players": ["firefox"]
+    },
+
+    "custom/waybar-mpris": {
+        "return-type": "json",
+        "exec": "waybar-mpris --position --autofocus --interpolate --order 'SYMBOL:ARTIST:ALBUM:TITLE'",
+        "format": ": {}",
+        "max-length": 20,
+        "on-click": "waybar-mpris --send toggle",
+        // This option will switch between players on right click.
+            "on-click-right": "waybar-mpris --send player-next",
+        "escape": true,
     },
 
     "custom/spotify": {
