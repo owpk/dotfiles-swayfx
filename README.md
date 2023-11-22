@@ -98,6 +98,7 @@ sudo aura -A wlsunset
 sudo aura -A sworkstyle
 sudo aura -A azote
 sudo aura -A audio-recorder
+sudo aura -A waybar-mpris-git 
 ```
 ---
 (Optional) install ranger devicons
