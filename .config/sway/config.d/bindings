@@ -69,7 +69,7 @@ bindsym --to-code  {
    $mod+n               exec $filemanager
 
    #o
-   $mod+o               exec ~/.config/sway/scripts/speech-to-text.sh
+   $mod+o               exec ~/.config/sway/scripts/audio-record-to-text.sh
    $mod+Shift+o         exec audio-recorder -c stop
 
    # p
