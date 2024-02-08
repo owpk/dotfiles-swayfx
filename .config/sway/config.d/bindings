@@ -2,7 +2,7 @@
 set $mod Mod4
 
 # Home row direction keys, like vim
-set $browser yandex-browser-stable
+set $browser google-chrome-stable
 set $left h
 set $down j
 set $up k
