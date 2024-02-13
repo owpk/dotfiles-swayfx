@@ -2,11 +2,11 @@
 set $mod Mod4
 
 # Home row direction keys, like vim
-set $browser google-chrome-stable
 set $left h
 set $down j
 set $up k
 set $right l
+set $browser $(~/.config/sway/scripts/get-default-browser.sh)
 set $help ~/.config/sway/scripts/swaykeyhints -h 100 -w 200 | wofi -d
 set $term alacritty
 set $term-float floating $term
@@ -16,7 +16,7 @@ set $powermenu nwgbar
 set $cheat gedit ~/.config/sway/cheatsheet
 set $filemanager kitty -e ranger
 set $colorpiker grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | wl-copy 
-set $pop-yagpt $browser https://ya.ru/alisa_davay_pridumaem?win=620
+set $yagpt  https://ya.ru/alisa_davay_pridumaem?win=620
 
 # MENU
 set $menu wofi -c ~/.config/wofi/config -I
@@ -52,7 +52,7 @@ bindsym --to-code  {
 
    # d
    $mod+d               exec $menu
-   $mod+Shift+d         exec $launcher
+   $mod+Shift+d         exec wofi --dmenu | xargs -I{} xdg-open https://www.google.com/search\?q\=\{\}
 
    # e
    $mod+e               exec ~/.config/sway/scripts/translate.sh ru
@@ -88,7 +88,7 @@ bindsym --to-code  {
    $mod+v               layout tabbed
 
    # w
-   $mod+w               exec ~/.config/sway/scripts/browser-search.sh $browser
+   $mod+w               exec ~/.config/sway/scripts/browser-search.sh 
 
    # y
    $mod+y			    exec  ~/.config/sway/scripts/screenshot.sh
@@ -96,7 +96,7 @@ bindsym --to-code  {
    $mod+u               exec $colorpiker
 
     #m
-    $mod+m              exec $pop-yagpt
+    $mod+m              exec $browser $yagpt
 }
 
 floating_modifier $mod     normal

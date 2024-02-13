@@ -2,4 +2,4 @@
 
 url=$(wl-paste)
 srch="? ${url}"
-$1 "$srch"
+"$HOME/.config/sway/scripts/get-default-browser.sh" "$srch"
