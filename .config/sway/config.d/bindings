@@ -52,7 +52,7 @@ bindsym --to-code  {
 
    # d
    $mod+d               exec $menu
-   $mod+Shift+d         exec wofi --dmenu | xargs -I{} xdg-open https://www.google.com/search\?q\=\{\}
+   $mod+Shift+d         exec wofi --dmenu --height 100 --width 700 | xargs -I{} xdg-open https://www.google.com/search\?q\=\{\}
 
    # e
    $mod+e               exec ~/.config/sway/scripts/translate.sh ru
@@ -88,7 +88,7 @@ bindsym --to-code  {
    $mod+v               layout tabbed
 
    # w
-   $mod+w               exec ~/.config/sway/scripts/browser-search.sh 
+   $mod+w               exec ~/.config/sway/scripts/browser-search.sh
 
    # y
    $mod+y			    exec  ~/.config/sway/scripts/screenshot.sh
