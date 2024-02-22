@@ -78,7 +78,7 @@ alias jhelp="java -jar ~/gh/spar/jenkins-cli.jar -s http://jenkins.ctmol.ru/ -au
 alias idea="$HOME/.local/share/JetBrains/Toolbox/scripts/idea $@"
 alias fleet="$HOME/.local/share/JetBrains/Toolbox/scripts/fleet $@"
 alias pycharm="$HOME/.local/share/JetBrains/Toolbox/scripts/pycharm $@"
-
+alias gch="gigachat chat "$@""
 
 # The next line updates PATH for Yandex Cloud CLI.
 if [ -f '/home/owpk/yandex-cloud/path.bash.inc' ]; then source '/home/owpk/yandex-cloud/path.bash.inc'; fi

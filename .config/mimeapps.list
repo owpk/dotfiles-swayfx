@@ -19,6 +19,7 @@ application/x-extension-ics=userapp-Thunderbird-JSJCF2.desktop
 x-scheme-handler/webcals=userapp-Thunderbird-JSJCF2.desktop
 application/json=vim.desktop
 application/x-zerosize=vim.desktop
+x-scheme-handler/postman=Postman.desktop
 
 [Added Associations]
 text/plain=nvim.desktop;vim.desktop;code.desktop;
