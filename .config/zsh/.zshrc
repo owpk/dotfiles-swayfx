@@ -88,3 +88,6 @@ if [ -f '/home/owpk/yandex-cloud/completion.zsh.inc' ]; then source '/home/owpk/
 
 
 export PATH="/home/owpk/.assemblyai-cli:$PATH"
+
+# Created by `pipx` on 2024-02-17 21:17:40
+export PATH="$PATH:/home/owpk/.local/bin"
