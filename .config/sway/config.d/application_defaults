@@ -41,7 +41,7 @@ for_window [shell="x_wayland"] title_format "%class - %title"
 
 
 assign [class="idea"]                   1
-assign [class="google-chrome-stable"]   2
+assign [app_id="google-chrome"]   2
 assign [class="Spotify"]                3
 assign [app_id="org.telegram.desktop"]  3
 assign [class="Steam"]                  4
