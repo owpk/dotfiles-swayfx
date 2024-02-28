@@ -30,8 +30,6 @@
 !/.config/electron18-flags.conf
 !/.config/electron20-flags.conf
 !/.config/electron-flags.conf
-!/.config/mimeapps.list
-!/.config/QtProject.conf
 !/.config/user-dirs.dirs
 !/.config/user-dirs.locale
 
