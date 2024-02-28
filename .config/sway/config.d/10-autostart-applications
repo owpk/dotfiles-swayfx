@@ -31,7 +31,7 @@ exec "avizo-client --time=1"
 # exec python3 ~/.config/sway/scripts/swayfader.py
 
 # Autotiling
-exec autotiling-rs
+# exec autotiling-rs
 
 
 # Gnome Keyring
