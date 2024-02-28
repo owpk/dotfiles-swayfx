@@ -29,7 +29,11 @@ while [[ $# -gt 0 ]]; do
       shift
       shift 
       ;;
-
+    -f|--file)
+      AUDIO_RECORD_FILE="$2"
+      shift 
+      shift 
+      ;;
     -d|--debug)
       DEBUG="1"
       shift 
@@ -53,25 +57,10 @@ debug() {
     if [ $DEBUG = "1" ]; then echo $1; fi
 }
 
-audio-recorder -c start
-audio-recorder --show-icon=1
-
-r_status() {
-    R_STATUS="$(audio-recorder -c status)"
-    debug "Recoring status: $R_STATUS"
+notifyTransciptionStatus() {
+    notify-send -t 3000 "Speech transciption status:" $1
 }
 
-r_status
-
-while [ "$R_STATUS" != "on" ]; do r_status; done
-
-while [ "$R_STATUS" != "off" ]
-do 
-    r_status
-    if [ "$R_STATUS" = "not running" ]; then exit 1; fi
-done
-
-audio-recorder -c hide
 notifyTransciptionStatus "executing..."
 
 UPLOAD_URL=$($CURL -X POST -F "data=@$AUDIO_RECORD_FILE" -H "Content-Type: multipart/form-data" -H "Authorization: $API_KEY" "$API_HOST/upload" | jq -r '.[]')
@@ -83,10 +72,6 @@ debug "Current transaction id: $TRANSCRIPT_ID"
 POLLING_STATUS="undefined"
 
 POLLING_ENDPOINT="$API_HOST/transcript/$TRANSCRIPT_ID"
-
-notifyTransciptionStatus() {
-    notify-send -t 3000 "Speech transciption status:" $1
-}
 
 while [ $POLLING_STATUS != "completed" ]
 do

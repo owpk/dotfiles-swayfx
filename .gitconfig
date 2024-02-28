@@ -4,7 +4,7 @@
 [core]
 	editor = vim
 [alias]
-   logline = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    logline = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	a = add --all
 	ai = add -i
 	#############
@@ -63,7 +63,10 @@
 	g = grep -p
 	#############
 	l = log --oneline
-   lg = log --oneline --graph --decorate --all
+    lg1 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)' --all
+    lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
+    lg3 = log --oneline --graph --decorate --all
+    lg = lg1
 	#############
 	ls = ls-files
 	lsf = !git ls-files | grep -i
@@ -210,7 +213,11 @@
 	required = true
 [github]
 	user = owpk
-[credential]
-	helper = cache --timeout=3600
 [protocol "file"]
 	allow = always
+[credential "https://github.com"]
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = !/usr/bin/gh auth git-credential
+[pull]
+	rebase = false

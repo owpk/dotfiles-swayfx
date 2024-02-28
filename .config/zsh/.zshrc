@@ -70,6 +70,10 @@ export SDKMAN_DIR="$HOME/.sdkman"
 # BINDINGS
 bindkey '^ ' autosuggest-accept
 
+function gigaglow() {
+    gigachat $@ | glow -w 80
+}
+
 # must be here
 alias lls="ls -la --group-directories-first -h -S"
 alias ll="ls -la --group-directories-first -h"
@@ -78,7 +82,7 @@ alias jhelp="java -jar ~/gh/spar/jenkins-cli.jar -s http://jenkins.ctmol.ru/ -au
 alias idea="$HOME/.local/share/JetBrains/Toolbox/scripts/idea $@"
 alias fleet="$HOME/.local/share/JetBrains/Toolbox/scripts/fleet $@"
 alias pycharm="$HOME/.local/share/JetBrains/Toolbox/scripts/pycharm $@"
-
+alias giga=gigaglow
 
 # The next line updates PATH for Yandex Cloud CLI.
 if [ -f '/home/owpk/yandex-cloud/path.bash.inc' ]; then source '/home/owpk/yandex-cloud/path.bash.inc'; fi
