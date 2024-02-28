@@ -10,6 +10,7 @@ set $browser $(~/.config/sway/scripts/get-default-browser.sh)
 set $help ~/.config/sway/scripts/swaykeyhints -h 100 -w 200 | wofi -d
 set $term alacritty
 set $term-float floating $term
+set $term-exec -e
 set $term-working-dir $term --working-directory=$( swaymsg -r -t get_tree | jq '.. | (.nodes? // empty)[] | select(.focused == true).pid? // empty' | xargs pstree -p | grep "\<tmux\>\|\<fish\>\|\<bash\>\|\<zsh\>\|\<sh\>" | grep -o '[1-9]*' | xargs pwdx 2> /dev/null | cut -f2- -d' ' | sort | tail -n 1 | tr -d '\n')
 set $launcher nwggrid
 set $powermenu nwgbar
@@ -17,6 +18,7 @@ set $cheat gedit ~/.config/sway/cheatsheet
 set $filemanager kitty -e ranger
 set $colorpiker grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | wl-copy 
 set $yagpt  https://ya.ru/alisa_davay_pridumaem?win=620
+set $search_prompt wofi -c ~/.config/wofi/config.screenshot --dmenu
 
 # MENU
 set $menu wofi -c ~/.config/wofi/config -I
@@ -48,13 +50,13 @@ bindsym --to-code  {
    $mod+a               focus parent
 
    # b
-   # bindsym --to-code  $mod+b           splith
+   # $mod+b           splith
 
    # d
    $mod+d               exec $menu
-   $mod+Shift+d         exec wofi -c ~/.config/wofi/config.screenshot --dmenu | xargs -I{} xdg-open https://www.google.com/search\?q\=\{\}
-
-   # e
+   $mod+Shift+d         exec $search_prompt | xargs -I{} xdg-open https://www.google.com/search\?q\=\{\}
+  
+   
    $mod+e               exec ~/.config/sway/scripts/translate.sh ru
    $mod+Shift+e         exec ~/.config/sway/scripts/translate.sh en
 
@@ -89,7 +91,7 @@ bindsym --to-code  {
 
    # w
    $mod+w               exec ~/.config/sway/scripts/browser-search.sh
-
+   $mod+Shift+w         exec $search_prompt | xargs -I{} $term $term-exec bash -c 'gigachat {} | glow -w 80 && zsh'
    # y
    $mod+y			    exec  ~/.config/sway/scripts/screenshot.sh
    $mod+Shift+y			exec  ~/.config/sway/scripts/screenshot.sh -g
