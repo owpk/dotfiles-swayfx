@@ -20,6 +20,8 @@ exec swayidle -w \
 
 # sound / bright change notifier daemon
 exec "avizo-service"
+exec "avizo-client --time=1"
+# exec ~/.config/sway/scripts/autoname-workspace.sh
 
 # Wob (replaced by avizo)
 # exec mkfifo $SWAYSOCK.wob
@@ -29,7 +31,7 @@ exec "avizo-service"
 # exec python3 ~/.config/sway/scripts/swayfader.py
 
 # Autotiling
-# exec autotiling
+# exec autotiling-rs
 
 
 # Gnome Keyring

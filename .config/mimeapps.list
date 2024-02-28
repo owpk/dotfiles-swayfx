@@ -1,16 +1,35 @@
 [Default Applications]
-text/html=yandex-browser.desktop
-x-scheme-handler/http=yandex-browser.desktop
-x-scheme-handler/https=yandex-browser.desktop
-x-scheme-handler/about=yandex-browser.desktop
-x-scheme-handler/unknown=yandex-browser.desktop
+text/html=google-chrome.desktop
+x-scheme-handler/http=google-chrome.desktop
+x-scheme-handler/https=google-chrome.desktop
+x-scheme-handler/about=google-chrome.desktop
+x-scheme-handler/unknown=google-chrome.desktop
 x-scheme-handler/jetbrains=jetbrains-toolbox.desktop
 x-scheme-handler/eclipse+command=_usr_lib_dbeaver_.desktop
 x-scheme-handler/notion=notion-app.desktop
 x-scheme-handler/gitkraken=GitKraken.desktop
 text/plain=code.desktop
+x-scheme-handler/fleet=jetbrains-fleet.desktop
+x-scheme-handler/mailto=userapp-Thunderbird-6L98E2.desktop
+message/rfc822=userapp-Thunderbird-6L98E2.desktop
+x-scheme-handler/mid=userapp-Thunderbird-6L98E2.desktop
+x-scheme-handler/webcal=userapp-Thunderbird-JSJCF2.desktop
+text/calendar=userapp-Thunderbird-JSJCF2.desktop
+application/x-extension-ics=userapp-Thunderbird-JSJCF2.desktop
+x-scheme-handler/webcals=userapp-Thunderbird-JSJCF2.desktop
+application/json=vim.desktop
+application/x-zerosize=vim.desktop
+x-scheme-handler/postman=Postman.desktop
 
 [Added Associations]
 text/plain=nvim.desktop;vim.desktop;code.desktop;
 audio/vnd.wave=mpv.desktop;
 audio/mpeg=org.gnome.Rhythmbox3.desktop;mpv.desktop;
+text/csv=libreoffice-impress.desktop;libreoffice-writer.desktop;chrome-fhihpiojkbmbpdjeoajapmgkhlnakfjf-Default.desktop;
+x-scheme-handler/mailto=userapp-Thunderbird-6L98E2.desktop;
+x-scheme-handler/mid=userapp-Thunderbird-6L98E2.desktop;
+x-scheme-handler/webcal=userapp-Thunderbird-JSJCF2.desktop;
+x-scheme-handler/webcals=userapp-Thunderbird-JSJCF2.desktop;
+text/html=vim.desktop;google-chrome.desktop;
+application/json=vim.desktop;
+application/x-zerosize=vim.desktop;
