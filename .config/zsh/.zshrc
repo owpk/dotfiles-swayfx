@@ -74,8 +74,8 @@ function gigaglow() {
 }
 
 # must be here
-alias lls="ls -la --group-directories-first -h -S"
-alias ll="ls -la --group-directories-first -h"
+alias lls="ls -la --color=auto --group-directories-first -h -S"
+alias ll="ls -la --color=auto --group-directories-first -h"
 alias vim="nvim"
 alias jhelp="java -jar ~/gh/spar/jenkins-cli.jar -s http://jenkins.ctmol.ru/ -auth owpk:116a1bd02b33b7436257c0701c99beb08c build JOB $@"
 alias idea="$HOME/.local/share/JetBrains/Toolbox/scripts/idea $@"
@@ -91,3 +91,6 @@ if [ -f '/home/owpk/yandex-cloud/completion.zsh.inc' ]; then source '/home/owpk/
 
 
 export PATH="/home/owpk/.assemblyai-cli:$PATH"
+
+# To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
+[[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh

@@ -1,4 +1,0 @@
-import:
-  # current theme
-  - ~/.config/alacritty/themes/everforest_dark.yml
-  - ~/.config/alacritty/main.yml
