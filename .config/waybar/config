@@ -6,9 +6,9 @@
     "margin-right": 25,
 
 
-    "modules-left": ["tray", "sway/scratchpad", "custom/launcher", "sway/workspaces", "sway/mode", "sway/window"],
-    "modules-center": ["custom/weather", "custom/stub", "clock", "custom/stub", "custom/vnc", "custom/waybar-mpris"],
-    "modules-right": ["sway/language", "custom/stub","backlight", "custom/stub","memory", "custom/stub","battery", "custom/stub","network", "custom/stub","pulseaudio", "custom/power"],
+    "modules-left": ["tray", "sway/scratchpad", "custom/launcher", "sway/workspaces", "sway/window"],
+    "modules-center": ["custom/weather", "custom/stub", "custom/waybar-mpris", "custom/stub", "clock"],
+    "modules-right": ["sway/language", "custom/stub","backlight", "custom/stub","memory", "custom/stub", "battery", "custom/stub", "pulseaudio"],
 
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
@@ -49,8 +49,8 @@
     },
 
     "mpris": {
-	    "format": ": {player_icon}  {status_icon} {dynamic}",
-	    "format-paused": ": {player_icon}  {status_icon} <i>{dynamic}</i>",
+	    "format": "{player_icon}  {status_icon} {dynamic}",
+	    "format-paused": "{player_icon}  {status_icon} <i>{dynamic}</i>",
 	    "player-icons": {
 	    	"default": "▶",
 	    	"mpv": "🎵",
@@ -75,11 +75,11 @@
     "custom/waybar-mpris": {
         "return-type": "json",
         "exec": "waybar-mpris --position --autofocus --interpolate --order 'SYMBOL:ARTIST:ALBUM:TITLE'",
-        "format": ": {}",
+        "format": "{}",
         "max-length": 20,
         "on-click": "waybar-mpris --send toggle",
         // This option will switch between players on right click.
-            "on-click-right": "waybar-mpris --send player-next",
+        "on-click-right": "waybar-mpris --send player-next",
         "escape": true,
     },
 
@@ -124,8 +124,8 @@
     },
 
     "clock": {
-        "format": " {:%a %d %b  %H:%M}",	//24 hour format
-        "format-alt": " {:%d/%m/%Y  %H:%M:%S}",
+        "format": "{:%d %b %H:%M}",	//24 hour format
+        "format-alt": "  {:%a %d %b  %H:%M}",
         "tooltip-format": "<big>{:%B %Y}</big>\n<tt>{calendar}</tt>",
         "interval": 1
     },

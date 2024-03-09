@@ -9,23 +9,26 @@
     font-size: 14px;
 }
 
-#window {
-   color: @font;
+.modules-right, .modules-center {
+    background: @theme_bg_color;
+    border-radius: 15px;
+    padding: 7px;
 }
 
 window#waybar {
-    background: alpha(@theme_bg_color, 0.8);
+    background: transparent;
     transition-property: background-color;
     transition-duration: .5s;
 }
 
-.modules-right, .modules-center {
-    background: @theme_bg_color;
-    border-radius: 15px;
+#workspaces, #window {
+    background: alpha(@theme_bg_color, 0.8);
 }
 
-.modules-center {
-    padding: 7px;
+#window {
+    border-radius: 0 15 15 0;
+    padding-right: 15px;
+    color: @font;
 }
 
 #workspaces button {
