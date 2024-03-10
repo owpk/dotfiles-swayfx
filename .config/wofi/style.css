@@ -22,7 +22,7 @@
 
 #entry {
    border-radius: 5px;
-   padding: 5px 5px 5px 5px;
+   padding: 5px;
    margin: 0px 4px 0px 4px;
 }
 
@@ -32,9 +32,10 @@
 }
 
 #entry:selected {
-   color: @base0D;
-   background-color: @base0H;
-   padding: 7px;
+   /*color: @base0D;*/
+   background-color: alpha(@base0H, 0.6);
+   padding: 5px;
+   color: @base0H;
 }
 
 #text:selected {
@@ -66,7 +67,7 @@
 
 #outer-box {
    border-radius: 10px;
-   border: 5px solid @base0G;
+   /*border: 5px solid @base0G;*/
    padding: 5px;
 }
 
