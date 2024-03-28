@@ -41,7 +41,7 @@ save_to_clipboard = true
 semantic_escape_chars = ",│`|:\"' ()[]{}<>"
 
 [window]
-opacity = 0.9
+opacity = 0.8
 
 [window.padding]
 x = 10

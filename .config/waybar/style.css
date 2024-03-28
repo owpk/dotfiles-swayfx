@@ -10,19 +10,19 @@
 }
 
 .modules-right, .modules-center {
-    background: @theme_bg_color;
+    /*background: @theme_bg_color;*/
     border-radius: 15px;
     padding: 7px;
 }
 
 window#waybar {
-    background: transparent;
+    background: alpha(@theme_bg_color, 0.3);
     transition-property: background-color;
     transition-duration: .5s;
 }
 
 #workspaces, #window {
-    background: alpha(@theme_bg_color, 0.8);
+    /*background: alpha(@theme_bg_color, 0.8);*/
 }
 
 #window {
@@ -162,9 +162,10 @@ window#waybar {
 }
 
 #custom-launcher, #scratchpad, #tray {
-    background-color: @theme_selected_bg_color;
+    /*background-color: @theme_selected_bg_color;*/
+    background-color: @theme_bg_color;
     border-style: hidden;
-    color: @bg;
+    color: @font;
     font-size: 13px;
 }
 

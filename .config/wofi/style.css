@@ -45,7 +45,7 @@
 #window {
    animation-name: fadeIn;
    animation-duration: 0.4s;
-   background-color: alpha(@theme_bg_color, 0.8);
+   background-color: alpha(@theme_bg_color, 0.6);
    font-family: Hack;
 /* font-size:14; */
 }

@@ -1,5 +1,5 @@
 # waybar blur
-layer_effects "waybar" blur disable; shadows disable; corner_radius 15
+layer_effects "waybar" blur enable; shadows disable;
 layer_effects "gtk-layer-shell" blur enable; shadows enable; corner_radius 13
 layer_effects "wofi" blur enable; shadows enable; corner_radius 13
 
@@ -12,5 +12,5 @@ shadow_blur_radius 20
 ## blur
 blur enable
 blur_xray disable
-blur_passes 3
-blur_radius 2
+blur_passes 4
+blur_radius 4
