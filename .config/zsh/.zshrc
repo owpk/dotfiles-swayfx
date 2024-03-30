@@ -6,6 +6,10 @@ function diskUsage() {
     du --max-depth=1 -h $@ | sort -hr
 }
 
+function enhancd() {
+    cd $@ && ls -la --color
+}
+
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
@@ -82,6 +86,7 @@ alias idea="$HOME/.local/share/JetBrains/Toolbox/scripts/idea $@"
 alias fleet="$HOME/.local/share/JetBrains/Toolbox/scripts/fleet $@"
 alias pycharm="$HOME/.local/share/JetBrains/Toolbox/scripts/pycharm $@"
 alias giga=gigaglow
+alias cd=enhancd
 
 # The next line updates PATH for Yandex Cloud CLI.
 if [ -f '/home/owpk/yandex-cloud/path.bash.inc' ]; then source '/home/owpk/yandex-cloud/path.bash.inc'; fi
