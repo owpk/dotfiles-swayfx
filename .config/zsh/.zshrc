@@ -78,8 +78,8 @@ function gigaglow() {
 }
 
 # must be here
-alias lls="ls -la --color=auto --group-directories-first -h -S"
-alias ll="ls -la --color=auto --group-directories-first -h"
+alias lls="ls -la --color=auto -h -S"
+alias ll="ls -la --color=auto -h"
 alias vim="nvim"
 alias jhelp="java -jar ~/gh/spar/jenkins-cli.jar -s http://jenkins.ctmol.ru/ -auth owpk:116a1bd02b33b7436257c0701c99beb08c build JOB $@"
 alias idea="$HOME/.local/share/JetBrains/Toolbox/scripts/idea $@"

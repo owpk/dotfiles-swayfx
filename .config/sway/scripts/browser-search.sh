@@ -1,5 +1,5 @@
 #!/bin/bash
 
-url=$(wl-paste)
-srch="? ${url}"
-$($HOME/.config/sway/scripts/get-default-browser.sh) "$srch"
+url=$(pbpaste)
+srch="https://google.com/search?q=${url}"
+$(open "$srch")

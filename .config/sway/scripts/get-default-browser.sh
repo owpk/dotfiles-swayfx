@@ -1,6 +1,6 @@
-#!/usr/bin/sh
+#!/bin/bash
 
-DEFAULT_BROWSER=$(xdg-settings get default-web-browser)
+DEFAULT_BROWSER=$(defaultbrowser)
 
 for p in ${XDG_DATA_DIRS//:/ }; do 
     APP_PATH="$p/applications"
