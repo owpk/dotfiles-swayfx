@@ -1,0 +1,22 @@
+* {
+    all: unset;
+}
+
+window {
+    color: $fg;
+    font-family: "Iosevka Nerd Font";
+}
+
+button:hover {
+    color: $accent;
+}
+
+.eww-bar {
+    background-color: $bg;
+    border-radius: 8px;
+}
+
+.separator {
+    background-color: $bg;
+    color: $black;
+}

@@ -1,0 +1,203 @@
+(defwidget launcher []
+    (box :class "launcher" :orientation "h" :space-evenly "false"
+        (button :tooltip "Dashboard" :class "launcher-btn" :onclick "sh ./scripts/openSysTray.sh" "")
+    )
+)
+
+(defwidget terminal []
+    (box :class "terminal" :orientation "h" :space-evenly "false"
+        (button :tooltip "Spawn: ${terminal}" :class "terminal-btn" :onclick "notify-send 'Spawning ${terminal}' ; ${terminal} &" "")
+    )
+)
+
+(defwidget chat []
+    (box :class "chat" :orientation "h" :space-evenly "false"
+        (button :tooltip "Spawn: ${chat}" :class "chat-btn" :onclick "notify-send 'Spawning ${chat}' ; ${chat} &" "ﭮ")
+    )
+)
+
+(defwidget browser []
+    (box :class "browser" :orientation "h" :space-evenly "false"
+        (button :tooltip "Spawn: ${browser}" :class "browser-btn" :onclick "notify-send 'Spawning ${browser}' ; ${browser} &" "")
+    )
+)
+
+(defwidget rofi []
+    (box :class "rofi" :orientation "h" :space-evenly "false"
+        (button :tooltip "Launch Apps" :class "rofi-btn" :onclick "notify-send 'Spawning ${rofi}' ; ${rofi} &" "異")
+    )
+)
+
+(defwidget workspaces []
+    (literal :content workspace))
+(deflisten workspace "scripts/getWorkspaces")
+
+(defwidget vpn []
+    (literal :content vpn))
+(defpoll vpn :interval "1s" "scripts/getVpn")
+
+(defwidget vpn-popup []
+  (box :class "vpn-popup" :orientation "h"
+    (box :orientation "h" :valign "center"
+      (label :class "title" :text "VPN")
+      (label :class class :text ip)
+    ))
+)
+(defpoll ip :interval "1s" "scripts/getVpn get")
+(defpoll class :interval "1s" "scripts/getVpn get-class")
+
+(defwidget power []
+    (eventbox :onhover "${eww} update power=true" :onhoverlost "${eww} update power=false" 
+        (box :orientation "h" :space-evenly "false" :vexpand "false" :class "powermenu"
+            (revealer :transition "slideup"
+                :reveal power
+                :duration "600ms"
+	            (box :orientation "h" :space-evenly "false"
+                    (button	:class "shutdown-btn" :tooltip "Shutdown" :onclick "systemctl poweroff" "")))
+            (button	:class "power-btn" :tooltip "Manage power" :onclick "$HOME/.local/bin/notifcntr" ""))))
+(defvar power false)
+
+(defwidget time []
+    (box :orientation "h"
+        :class "time" 
+        :valign "end"
+        (button	:onclick "sh scripts/openCalendar.sh"	
+            :class "time-hour" hour)
+        (button	:onclick "sh scripts/openCalendar.sh"	
+            :class "time-min"  minute)
+    )
+)
+
+(defwidget separator [] 
+    (box :orientation "h"
+        (label :class "separator" :text "———")
+    )
+)
+
+(defwidget cal []
+    (box :class "cal-box" :orientation "h"
+        (calendar :class "cal" :day calendar_day :month calendar_month :year calendar_year)
+    )
+)
+
+(defwidget sys-tray []
+    (box :class "sys-tray-box" :orientation "h"
+        (box :class "first-row" :orientation "h"
+            (box :class "sys-tray-box-left" :orientation "h" :space-evenly "false"
+                (box :class "network" :orientation "h" :space-evenly "false"
+                    (box :orientation "h" :space-evenly "false"
+                        (label :class "title" :text "Connected to")
+                    )
+                    (label :class "ssid" :text "${network-name}")
+                )
+                (box :class "date" :orientation "h" :space-evenly "false"
+                    (box :orientation "h" :space-evenly "false"
+                        (label :class "weekday" :text "${weekday}")
+                    )
+                    (label :class "monthday" :text "${monthday}")
+                )
+            )
+            (box :class "sys-tray-box-right" :orientation "h" :space-evenly "false"
+                (box :class "ram" :orientation "h"
+                    (circular-progress :class "ram-progress"
+                        :value used_ram
+                        :thickness 6
+                        :clockwise "true"
+                        :tooltip "Used RAM: ${used_ram}%" 
+                        ; :onchange "amixer -D pulse sset Master {}%"
+                        (label :class "ram-icon" :text "")
+                    )
+                )
+            )
+        )
+        (box :class "second-row" :orientation "h"
+            (box :class "music-player" :orientation "h" :space-evenly "false"
+                (box :class "song-art" :style "background-image: url('${art}')" :tooltip "${song_artist} - ${song_title_full}" song_art
+                    (box :class "music-info" :orientation "h" :space-evenly "false"
+                        (box :class "np" :orientation "h" :space-evenly "false"
+                            (label :class "now-playing" :text "Now Playing")
+                        )
+                        (box :class "title" :orientation "h" :space-evenly "false"
+                            (label :class "song-title" :text song_title)
+                        )
+                        (box :class "artist" :orientation "h" :space-evenly "false"
+                            (label :class "song-artist" :text "by ${song_artist}")
+                        )
+                    )
+                )
+                (box :class "song-controls" :orientation "h"
+                    (button :onclick "playerctl next" "")
+                    (button :class "play-pause" :onclick "playerctl play-pause" player_status)
+                    (button :onclick "playerctl previous" "")
+                )
+            )
+        )
+        (box :class "third-row" :orientation "h" :space-evenly "false"
+            (box :class "system-info" :orientation "h" :space-evenly "false"
+                (box :class "volume" :orientation "h" :space-evenly "false"
+                    (label :class "volume-icon" :text "")
+                    (scale :min 0
+                        :max 101
+                        :value volume
+                        :orientation "h"
+                        :tooltip "Volume: ${volume}%"
+                        :onchange "amixer -D pulse sset Master {}%"
+                        :class "volbar"
+                    )
+                )
+                (box :class "brightness" :orientation "h" :space-evenly "false"
+                    (label :class "brightness-icon" :text "")
+                    (scale :min 0
+                        :max 101
+                        :value brightness
+                        :orientation "h"
+                        :tooltip "Brightness: ${brightness}%"
+                        :onchange "brightnessctl set {}%"
+                        :class "bribar"
+                    )
+                )
+                (box :class "mic" :orientation "h" :space-evenly "false"
+                    (label :class "mic-icon" :text "")
+                    (scale :min 0
+                        :max 101
+                        :value micro
+                        :orientation "h"
+                        :tooltip "Microphone Volume: ${micro}%"
+                        :onchange "amixer -D pulse sset Capture {}%"
+                        :class "micbar"
+                    )
+                )
+            )
+        )
+    )
+)
+
+;; BAR IS SEPARATED INTO THREE PARTS: TOP, CENTER AND BOTTOM
+;; TOP WIDGETS
+(defwidget top []
+    (box :class "top" :orientation "h" :space-evenly "false" :valign "start"
+(launcher)
+(browser)
+(terminal)
+(chat)
+(rofi)))
+
+;; CENTER WIDGETS
+(defwidget center []
+    (box :orientation "h" :space-evenly "false" :valign "center"
+(workspaces)))
+
+;; BOTTOM WIDGETS
+(defwidget bottom []
+    (box :orientation "h" :space-evenly "false" :valign "end"
+(vpn)
+(separator)
+(time)
+(separator)
+(power)))
+
+(defwidget bar []
+    (box :class "eww-bar" :orientation "h" :valign "false" :halign "false"
+(top)
+(center)
+(bottom)))

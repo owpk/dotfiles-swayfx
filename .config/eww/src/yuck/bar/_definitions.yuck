@@ -1,0 +1,33 @@
+(defwindow bar
+    :geometry (geometry :x "20px"
+                        :y "20px" 
+                        :width "97%"
+                        :height "70px" 
+                        :anchor "top left")
+    :monitor 0
+    :stacking "fg"
+    :windowtype "dock"
+    :wm-ignore false
+(bar))
+
+(defwindow system-tray
+    :geometry (geometry :x "6%"
+                        :y "13px" 
+                        :width "26%" 
+                        :height "45%"
+                        :anchor "top left")
+    (sys-tray))
+
+(defwindow vpn
+  :geometry (geometry :x "6%"
+                      :y "73%"
+                      :width "210px"
+                      :height "90px")
+(vpn-popup))
+
+(defwindow calendar
+    :geometry (geometry :x "57px"
+                        :y "67%" 
+                        :width "270px" 
+                        :height "60px")
+    (cal))

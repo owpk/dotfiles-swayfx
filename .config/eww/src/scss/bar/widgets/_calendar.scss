@@ -1,0 +1,37 @@
+.cal-box {
+    font-family: Iosevka Nerd Font;
+    background-color: $bg;
+    border-radius: 8px;
+    padding: 1rem 1rem .2rem;
+
+    .cal {
+        &.highlight {
+            padding: 10rem;
+        }
+
+        padding: .8rem .25rem 0rem;
+        margin-left: 10px;
+    }
+}
+
+calendar:selected {
+    color: $accent;
+}
+
+calendar.header {
+	color: $cyan;
+	font-weight: bold;
+}
+
+calendar.button {
+	color: $cyan;
+}
+
+calendar.highlight {
+	color: $green;
+	font-weight: bold;
+}
+
+calendar:indeterminate {
+	color: rgba(205, 219, 249, 0.3);
+}

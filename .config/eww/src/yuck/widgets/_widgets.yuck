@@ -1,0 +1,7 @@
+(defwidget layout []
+    (box :class "layout" :orientation "v"
+        (box :orientation "v" :valign "center"
+            (label :class "txt" :text layout)
+        )
+    )
+)

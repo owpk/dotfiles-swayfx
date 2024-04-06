@@ -1,7 +1,7 @@
 #!/bin/bash
 
-if [[ -z $(eww windows | grep '*powermenu') ]]; then
+if [[ -z $(eww list-windows | grep '*powermenu') ]]; then
     eww open powermenu
-elif [[ -n $(eww windows | grep '*powermenu') ]];then
+elif [[ -n $(eww list-windows | grep '*powermenu') ]];then
     eww close powermenu
 fi

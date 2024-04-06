@@ -7,7 +7,6 @@
             (theme_icon)
             (volume_icon)
             (battery_icon)
-            (clock)
         )
     )
 )

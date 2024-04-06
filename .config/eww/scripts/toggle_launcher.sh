@@ -4,7 +4,7 @@
 state=$(eww get open_launcher)
 
 open_launcher() {
-    if [[ -z $(eww windows | grep '*launcher') ]]; then
+    if [[ -z $(eww list-windows | grep '*launcher') ]]; then
         eww open launcher
     fi
     eww update open_launcher=true

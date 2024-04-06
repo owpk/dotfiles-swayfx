@@ -1,0 +1,3 @@
+#!/bin/bash
+
+layout-mgr.sh get

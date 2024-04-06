@@ -1,0 +1,34 @@
+#!/bin/bash
+
+get_ip () {
+  ifconfig tun0 2>/dev/null | \
+    grep inet | \
+    head -n 1 | \
+    awk '{print $2}'
+}
+
+ip=$(get_ip)
+
+if [[ $1 == "get" ]]; then
+  if [[ $ip == "" ]]; then
+    echo "Disconnected"
+  else
+    echo $ip
+  fi
+  exit 0
+fi
+
+if [[ $1 == "get-class" ]]; then
+  if [[ $ip == "" ]]; then
+    echo "vpn-txt-disconnected"
+  else
+    echo "vpn-txt"
+  fi
+  exit 0
+fi
+
+if [[ $ip == "" ]]; then
+  echo "(box  :class \"vpn\" :halign \"center\"   :valign \"start\"   :space-evenly \"false\"   :spacing \"-5\" (button :onclick \"scripts/toggle-vpn.sh\"  :class \"disconnected\" \" \"))"
+else
+  echo "(box  :class \"vpn\" :halign \"center\"   :valign \"start\"   :space-evenly \"false\"   :spacing \"-5\" (button :onclick \"scripts/toggle-vpn.sh\" :class \"connected\" \" \"))"
+fi

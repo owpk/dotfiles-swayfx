@@ -1,0 +1,17 @@
+.rofi {
+    font-family: "Iosevka Nerd Font";
+    font-size: 18px;
+    margin-top: 0.65em;
+    margin-right: 1.2em;
+    margin-bottom: 0.75em;
+    margin-left: 1.1em;
+
+    button {
+        font-size: 1em;
+        color: $green;
+
+        &:hover {
+            color: $blue;
+        }
+    }
+}

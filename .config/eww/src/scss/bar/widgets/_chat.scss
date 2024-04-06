@@ -1,0 +1,17 @@
+.chat {
+    font-family: "Iosevka Nerd Font";
+    font-size: 16px;
+    margin-top: 0.65rem;
+    margin-right: 1.2em;
+    margin-bottom: 0.20em;
+    margin-left: 1.2em;
+
+    button {
+        font-size: 1em;
+        color: $cyan;
+
+        &:hover {
+            color: $blue;
+        }
+    }
+}

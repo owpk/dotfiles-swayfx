@@ -1,0 +1,25 @@
+.vpn {
+  .disconnected {
+    color: $magenta;
+  }
+
+  .connected {
+    color: $green;
+  }
+}
+
+.vpn-popup {
+  background: $bg;
+  font-size: 20px;
+  .title {
+    color: $accent;
+    font-size: 16px;
+  }
+  .vpn-txt {
+    color: $green;
+    font-weight: bold;
+    &-disconnected {
+      color: $magenta;
+    }
+  }
+}

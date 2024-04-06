@@ -1,0 +1,16 @@
+.browser {
+    font-family: "Iosevka Nerd Font";
+    margin-top: 0.65rem;
+    margin-right: 1.2em;
+    margin-bottom: 0.45em;
+    margin-left: 1.3em;
+
+    button {
+        font-size: 1em;
+        color: $yellow;
+
+        &:hover {
+            color: $blue;
+        }
+    }
+}

@@ -12,7 +12,6 @@
 (include "modules/powermenu.yuck")
 (include "modules/quick_settings.yuck")
 (include "modules/music.yuck")
-(include "modules/user.yuck")
 (include "modules/weather.yuck")
 (include "modules/picker.yuck")
 
@@ -22,7 +21,6 @@
 (include "modules/tray.yuck")
 (include "modules/language.yuck")
 (include "modules/indicator.yuck")
-(include "modules/clock.yuck")
 (include "modules/recorder_menu.yuck")
 (include "modules/bg_widgets.yuck")
 
