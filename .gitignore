@@ -1,6 +1,7 @@
 /.config/*
 !/.config/alacritty
 !/.config/azote
+!/.config/hypr
 !/.config/colors.css
 !/.config/epy/config.json
 !/.config/fish
