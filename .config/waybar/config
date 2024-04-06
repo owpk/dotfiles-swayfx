@@ -1,17 +1,17 @@
 {
-    "layer": "bottom",
+    "layer": "top",
     "position": "top",
 
 
-    "modules-left": ["tray", "sway/scratchpad", "custom/launcher", "sway/workspaces", "sway/window"],
+    "modules-left": ["tray", "hyprland/scratchpad", "custom/launcher", "hyprland/workspaces", "hyprland/window"],
     "modules-center": ["custom/weather", "custom/stub", "custom/waybar-mpris", "custom/stub", "clock"],
-    "modules-right": ["sway/language", "custom/stub","backlight", "custom/stub","memory", "custom/stub", "battery", "custom/stub", "pulseaudio"],
+    "modules-right": ["hyprland/language", "custom/stub","backlight", "custom/stub","memory", "custom/stub", "battery", "custom/stub", "pulseaudio"],
 
-    "sway/mode": {
+    "hyprland/mode": {
         "format": "<span style=\"italic\">{}</span>"
     },
 
-    "sway/scratchpad": {
+    "hyprland/scratchpad": {
         "format": "{icon} {count}",
         "show-empty": false,
         "format-icons": ["", ""],
@@ -19,7 +19,7 @@
         "tooltip-format": "{app}: {title}"
     },
 
-    "sway/workspaces": {
+    "hyprland/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
         "format": "{icon}",
@@ -36,12 +36,12 @@
         } */
     },
 
-    "sway/window": {
+    "hyprland/window": {
         "icon": false,
         "format": "{}"
     },
 
-    "sway/language": {
+    "hyprland/language": {
          "format": "  {}"
     },
 
@@ -240,12 +240,12 @@
          "signal": 5
     },
 
-     // to find keyboard identifier use "swaymsg -t get_inputs"
+     // to find keyboard identifier use "hyprlandmsg -t get_inputs"
     "custom/keyboard-layout": {
          "format": " {}",
       	 "tooltip": false,
          "exec": "$HOME/.config/waybar/scripts/kblayout.sh"
-         // "on-click": "swaymsg exec alacritty -e ~/.config/sway/scripts/keyhint.sh",
+         // "on-click": "hyprlandmsg exec alacritty -e ~/.config/sway/scripts/keyhint.sh",
          // "exec": "$HOME/.config/waybar/scripts/kblayout.sh '1:1:AT_Translated_Set_2_keyboard'"
          // "exec": "$HOME/.config/waybar/scripts/kblayout.sh '6700:3620:SEM_USB_Keyboard'"
      },
