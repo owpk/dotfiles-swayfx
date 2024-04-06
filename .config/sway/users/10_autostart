@@ -1,3 +1,0 @@
-exec ~/.config/sway/scripts/vnc_server.sh 1
-exec mount -t cifs -o vers=2.1,username=owpk,uid=$(id -u),gid=$(id -g) //OWPK-TOWER/share /srv/dav/samba/
-exec mount /dev/sda1 /srv/dav/hdd
