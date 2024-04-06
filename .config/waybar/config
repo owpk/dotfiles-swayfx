@@ -72,7 +72,7 @@
     "custom/waybar-mpris": {
         "return-type": "json",
         "exec": "waybar-mpris --position --autofocus --interpolate --order 'SYMBOL:ARTIST:ALBUM:TITLE'",
-        "format": "{}",
+        "format": " {} ",
         "max-length": 20,
         "on-click": "waybar-mpris --send toggle",
         // This option will switch between players on right click.
