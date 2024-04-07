@@ -43,6 +43,7 @@
 }
 
 #window {
+   border-radius: 15px;
    animation-name: fadeIn;
    animation-duration: 0.4s;
    background-color: alpha(@theme_bg_color, 0.6);
@@ -66,7 +67,7 @@
 }
 
 #outer-box {
-   border-radius: 10px;
+   border-radius: 15px;
    /*border: 5px solid @base0G;*/
    padding: 5px;
 }
