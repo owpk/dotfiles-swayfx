@@ -157,6 +157,7 @@ return packer.startup(function(use)
 
   -- Typescript TODO: set this up, also add keybinds to ftplugin
   use "jose-elias-alvarez/typescript.nvim"
+  use "chrisbra/Colorizer"
 
   -- Markdown
   use {
