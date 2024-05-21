@@ -1,5 +1,5 @@
 # exec $HOME/.config/sway/scripts/startup_config.sh
-exec wmname LG3D
+# exec wmname LG3D
 
 # Auth with polkit-gnome:
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
@@ -19,8 +19,10 @@ exec swayidle -w \
         timeout 700 'systemctl suspend'
 
 # sound / bright change notifier daemon
-exec "avizo-service"
-exec "avizo-client --time=1"
+exec avizo-service
+exec avizo-client --time=1
+exec avizo-client --background="rgba(73, 78, 81, 0.8)"
+
 # exec ~/.config/sway/scripts/autoname-workspace.sh
 
 # Wob (replaced by avizo)
@@ -33,18 +35,11 @@ exec "avizo-client --time=1"
 # Autotiling
 # exec autotiling-rs
 
-
 # Gnome Keyring
 # exec gnome-keyring-daemon --daemonize --start --components=gpg,pkcs11,secrets,ssh
 
 # for Touchpad gestures
 # exec libinput-gestures-setup start
-
-# Outputs
-exec kanshi
-
-# Xdg DEsktop Portal
-exec /usr/libexec/xdg-desktop-portal
 
 # Tracker daemon for gnome apps
 exec tracker daemon -s

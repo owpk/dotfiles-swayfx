@@ -17,8 +17,9 @@ font pango:JetBrainsMono Regular 11
 smart_borders on
 smart_gaps off
 
-# Set wallpaper w azote:
-exec ~/.azotebg
+# Set wallpaper w swww:
+exec swww-daemon -f xrgb  # if any issues appears try to change format. Possible values: xrgb|xbgr|rgb|bgr
+exec swww img $HOME/dotfiles-swayfx/wallpapers/ExplosiveTest.png 
 
 ## Window decoration
 #class                  border    backgr    text      indicator child_border

@@ -25,6 +25,7 @@
 - [alacritty (shell)](https://github.com/alacritty/alacritty)
 - [wf-recorder (screen recording)](https://github.com/ammen99/wf-recorder)
 - [wl-clipboard (clipboard)](https://github.com/bugaevc/wl-clipboard)
+- [swww (wallpaper daemon)](https://github.com/LGFae/swww)
 - [ranger (file manager)](https://github.com/ranger/ranger)
 
 # 🚀 Install for arch based distros (copy and paste to terminal)
@@ -79,26 +80,20 @@ ln -s /bin/alacritty /bin/xterm
 cp .azotebg ~/.azotebg
 ```
 
-5. install 'aura'
+5. install 'yay' package manager
 
 ```
-git clone https://aur.archlinux.org/aura-bin.git
-cd aura-bin
-makepkg
-sudo pacman -U *.tar.zst
+pacman -Sy --needed git base-devel
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
 ```
 
 6. install menus/toolbars/utils etc for sway
  - use ```gpg --receive-keys``` if any errors occures
+
 ```
-sudo aura -A avizo
-sudo aura -A nwg-launchers
-sudo aura -A nwg-panel
-sudo aura -A wlsunset
-sudo aura -A sworkstyle
-sudo aura -A azote
-sudo aura -A audio-recorder
-sudo aura -A waybar-mpris-git 
+yay -S --needed swww avizo nwg-launchers nwg-panel wlsunset sworkstyle audio-recorder waybar-mpris-git
 ```
 ---
 (Optional) install ranger devicons

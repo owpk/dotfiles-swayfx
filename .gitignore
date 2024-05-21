@@ -18,6 +18,7 @@
 !/.config/zsh
 !/.config/wofi
 !/.config/kitty
+!/.config/avizo
 !/scripts
 
 !/.config/appimagelauncher.cfg
@@ -41,3 +42,4 @@ __pycache__/
 /.config/zsh/.zcompdump*
 /.config/zsh/.zsh_history
 .zsh_history
+/.config/pavucontrol.ini
