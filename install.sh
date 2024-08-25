@@ -94,7 +94,6 @@ sudo cp ./fonts/* /usr/share/fonts/TTF/
 fc-cache
 
 # install terminal utils
-git submodule add https://github.com/owpk/$TERM_UTILS 2> /dev/null
 git submodule update --init --recursive
 
 # Создаем и переключаемся на новую ветку в основном проекте
