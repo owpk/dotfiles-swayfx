@@ -17,16 +17,13 @@ stow --adopt -vt $CFG .config
 stow --adopt -vt $LOCAL_BIN scripts 
 
 # Install yay
-pacman -Sy --needed git base-devel
+sudo pacman -Sy --needed git base-devel
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
 
 cd $DOT
 rm -rf yay
-
-# Configuration
-USER_NAME=$USER # user name
 
 PACKAGES=(
 swaybg 
@@ -83,13 +80,8 @@ for i in ${PACKAGES[@]}; do
   pac $i
 done
 
-# Install aur packages
-for i in ${AURA[@]}; do
-  aur $i
-done
-
 # Services
-systemctl enable avizo
+sudo systemctl enable avizo
 
 stow --adopt -vt ./.config .config
 
@@ -106,4 +98,3 @@ git checkout -b "$USER"
 
 cd $TERM_UTILS
 ./install.sh
-
