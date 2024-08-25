@@ -14,7 +14,7 @@ cd yay
 makepkg -si
 
 cd $DOT
-rm -rf yay
+sudo rm -rf yay
 
 PACKAGES=(
 swaybg 
