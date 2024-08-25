@@ -6,15 +6,18 @@ DOT=$(pwd)
 git config user.name "$USER"
 git config user.email "--auto--"
 
-
 # Install yay
-sudo pacman -Sy --needed git base-devel
-git clone https://aur.archlinux.org/yay.git
-cd yay
-makepkg -si
+if ! command -v yay > /dev/null
+then
+	sudo pacman -Sy --needed git base-devel
+	git clone https://aur.archlinux.org/yay.git
+	cd yay
+	makepkg -si
 
-cd $DOT
-sudo rm -rf yay
+	cd $DOT
+	sudo rm -rf yay
+fi
+
 
 PACKAGES=(
 swaybg 
@@ -50,13 +53,14 @@ nodejs
 swayidle
 stow 
 
-# YAY
+)
+
+#AUR packages
+AUR=(
 swww 
 nwg-launchers 
 nwg-panel 
 wlsunset 
-sworkstyle 
-audio-recorder 
 waybar-mpris-git
 avizo
 )
@@ -71,8 +75,10 @@ for i in ${PACKAGES[@]}; do
   pac $i
 done
 
-# Services
-sudo systemctl enable avizo
+# Install utilities
+for i in ${AUR[@]}; do
+  pac $i
+done
 
 TERM_UTILS="server-dots"
 CFG=$HOME/.config
@@ -83,13 +89,13 @@ mkdir -p $CFG 2> /dev/null
 stow --adopt -vt $CFG .config
 stow --adopt -vt $LOCAL_BIN scripts 
 
-sudo mkdir /usr/share/fonts/TTF 2> /dev/null
+sudo mkdir -p /usr/share/fonts/TTF 2> /dev/null
 sudo cp ./fonts/* /usr/share/fonts/TTF/
 fc-cache
 
 # install terminal utils
-git submodule add https://github.com/owpk/$TERM_UTILS
-git submodule init
+git submodule add https://github.com/owpk/$TERM_UTILS 2> /dev/null
+git submodule update --init --recursive
 
 # Создаем и переключаемся на новую ветку в основном проекте
 git checkout -b "$USER"
