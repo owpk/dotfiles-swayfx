@@ -42,7 +42,7 @@ sudo usermod -a -G video $USER
 ```
 2. clone dotfiles and change current directory to project directory (do any steps below from it)
 ```
-git clone https://github.com/owpk/dotfiles-swayfx
+git clone --depth 1 https://github.com/owpk/dotfiles-swayfx
 cd dotfiles-swayfx
 ```
 3. change shell to zsh
