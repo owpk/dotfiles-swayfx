@@ -93,6 +93,8 @@ sudo mkdir -p /usr/share/fonts/TTF 2> /dev/null
 sudo cp ./fonts/* /usr/share/fonts/TTF/
 fc-cache
 
+ln -nsf $(pwd)/.themes $HOME/
+
 # install terminal utils
 git submodule update --init --recursive
 
