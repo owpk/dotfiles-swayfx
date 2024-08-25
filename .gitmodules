@@ -1,4 +1,4 @@
 [submodule "server-dots"]
 	path = server-dots
-	url = https://github.com/owpk/server-dots
+	url = git@github.com:owpk/server-dots.git
 	branch = main
