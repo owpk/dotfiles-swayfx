@@ -6,15 +6,6 @@ DOT=$(pwd)
 git config user.name "$USER"
 git config user.email "--auto--"
 
-TERM_UTILS="server-dots"
-CFG=$HOME/.config
-LOCAL_BIN=$HOME/.local/bin
-
-mkdir -p $LOCAL_BIN 2> /dev/null
-mkdir -p $CFG 2> /dev/null
-
-stow --adopt -vt $CFG .config
-stow --adopt -vt $LOCAL_BIN scripts 
 
 # Install yay
 sudo pacman -Sy --needed git base-devel
@@ -83,7 +74,14 @@ done
 # Services
 sudo systemctl enable avizo
 
-stow --adopt -vt ./.config .config
+TERM_UTILS="server-dots"
+CFG=$HOME/.config
+LOCAL_BIN=$HOME/.local/bin
+mkdir -p $LOCAL_BIN 2> /dev/null
+mkdir -p $CFG 2> /dev/null
+
+stow --adopt -vt $CFG .config
+stow --adopt -vt $LOCAL_BIN scripts 
 
 sudo mkdir /usr/share/fonts/TTF 2> /dev/null
 sudo cp ./fonts/* /usr/share/fonts/TTF/
