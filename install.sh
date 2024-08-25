@@ -10,8 +10,8 @@ TERM_UTILS="server-dots"
 CFG=$HOME/.config
 LOCAL_BIN=$HOME/.local/bin
 
-mkdir $LOCAL_BIN 2> /dev/null
-mkdir $CFG 2> /dev/null
+mkdir -p $LOCAL_BIN 2> /dev/null
+mkdir -p $CFG 2> /dev/null
 
 stow --adopt -vt $CFG .config
 stow --adopt -vt $LOCAL_BIN scripts 
