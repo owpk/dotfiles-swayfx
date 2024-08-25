@@ -9,13 +9,9 @@ swaybg
 jq 
 cmake 
 cmocka 
-ranger 
 wofi 
 waybar 
 mtools 
-vim 
-neovim 
-zsh 
 vifm 
 papirus-icon-theme 
 noto-fonts-emoji 
@@ -43,6 +39,7 @@ swayidle
 stow 
 )
 
+# TODO switched to yay
 AURA=(
 avizo
 nwg-launchers
@@ -66,6 +63,7 @@ for i in ${EXTENSIONS[@]}; do
   pac $i
 done
 
+# TODO switched to yay
 # Install aura
 git clone https://aur.archlinux.org/aura-bin.git
 chown -R $USER_NAME aura-bin
@@ -86,18 +84,7 @@ systemctl enable avizo
 BACKUP_DIR="/home/$USER_NAME/.sway_backups.old"
 mkdir -p $BACKUP_DIR
 
-mv ~/.zshenv $BACKUP_DIR/.zshenv.bak 2> /dev/null
-mv ~/.zshrc $BACKUP_DIR/.zshrc.bak 2> /dev/null
-mv ~/.p10k.zsh $BACKUP_DIR/.p10k.zsh.bak 2> /dev/null
-#mv ~/.config $BACKUP_DIR/.config.bak 2> /dev/null
-#mv ~/.vim $BACKUP_DIR/.vim.bak 2> /dev/null
-
-ln -s `pwd`/.zshenv ~/.zshenv
-ln -s `pwd`/.config/zsh/.zshrc ~/.zshrc
-ln -s `pwd`/.p10k.zsh ~/.p10k.zsh
-
 stow --adopt -vt ./.config .config
-stow --adopt -vt ./.vim .vim
 
 sudo mkdir /usr/share/fonts/TTF 2> /dev/null
 sudo cp ./fonts/* /usr/share/fonts/TTF/
