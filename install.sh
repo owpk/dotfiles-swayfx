@@ -1,8 +1,32 @@
 #!/bin/bash
 set -e
 
+DOT=$(pwd)
+
+git config user.name "$USER"
+git config user.email "--auto--"
+
+TERM_UTILS="server-dots"
+CFG=$HOME/.config
+LOCAL_BIN=$HOME/.local/bin
+
+mkdir $LOCAL_BIN 2> /dev/null
+mkdir $CFG 2> /dev/null
+
+stow --adopt -vt $CFG .config
+stow --adopt -vt $LOCAL_BIN scripts 
+
+# Install yay
+pacman -Sy --needed git base-devel
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
+
+cd $DOT
+rm -rf yay
+
 # Configuration
-USER_NAME=$1 # user name
+USER_NAME=$USER # user name
 
 PACKAGES=(
 swaybg 
@@ -37,41 +61,27 @@ pkcs11-helper
 nodejs 
 swayidle
 stow 
-)
 
-# TODO switched to yay
-AURA=(
+# YAY
+swww 
+nwg-launchers 
+nwg-panel 
+wlsunset 
+sworkstyle 
+audio-recorder 
+waybar-mpris-git
 avizo
-nwg-launchers
-nwg-wrapper
-wlsunset
-sworkstyle
-azote
 )
 
 # The script begins here.
 pac() {
-    sudo pacman -Syu --noconfirm --needed $1
-}
-
-aur() {
-    sudo aura -A $1
+    yay -S --noconfirm --needed $1
 }
 
 # Install utilities
-for i in ${EXTENSIONS[@]}; do
+for i in ${PACKAGES[@]}; do
   pac $i
 done
-
-# TODO switched to yay
-# Install aura
-git clone https://aur.archlinux.org/aura-bin.git
-chown -R $USER_NAME aura-bin
-cd ./aura-bin
-sudo makepkg -si
-
-cd ..
-rm -rf ./aura-bin
 
 # Install aur packages
 for i in ${AURA[@]}; do
@@ -81,14 +91,19 @@ done
 # Services
 systemctl enable avizo
 
-BACKUP_DIR="/home/$USER_NAME/.sway_backups.old"
-mkdir -p $BACKUP_DIR
-
 stow --adopt -vt ./.config .config
 
 sudo mkdir /usr/share/fonts/TTF 2> /dev/null
 sudo cp ./fonts/* /usr/share/fonts/TTF/
 fc-cache
 
-echo "Script has finished. Please reboot your PC using 'reboot' command."
-exit
+# install terminal utils
+git submodule add https://github.com/owpk/$TERM_UTILS
+git submodule init
+
+# Создаем и переключаемся на новую ветку в основном проекте
+git checkout -b "$USER"
+
+cd $TERM_UTILS
+./install.sh
+

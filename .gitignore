@@ -7,3 +7,4 @@ __pycache__/
 /.config/zsh/.zsh_history
 .zsh_history
 /.config/pavucontrol.ini
+*.Identifier
