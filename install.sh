@@ -1,6 +1,6 @@
 #!/bin/bash
-git clone --depth 1 https://github.com/owpk/dotfiles-sway
-cd dotfiles-sway
+git clone --depth 1 https://github.com/owpk/dotfiles-sway $HOME
+cd $HOME/dotfiles-sway
 
 set -e
 
