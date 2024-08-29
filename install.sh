@@ -1,7 +1,7 @@
 #!/bin/bash
 cd $HOME
-git clone --depth 1 https://github.com/owpk/dotfiles-sway
-cd $HOME/dotfiles-sway
+git clone --depth 1 https://github.com/owpk/dotfiles-swayfx
+cd $HOME/dotfiles-swayfx
 
 set -e
 
