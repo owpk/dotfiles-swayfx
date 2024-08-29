@@ -1,1 +1,0 @@
-export ZDOTDIR=~/.config/zsh

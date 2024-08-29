@@ -1,21 +1,35 @@
 #!/bin/bash
+git clone --depth 1 https://github.com/owpk/dotfiles-sway $HOME
+cd $HOME/dotfiles-sway
+
 set -e
 
-# Configuration
-USER_NAME=$1 # user name
+DOT=$(pwd)
+
+git config user.name "$USER"
+git config user.email "--auto--"
+
+# Install yay
+if ! command -v yay > /dev/null
+then
+	sudo pacman -Sy --needed git base-devel
+	git clone https://aur.archlinux.org/yay.git
+	cd yay
+	makepkg -si
+
+	cd $DOT
+	sudo rm -rf yay
+fi
+
 
 PACKAGES=(
 swaybg 
 jq 
 cmake 
 cmocka 
-ranger 
 wofi 
 waybar 
 mtools 
-vim 
-neovim 
-zsh 
 vifm 
 papirus-icon-theme 
 noto-fonts-emoji 
@@ -41,67 +55,54 @@ pkcs11-helper
 nodejs 
 swayidle
 stow 
+
 )
 
-AURA=(
+#AUR packages
+AUR=(
+swww 
+nwg-launchers 
+nwg-panel 
+wlsunset 
+waybar-mpris-git
 avizo
-nwg-launchers
-nwg-wrapper
-wlsunset
-sworkstyle
-azote
 )
 
 # The script begins here.
 pac() {
-    sudo pacman -Syu --noconfirm --needed $1
-}
-
-aur() {
-    sudo aura -A $1
+    yay -S --noconfirm --needed $1
 }
 
 # Install utilities
-for i in ${EXTENSIONS[@]}; do
+for i in ${PACKAGES[@]}; do
   pac $i
 done
 
-# Install aura
-git clone https://aur.archlinux.org/aura-bin.git
-chown -R $USER_NAME aura-bin
-cd ./aura-bin
-sudo makepkg -si
-
-cd ..
-rm -rf ./aura-bin
-
-# Install aur packages
-for i in ${AURA[@]}; do
-  aur $i
+# Install utilities
+for i in ${AUR[@]}; do
+  pac $i
 done
 
-# Services
-systemctl enable avizo
+TERM_UTILS="server-dots"
+CFG=$HOME/.config
+LOCAL_BIN=$HOME/.local/bin
+mkdir -p $LOCAL_BIN 2> /dev/null
+mkdir -p $CFG 2> /dev/null
 
-BACKUP_DIR="/home/$USER_NAME/.sway_backups.old"
-mkdir -p $BACKUP_DIR
+stow --adopt -vt $CFG .config
+stow --adopt -vt $LOCAL_BIN scripts 
 
-mv ~/.zshenv $BACKUP_DIR/.zshenv.bak 2> /dev/null
-mv ~/.zshrc $BACKUP_DIR/.zshrc.bak 2> /dev/null
-mv ~/.p10k.zsh $BACKUP_DIR/.p10k.zsh.bak 2> /dev/null
-#mv ~/.config $BACKUP_DIR/.config.bak 2> /dev/null
-#mv ~/.vim $BACKUP_DIR/.vim.bak 2> /dev/null
-
-ln -s `pwd`/.zshenv ~/.zshenv
-ln -s `pwd`/.config/zsh/.zshrc ~/.zshrc
-ln -s `pwd`/.p10k.zsh ~/.p10k.zsh
-
-stow --adopt -vt ./.config .config
-stow --adopt -vt ./.vim .vim
-
-sudo mkdir /usr/share/fonts/TTF 2> /dev/null
+sudo mkdir -p /usr/share/fonts/TTF 2> /dev/null
 sudo cp ./fonts/* /usr/share/fonts/TTF/
 fc-cache
 
-echo "Script has finished. Please reboot your PC using 'reboot' command."
-exit
+ln -nsf $(pwd)/.themes $HOME/
+
+# install terminal utils
+git submodule update --init --recursive
+
+# Создаем и переключаемся на новую ветку в основном проекте
+git checkout -b "$USER"
+
+cd $TERM_UTILS
+./install.sh

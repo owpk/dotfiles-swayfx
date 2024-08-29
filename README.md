@@ -28,8 +28,13 @@
 - [swww (wallpaper daemon)](https://github.com/LGFae/swww)
 - [ranger (file manager)](https://github.com/ranger/ranger)
 
-# 🚀 Install for arch based distros (copy and paste to terminal)
+# 🚀 Automatically installation
+You can use installation script (using 'yay' package manager to resolve dependencies) 
+```bash
+curl -L https://raw.githubusercontent.com/owpk/dotfiles-swayfx/main/install.sh | bash
+```
 
+# 🚀 Manual installation for arch based distros (copy and paste to terminal)
 1. install all needed apps
 ```
 sudo pacman -S --needed swaybg jq cmake cmocka ranger wofi waybar mtools vim neovim zsh \
@@ -70,14 +75,10 @@ sudo cp ./fonts/* /usr/share/fonts/TTF/
 sudo cp ./config/sway/scripts/floating /usr/local/bin
 
 fc-cache
-ln -s `pwd`/.zshenv ~/.zshenv
-ln -s `pwd`/.config/zsh/.zshrc ~/.zshrc
-ln -s `pwd`/.p10k.zsh ~/.p10k.zsh
+
 ln -s `pwd`/.config ~/.config
-ln -s `pwd`/.vim ~/.vim
 ln -s `pwd`/.themes ~/.themes
 ln -s /bin/alacritty /bin/xterm
-cp .azotebg ~/.azotebg
 ```
 
 5. install 'yay' package manager
