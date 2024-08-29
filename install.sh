@@ -1,4 +1,7 @@
 #!/bin/bash
+git clone --depth 1 https://github.com/owpk/dotfiles-sway
+cd dotfiles-sway
+
 set -e
 
 DOT=$(pwd)
