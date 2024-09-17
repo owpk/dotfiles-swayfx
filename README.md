@@ -2,13 +2,6 @@
 ## ❤️ This dotfiles fully compatible with vanilla sway, just remove ```./config/sway/config.d/swayfx``` config file
 ### Also check my '[sway keybindings helper](https://github.com/owpk/sway-keyhints)' project  
 
-- press ```Win + p``` to show keybindigs help
-
-<p align=center style="margin-top:36px">	  
-  <img src="https://img.shields.io/github/issues/owpk/dotfiles-swayfx?color=bf616a&labelColor=202328&style=for-the-badge">
-  <img src="https://img.shields.io/github/issues-pr/owpk/dotfiles-swayfx?color=c792ea&labelColor=202328&style=for-the-badge">
-</p>
-
 <p align="center">
    <img src="./docs/composed2.jpg"/>
 </p>
@@ -28,13 +21,13 @@
 - [swww (wallpaper daemon)](https://github.com/LGFae/swww)
 - [ranger (file manager)](https://github.com/ranger/ranger)
 
-# 🚀 Automatically installation
+# 🚀 Automatically installation (arch based distros)
 You can use installation script (using 'yay' package manager to resolve dependencies) 
 ```bash
 curl -L https://raw.githubusercontent.com/owpk/dotfiles-swayfx/main/install.sh | bash
 ```
 
-# 🚀 Manual installation for arch based distros (copy and paste to terminal)
+# 🚀 Manual installation (copy and paste to terminal)
 1. install all needed apps
 ```
 sudo pacman -S --needed swaybg jq cmake cmocka ranger wofi waybar mtools vim neovim zsh \
@@ -65,12 +58,10 @@ mv ~/.config ~/sway_backups.old/.config.bak 2> /dev/null
 mv ~/.vim ~/sway_backups.old/.vim.bak 2> /dev/null
 mv ~/.themes/ ~/sway_backups.old/.themes.bak 2> /dev/null
 mv ~/.azotebg ~/sway_backups.old/.azote.bak 2> /dev/null
-
-sudo pacman -R --no-confirm xterm
 ```
 4.1 create all needed links and copy fonts
 ```
-sudo mkdir /usr/share/fonts/TTF 2> /dev/null
+sudo mkdir -p /usr/share/fonts/TTF 2> /dev/null
 sudo cp ./fonts/* /usr/share/fonts/TTF/
 sudo cp ./config/sway/scripts/floating /usr/local/bin
 
@@ -78,7 +69,6 @@ fc-cache
 
 ln -s `pwd`/.config ~/.config
 ln -s `pwd`/.themes ~/.themes
-ln -s /bin/alacritty /bin/xterm
 ```
 
 5. install 'yay' package manager
