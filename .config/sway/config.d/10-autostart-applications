@@ -13,7 +13,7 @@ exec hash dbus-update-activation-environment 2>/dev/null && \
      dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
 
 # Idle settings
-exec swayidle -w \
+# exec swayidle -w \
 		timeout 500 'swaymsg "output * dpms off"' \
 		    resume 'swaymsg "output * dpms on"' \
         timeout 700 'systemctl suspend'
