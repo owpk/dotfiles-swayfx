@@ -26,8 +26,10 @@ function prepareBackups() {
    echo "Creating backup..."
    BACKUP_DIR="$HOME/dotfiles-backups"
    mkdir -p $BACKUP_DIR/.config 2> /dev/null
+   
+   TR=$(ls $DOT/.config)
 
-   for filename in $DOT/.config/*; do
+   for filename in $TR; do
       echo "Processing backup for file: $filename"
       echo "MV: $CFG/$filename -> $BACKUP_DIR/.config"
       mv $CFG/$filename $BACKUP_DIR/.config
