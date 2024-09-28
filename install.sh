@@ -60,7 +60,9 @@ sleep 2
 
 sudo curl -L https://github.com/owpk/sway-keyhints/releases/latest/download/swaykeyhints --output /usr/bin/swaykehints
 sudo chmod +x /usr/bin/swaykehints
+
 echo " ::KEYBINDINGS:: "
 /usr/bin/swaykehints -h 100 -w 200
-echo "Use '/usr/bin/swaykehints' for keybindings help"
 
+echo "All done! Please check current keybindings above"
+echo "Use '/usr/bin/swaykehints' for keybindings help"
