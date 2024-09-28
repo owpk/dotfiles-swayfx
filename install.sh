@@ -54,8 +54,6 @@ git checkout -b "$USER"
 cd $TERM_UTILS
 ./install.sh
 
-echo "Backup created at: $BACKUP_DIR"
-
 sleep 2
 
 sudo curl -L https://github.com/owpk/sway-keyhints/releases/latest/download/swaykeyhints --output /usr/bin/swaykehints
@@ -66,3 +64,4 @@ echo " ::KEYBINDINGS:: "
 
 echo "All done! Please check current keybindings above"
 echo "Use '/usr/bin/swaykehints' for keybindings help"
+echo "Your backup files created at: $BACKUP_DIR"
