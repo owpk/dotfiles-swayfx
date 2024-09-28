@@ -1,94 +1,40 @@
 #!/bin/bash
+set -e
+
+mv $HOME/dotfiles-swayfx $HOME/dotfiles-swayfx.bak
+
 cd $HOME
 git clone --depth 1 https://github.com/owpk/dotfiles-swayfx
 cd $HOME/dotfiles-swayfx
-
-set -e
-
 DOT=$(pwd)
+
+# install terminal utils
+git submodule update --init --recursive
+TERM_UTILS="server-dots"
 
 git config user.name "$USER"
 git config user.email "--auto--"
 
-# Install yay
-if ! command -v yay > /dev/null
-then
-	sudo pacman -Sy --needed git base-devel
-	git clone https://aur.archlinux.org/yay.git
-	cd yay
-	makepkg -si
+curl -Ls https://raw.githubusercontent.com/owpk/dots-misc/refs/heads/main/install-deps.sh | bash -s -- $DOT/deps
 
-	cd $DOT
-	sudo rm -rf yay
-fi
-
-
-PACKAGES=(
-swaybg 
-jq 
-cmake 
-cmocka 
-wofi 
-waybar 
-mtools 
-vifm 
-papirus-icon-theme 
-noto-fonts-emoji 
-ttf-hack 
-wl-clipboard 
-translate-shell 
-slurp
-grim 
-light 
-pamixer 
-wmname 
-dmenu 
-xdg-desktop-portal 
-kanshi 
-alacritty
-kitty 
-pavucontrol 
-playerctl 
-imv 
-mpv 
-wayvnc 
-pkcs11-helper 
-nodejs 
-swayidle
-stow 
-
-)
-
-#AUR packages
-AUR=(
-swww 
-nwg-launchers 
-nwg-panel 
-wlsunset 
-waybar-mpris-git
-avizo
-)
-
-# The script begins here.
-pac() {
-    yay -S --noconfirm --needed $1
-}
-
-# Install utilities
-for i in ${PACKAGES[@]}; do
-  pac $i
-done
-
-# Install utilities
-for i in ${AUR[@]}; do
-  pac $i
-done
-
-TERM_UTILS="server-dots"
 CFG=$HOME/.config
 LOCAL_BIN=$HOME/.local/bin
 mkdir -p $LOCAL_BIN 2> /dev/null
 mkdir -p $CFG 2> /dev/null
+
+function prepareBackups() {
+   echo "Creating backup..."
+   BACKUP_DIR="$HOME/dotfiles-backups"
+   mkdir -p $BACKUP_DIR/.config 2> /dev/null
+
+   for filename in $DOT/.config/*; do
+      mv $CFG/$filename $BACKUP_DIR/.config/
+   done
+
+   mv $HOME/.themes $BACKUP_DIR/
+}
+
+prepareBackups
 
 stow --adopt -vt $CFG .config
 stow --adopt -vt $LOCAL_BIN scripts 
@@ -99,11 +45,9 @@ fc-cache
 
 ln -nsf $(pwd)/.themes $HOME/
 
-# install terminal utils
-git submodule update --init --recursive
-
-# Создаем и переключаемся на новую ветку в основном проекте
 git checkout -b "$USER"
 
 cd $TERM_UTILS
 ./install.sh
+
+echo "Backup created at: $BACKUP_DIR"
