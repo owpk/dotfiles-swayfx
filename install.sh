@@ -28,7 +28,9 @@ function prepareBackups() {
    mkdir -p $BACKUP_DIR/.config 2> /dev/null
 
    for filename in $DOT/.config/*; do
-      mv $CFG/$filename $BACKUP_DIR/.config/
+      echo "Processing backup for file: $filename"
+      echo "MV: $CFG/$filename -> $BACKUP_DIR/.config"
+      mv $CFG/$filename $BACKUP_DIR/.config
    done
 
    mv $HOME/.themes $BACKUP_DIR/
