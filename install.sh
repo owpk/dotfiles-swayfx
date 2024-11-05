@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-mv $HOME/dotfiles-swayfx $HOME/dotfiles-swayfx.bak
+mv $HOME/dotfiles-swayfx $HOME/dotfiles-swayfx.bak 2> /dev/null
 
 cd $HOME
 git clone --depth 1 https://github.com/owpk/dotfiles-swayfx
