@@ -33,11 +33,15 @@ function prepareBackups() {
 
    for filename in $TR; do
       echo "Processing backup for file: $filename"
-      echo "MV: $CFG/$filename -> $BACKUP_DIR/.config"
-      mv $CFG/$filename $BACKUP_DIR/.config
+      if [ -d "$HOME/$filename" ]; then
+         echo "MV: $CFG/$filename -> $BACKUP_DIR/.config"
+         mv $CFG/$filename $BACKUP_DIR/.config
+      fi
    done
-
-   mv $HOME/.themes $BACKUP_DIR/
+   
+   if [ -d "$HOME/.themes" ]; then
+      mv $HOME/.themes $BACKUP_DIR/
+   fi
 }
 
 prepareBackups
