@@ -1,1 +1,2 @@
-import = ["/home/owpk/.config/alacritty/themes/everforest_dark.toml", "/home/owpk/.config/alacritty/main.toml"]
+[general]
+import = ["./themes/everforest_dark.toml", "./main.toml"]
