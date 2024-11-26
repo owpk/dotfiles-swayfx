@@ -41,7 +41,7 @@ semantic_escape_chars = ",│`|:\"' ()[]{}<>"
 
 [window]
 opacity = 0.9
-#blur = true
+blur = true
 
 [window.padding]
 x = 10
