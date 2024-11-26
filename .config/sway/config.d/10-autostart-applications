@@ -23,6 +23,8 @@ exec avizo-service
 exec avizo-client --time=1
 exec avizo-client --background="rgba(73, 78, 81, 0.8)"
 
+exec_always ~/.config/sway/scripts/vnc_server.sh 1
+
 # exec ~/.config/sway/scripts/autoname-workspace.sh
 
 # Wob (replaced by avizo)
