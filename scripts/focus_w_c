@@ -1,0 +1,33 @@
+#!/bin/bash
+
+APP=$1
+CLASS=$2
+
+WINDOWS=()
+while IFS= read -r line; do
+    WINDOWS+=("$line")
+done < <(wmctrl -lx | awk -v cls="$CLASS" '$3 == cls { print $1 }')
+
+NUM_WINDOWS=${#WINDOWS[@]}
+if [ "$NUM_WINDOWS" -eq 0 ]; then
+    $APP &
+    exit 0
+fi
+
+ACTIVE_WIN=$(xprop -root _NET_ACTIVE_WINDOW | awk '{print $5}')
+ACTIVE_WIN=${ACTIVE_WIN,,}
+ACTIVE_WIN=${ACTIVE_WIN/#0x/}
+ACTIVE_WIN=$(printf "%08x" "0x$ACTIVE_WIN")
+
+NEXT_INDEX=0
+for i in "${!WINDOWS[@]}"; do
+    WIN_ID=${WINDOWS[$i]#0x}
+    WIN_ID=$(printf "%08x" "0x$WIN_ID")
+    if [[ "$WIN_ID" == "$ACTIVE_WIN" ]]; then
+        NEXT_INDEX=$(( (i + 1) % NUM_WINDOWS ))
+        break
+    fi
+done
+echo $NEXT_INDEX
+
+wmctrl -ia "${WINDOWS[$NEXT_INDEX]}"

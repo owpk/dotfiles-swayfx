@@ -1,0 +1,10 @@
+#!/bin/bash
+
+APP=$1
+CLASS=$2
+
+if wmctrl -lx | grep -i $APP.$CLASS; then
+      wmctrl -xa $APP.$CLASS
+else 
+      $APP &
+fi
