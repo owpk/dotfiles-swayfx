@@ -20,7 +20,7 @@
 - [alacritty (shell)](https://github.com/alacritty/alacritty)
 - [wf-recorder (screen recording)](https://github.com/ammen99/wf-recorder)
 - [wl-clipboard (clipboard)](https://github.com/bugaevc/wl-clipboard)
-- [swww (wallpaper daemon)](https://github.com/LGFae/swww)
+- [awww (wallpaper daemon)](https://codeberg.org/LGFae/awww)
 
 # 🚀 Automatically installation
 
