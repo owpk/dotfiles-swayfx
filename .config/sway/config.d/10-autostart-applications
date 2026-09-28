@@ -13,17 +13,17 @@ exec hash dbus-update-activation-environment 2>/dev/null && \
      dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
 
 # Idle settings
-exec swayidle -w \
-		timeout 500 'swaymsg "output * dpms off"' \
-		    resume 'swaymsg "output * dpms on"' \
-        timeout 700 'systemctl suspend'
+# exec swayidle -w \
+#		timeout 500 'swaymsg "output * dpms off"' \
+#		    resume 'swaymsg "output * dpms on"' \
+#        timeout 700 'systemctl suspend'
 
 # sound / bright change notifier daemon
 exec avizo-service
 exec avizo-client --time=1
 exec avizo-client --background="rgba(73, 78, 81, 0.8)"
 
-# exec_always ~/.config/sway/scripts/vnc_server.sh 1
+exec ~/.config/sway/scripts/vnc_server.sh 1
 
 # exec ~/.config/sway/scripts/autoname-workspace.sh
 
