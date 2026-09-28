@@ -1,7 +1,9 @@
 #!/bin/bash
 set -e
 
-mv $HOME/dotfiles-swayfx $HOME/dotfiles-swayfx.bak
+if [ -d "$HOME/dotfiles-swayfx" ]; then
+   mv $HOME/dotfiles-swayfx $HOME/dotfiles-swayfx.bak 2> /dev/null
+fi
 
 cd $HOME
 git clone --depth 1 https://github.com/owpk/dotfiles-swayfx
@@ -31,11 +33,15 @@ function prepareBackups() {
 
    for filename in $TR; do
       echo "Processing backup for file: $filename"
-      echo "MV: $CFG/$filename -> $BACKUP_DIR/.config"
-      mv $CFG/$filename $BACKUP_DIR/.config
+      if [ -d "$HOME/$filename" ]; then
+         echo "MV: $CFG/$filename -> $BACKUP_DIR/.config"
+         mv $CFG/$filename $BACKUP_DIR/.config
+      fi
    done
-
-   mv $HOME/.themes $BACKUP_DIR/
+   
+   if [ -d "$HOME/.themes" ]; then
+      mv $HOME/.themes $BACKUP_DIR/
+   fi
 }
 
 prepareBackups
@@ -54,8 +60,6 @@ git checkout -b "$USER"
 cd $TERM_UTILS
 ./install.sh
 
-echo "Backup created at: $BACKUP_DIR"
-
 sleep 2
 
 sudo curl -L https://github.com/owpk/sway-keyhints/releases/latest/download/swaykeyhints --output /usr/bin/swaykehints
@@ -66,3 +70,4 @@ echo " ::KEYBINDINGS:: "
 
 echo "All done! Please check current keybindings above"
 echo "Use '/usr/bin/swaykehints' for keybindings help"
+echo "Your backup files created at: $BACKUP_DIR"

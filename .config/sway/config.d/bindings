@@ -54,7 +54,7 @@ bindsym --to-code  {
 
    # d
    $mod+d               exec $menu
-   $mod+Shift+d         exec $search_prompt | xargs -I{} xdg-open https://www.google.com/search\?q\=\{\}
+   $mod+Shift+d         exec $search_prompt | xargs -I{} $term $term-exec bash -c 'gigachat {} | glow -w 80 && zsh'
   
    
    $mod+e               exec ~/.config/sway/scripts/translate.sh ru
@@ -83,7 +83,7 @@ bindsym --to-code  {
    # s
    # bindsym --to-code  $mod+s layout stacking
    $mod+s               sticky toggle;
-   $mod+Shift+s		   		split toggle
+   $mod+Shift+s		   split toggle
 
    # v
    # bindsym --to-code  $mod+v splitv
@@ -91,7 +91,8 @@ bindsym --to-code  {
 
    # w
    $mod+w               exec ~/.config/sway/scripts/browser-search.sh
-   $mod+Shift+w         exec $search_prompt | xargs -I{} $term $term-exec bash -c 'gigachat {} | glow -w 80 && zsh'
+   $mod+Shift+w         exec $search_prompt | xargs -I{} xdg-open https://www.google.com/search\?q\=\{\}
+
    # y
    $mod+y			    exec  ~/.config/sway/scripts/screenshot.sh
    $mod+Shift+y			exec  ~/.config/sway/scripts/screenshot.sh -g

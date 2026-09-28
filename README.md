@@ -10,7 +10,7 @@
 
 # 🗿 Info
 
-- [sway fx (windows manager)](https://github.com/WillPower3309/swayfx)
+- [sway fx (window manager)](https://github.com/WillPower3309/swayfx)
 - [waybar (status bar)](https://github.com/Alexays/Waybar)
 - [nwg-panel (status bar)](https://github.com/nwg-piotr/nwg-panel) Optional
 - [nwg-launchers (menus/launchers)](https://github.com/nwg-piotr/nwg-launchers)
@@ -31,7 +31,7 @@
 curl -L https://raw.githubusercontent.com/owpk/dotfiles-swayfx/main/install.sh | bash
 ```
 
-# Configuration
+# 🔧 Configuration
 
 - default sway config: `~/.config/sway/config`
 
